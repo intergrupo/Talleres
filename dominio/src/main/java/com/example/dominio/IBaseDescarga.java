@@ -1,6 +1,8 @@
 package com.example.dominio;
 
 
+import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;
+
 import java.util.List;
 
 /**
@@ -9,5 +11,5 @@ import java.util.List;
 public interface IBaseDescarga<T> {
 
     List<T> cargarXCorreria(String codigoCorreria);
-//    List<T> cargarXFiltro(OrdenTrabajoBusqueda filtro);
+    List<T> cargarXFiltro(OrdenTrabajoBusqueda filtro);
 }
