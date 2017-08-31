@@ -2,7 +2,7 @@ package com.example.santiagolopezgarcia.talleres.integracion.carga;
 
 import com.example.dominio.IEliminarDatosPorRecarga;
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.SiriusBL;
+import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.administracion.UsuarioBL;
 import com.example.dominio.correria.CorreriaBL;
 import com.example.dominio.labor.LaborXOrdenTrabajoBL;
@@ -67,11 +67,11 @@ public class CargaDiaria extends CargaBase {
     private List<String> codigoCorreriasAConfirmar;
 
     @Inject
-    public CargaDiaria(SiriusBL siriusBL, CorreriaBL correriaBL, ItemBL itemBL
+    public CargaDiaria(TalleresBL talleresBL, CorreriaBL correriaBL, ItemBL itemBL
             , DependenciaCargaDiaria dependenciaCargaDiaria, TrabajoBL trabajoBL
             , TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL, TareaBL tareaBL
             , LaborXOrdenTrabajoBL laborXOrdenTrabajoBL, LaborXTareaBL laborXTareaBL) {
-        super(siriusBL);
+        super(talleresBL);
         this.correriaBL = correriaBL;
         this.tareaXOrdenTrabajoBL = tareaXOrdenTrabajoBL;
         this.dependenciaCargaDiaria = dependenciaCargaDiaria;

@@ -21,7 +21,7 @@ public abstract class DaoBase {
     public static final String INT_TYPE = "integer";
     public static final String REAL_TYPE = "real";
     public static final String NUMERIC_TYPE = "numeric";
-    private static final String NOMBRE_BASE_DATOS = "Sirius.db";
+    private static final String NOMBRE_BASE_DATOS = "Talleres.db";
     private static final int VERSION_BASE_DATOS = 3;
 
     public DaoBase(Context context) {

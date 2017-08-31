@@ -1,12 +1,12 @@
 package com.example.santiagolopezgarcia.talleres.integracion.descarga;
 
 import com.example.dominio.IBaseDescarga;
-import com.example.dominio.administracion.SiriusBL;
+import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.correria.CorreriaBL;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.OrdenTrabajo;
 import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;
-import com.example.dominio.modelonegocio.Sirius;
+import com.example.dominio.modelonegocio.Talleres;
 import com.example.dominio.notificacion.ReporteNotificacionBL;
 import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
 import com.example.dominio.ordentrabajo.TareaXOrdenTrabajoBL;
@@ -48,7 +48,7 @@ public class Descarga {
     OrdenTrabajoBL ordenTrabajoBL;
     String codigoCorreria;
     public List<String> archivosGenerados;
-    SiriusBL siriusBL;
+    TalleresBL talleresBL;
     private String sesion;
     private List<String> codigosCorreriasIntegradas;
     private String versionSoftware;
@@ -59,13 +59,13 @@ public class Descarga {
             , ReporteNotificacionBL reporteNotificacionBL
             , CorreriaBL correriaBL
             , TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL
-            , SiriusBL siriusBL
+            , TalleresBL talleresBL
             , OrdenTrabajoBL ordenTrabajoBL) {
         this.dependenciaDescarga = dependenciaDescarga;
         this.reporteNotificacionBL = reporteNotificacionBL;
         this.correriaBL = correriaBL;
         this.tareaXOrdenTrabajoBL = tareaXOrdenTrabajoBL;
-        this.siriusBL = siriusBL;
+        this.talleresBL = talleresBL;
         this.ordenTrabajoBL = ordenTrabajoBL;
     }
 
@@ -106,10 +106,10 @@ public class Descarga {
 //        return ruta;
 //    }
 
-    public String generarArchivosXmlDtoEnvio(String codigoCorreria, String ruta, Sirius sirius) throws Exception {
+    public String generarArchivosXmlDtoEnvio(String codigoCorreria, String ruta, Talleres talleres) throws Exception {
         this.codigoCorreria = codigoCorreria;
         FileManager.deleteFolderContent(ruta);
-        this.generarXmlDtoEnvio(codigoCorreria, ruta, sirius);
+        this.generarXmlDtoEnvio(codigoCorreria, ruta, talleres);
         return ruta;
     }
 
@@ -123,10 +123,10 @@ public class Descarga {
     }
 
     public String generarArchivosXmlDtoEnvio(OrdenTrabajoBusqueda ordenTrabajoBusqueda, String ruta,
-                                             Sirius sirius) throws Exception {
+                                             Talleres talleres) throws Exception {
         this.codigoCorreria = ordenTrabajoBusqueda.getCodigoCorreria();
         FileManager.deleteFolderContent(ruta);
-        this.generarXmlDtoEnvio(ordenTrabajoBusqueda, ruta, sirius);
+        this.generarXmlDtoEnvio(ordenTrabajoBusqueda, ruta, talleres);
         return ruta;
     }
 
@@ -183,7 +183,7 @@ public class Descarga {
         }
     }
 
-    private void generarXmlDtoEnvio(String codigoCorreria, String ruta, Sirius sirius) throws Exception {
+    private void generarXmlDtoEnvio(String codigoCorreria, String ruta, Talleres talleres) throws Exception {
         this.archivosGenerados = new ArrayList<>();
         String ultimoNombreEntidad = "";
         try {
@@ -193,7 +193,7 @@ public class Descarga {
                 ultimoNombreEntidad = nombreEntidad;
                 List listaNegocio = new ArrayList<>();
                 if (nombreEntidad.equals(DependenciaDescarga.SIRIUS)) {
-                    listaNegocio.add(sirius);
+                    listaNegocio.add(talleres);
                 } else {
                     IBaseDescarga baseDescarga = this.dependenciaDescarga.obtenerObjetoNegocio(nombreEntidad);
                     if (nombreEntidad.equals(DependenciaDescarga.REPORTE_NOTIFICACION))
@@ -214,11 +214,11 @@ public class Descarga {
 //        this.archivosGenerados = new ArrayList<>();
 //        String ultimoNombreEntidad = "";
 //        try {
-//            Sirius sirius = siriusBL.cargarPrimerRegistro();
-//            ParametrosConfirmacion parametrosConfirmacion = new ParametrosConfirmacion(sirius.getConfirmacion());
+//            Talleres talleres = talleresBL.cargarPrimerRegistro();
+//            ParametrosConfirmacion parametrosConfirmacion = new ParametrosConfirmacion(talleres.getConfirmacion());
 //            if (!parametrosConfirmacion.isNoConfirmar()) {
 //                List<String> nombresEntidades = this.dependenciaDescarga.
-//                        obtenerListaNombreEntidadesConfirmacion(sirius.getConfirmacion());
+//                        obtenerListaNombreEntidadesConfirmacion(talleres.getConfirmacion());
 //
 //                for (String nombreEntidad : nombresEntidades) {
 //                    ultimoNombreEntidad = nombreEntidad;
@@ -247,7 +247,7 @@ public class Descarga {
 //            String nombreCarpeta = this.dependenciaDescarga.obtenerNumeroCarpetaConfirmacion(nombreEntidad);
 //            BaseListaDtoConfirmacion listaDtoDescarga = this.dependenciaDescarga.obtenerTipoDtoConfirmacion(nombreEntidad);
 //            try {
-//                listaDtoDescarga.convertirListaDominioAListaDto(listaNegocio, siriusBL.cargarPrimerRegistro().getNumeroTerminal(),
+//                listaDtoDescarga.convertirListaDominioAListaDto(listaNegocio, talleresBL.cargarPrimerRegistro().getNumeroTerminal(),
 //                        DateHelper.convertirDateAString(new Date(), DateHelper.TipoFormato.yyyyMMddTHHmmss), sesion);
 //            } catch (ParseException e) {
 //                e.printStackTrace();
@@ -265,7 +265,7 @@ public class Descarga {
 //        }
 //    }
 
-    private void generarXmlDtoEnvio(OrdenTrabajoBusqueda ordenTrabajoBusqueda, String ruta, Sirius sirius) throws Exception {
+    private void generarXmlDtoEnvio(OrdenTrabajoBusqueda ordenTrabajoBusqueda, String ruta, Talleres talleres) throws Exception {
         this.archivosGenerados = new ArrayList<>();
         String ultimoNombreEntidad = "";
         try {
@@ -275,7 +275,7 @@ public class Descarga {
                 ultimoNombreEntidad = nombreEntidad;
                 List listaNegocio = new ArrayList<>();
                 if (nombreEntidad.equals(DependenciaDescarga.SIRIUS)) {
-                    listaNegocio.add(sirius);
+                    listaNegocio.add(talleres);
                 } else {
                     IBaseDescarga baseDescarga = this.dependenciaDescarga.obtenerObjetoNegocio(nombreEntidad);
                     if (nombreEntidad.equals(DependenciaDescarga.REPORTE_NOTIFICACION))
@@ -346,14 +346,14 @@ public class Descarga {
 
         if (listaDtoDescarga instanceof ListaOrdenTrabajo) {
             ((ListaOrdenTrabajo) listaDtoDescarga).setSesion(parcial ? "P_" + sesion : "T_" + sesion);
-            ((ListaOrdenTrabajo) listaDtoDescarga).setNumeroTerminal(siriusBL.cargarPrimerRegistro().getNumeroTerminal());
+            ((ListaOrdenTrabajo) listaDtoDescarga).setNumeroTerminal(talleresBL.cargarPrimerRegistro().getNumeroTerminal());
             ((ListaOrdenTrabajo) listaDtoDescarga).setFecha(DateHelper.convertirDateAString(new Date(), DateHelper.TipoFormato.yyyyMMddTHHmmss));
 
         }
 
         if (listaDtoDescarga instanceof ListaCorrerias) {
             ((ListaCorrerias) listaDtoDescarga).setSesion(parcial ? "P_" + sesion : "T_" + sesion);
-            ((ListaCorrerias) listaDtoDescarga).setNumeroTerminal(siriusBL.cargarPrimerRegistro().getNumeroTerminal());
+            ((ListaCorrerias) listaDtoDescarga).setNumeroTerminal(talleresBL.cargarPrimerRegistro().getNumeroTerminal());
             ((ListaCorrerias) listaDtoDescarga).setFecha(DateHelper.convertirDateAString(new Date(), DateHelper.TipoFormato.yyyyMMddTHHmmss));
 
         }

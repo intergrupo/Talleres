@@ -9,7 +9,7 @@ import java.io.File;
  */
 
 public class Constantes {
-    public static final String NOMBRE_CARPETA_SIRIUS = "Sirius";
+    public static final String NOMBRE_CARPETA_SIRIUS = "Talleres";
     public static final String NOMBRE_CARPETA_ADJUNTOS = "SiriusAdjuntos";
     public static final String NOMBRE_CARPETA_CARGA = "Carga";
     public static final String NOMBRE_CARPETA_DESCARGA = "Descarga";

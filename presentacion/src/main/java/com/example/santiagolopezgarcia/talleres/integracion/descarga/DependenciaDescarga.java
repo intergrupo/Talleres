@@ -1,7 +1,7 @@
 package com.example.santiagolopezgarcia.talleres.integracion.descarga;
 
 import com.example.dominio.IBaseDescarga;
-import com.example.dominio.administracion.SiriusBL;
+import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.correria.CorreriaBL;
 import com.example.dominio.notificacion.ReporteNotificacionBL;
 import com.example.dominio.ordentrabajo.TareaXOrdenTrabajoBL;
@@ -67,7 +67,7 @@ public class DependenciaDescarga {
 //    private LaborConceptoBL laborConceptoBL;
 //    private ImpresionFacturacionBL impresionFacturacionBL;
 //    private RangoFacturacionBL rangoFacturacionBL;
-    private SiriusBL siriusBL;
+    private TalleresBL talleresBL;
 
     @Inject
     public DependenciaDescarga(CorreriaBL correriaBL,
@@ -92,8 +92,8 @@ public class DependenciaDescarga {
 //                               LaborConceptoBL laborConceptoBL,
 //                               ImpresionFacturacionBL impresionFacturacionBL,
 //                               RangoFacturacionBL rangoFacturacionBL
-                        , SiriusBL siriusBL) {
-        this.siriusBL = siriusBL;
+                        , TalleresBL talleresBL) {
+        this.talleresBL = talleresBL;
         this.correriaBL = correriaBL;
 //        this.ordenTrabajoBL = ordenTrabajoBL;
 //        this.trabajoXOrdenTrabajoBL = trabajoXOrdenTrabajoBL;
@@ -198,7 +198,7 @@ public class DependenciaDescarga {
 //                entidad = this.programacionCorreriaBL;
 //                break;
             case CARGA:
-                entidad = this.siriusBL;
+                entidad = this.talleresBL;
                 break;
             default:
                 throw new IllegalArgumentException("No se pudo obtener el objeto de negocio para la entidad " + nombreEntidad);
@@ -253,7 +253,7 @@ public class DependenciaDescarga {
 //                baseListaDtoDescarga = new ListaTrabajoXOrdenTrabajo();
 //                break;
 //            case SIRIUS:
-//                baseListaDtoDescarga = new ListaSirius();
+//                baseListaDtoDescarga = new ListaTalleres();
 //                break;
 //            case ELEMENTO:
 //                baseListaDtoDescarga = new ListaElementos();
