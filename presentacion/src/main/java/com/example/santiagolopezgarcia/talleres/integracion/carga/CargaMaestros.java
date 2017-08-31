@@ -1,13 +1,13 @@
 package com.example.santiagolopezgarcia.talleres.integracion.carga;
 
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.SiriusBL;
+import com.example.dominio.administracion.TalleresBL;
 import com.example.santiagolopezgarcia.talleres.data.OperadorDatos;
 import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDto;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.Carga;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.DependenciaCargaMaestros;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ListaCarga;
-import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaSirius;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
 
 import java.io.File;
 import java.util.List;
@@ -35,9 +35,9 @@ public class CargaMaestros extends CargaBase {
 
     @Inject
     public CargaMaestros(
-            SiriusBL siriusBL,
+            TalleresBL talleresBL,
             DependenciaCargaMaestros dependenciaCargaMaestros) {
-        super(siriusBL);
+        super(talleresBL);
         this.dependenciaCargaMaestros = dependenciaCargaMaestros;
     }
 
@@ -198,9 +198,9 @@ public class CargaMaestros extends CargaBase {
                             if (listaNegocio != null) {
                                 LogicaNegocioBase logicaNegocio = this.dependenciaCargaMaestros.getClaseNegocio(nombreArchivo);
                                 if (logicaNegocio != null) {
-                                    if (listaDto instanceof ListaSirius) {
+                                    if (listaDto instanceof ListaTalleres) {
                                         if (versionMaestros != null) {
-                                            ((SiriusBL) logicaNegocio).setVersionMaestros(versionMaestros);
+                                            ((TalleresBL) logicaNegocio).setVersionMaestros(versionMaestros);
                                         }
                                     }
                                     logicaNegocio.procesar(listaNegocio, listaDto.getOperacion());

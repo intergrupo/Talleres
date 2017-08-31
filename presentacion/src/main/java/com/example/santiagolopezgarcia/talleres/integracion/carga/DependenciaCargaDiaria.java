@@ -2,14 +2,14 @@ package com.example.santiagolopezgarcia.talleres.integracion.carga;
 
 import com.example.dominio.IEliminarDatosPorRecarga;
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.SiriusBL;
+import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.correria.CorreriaBL;
 import com.example.dominio.labor.LaborXOrdenTrabajoBL;
 import com.example.dominio.notificacion.ReporteNotificacionBL;
 import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
 import com.example.dominio.ordentrabajo.TareaXOrdenTrabajoBL;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaCarga;
-import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaSirius;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaOrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaTareaXOrdenTrabajo;
 
@@ -52,7 +52,7 @@ public class DependenciaCargaDiaria {
     public static final String LECTURAS = "SIRIUS_LECTURAS.XML";
     public static final String CARGA = "CARGA.XML";
 
-    private SiriusBL siriusBL;
+    private TalleresBL talleresBL;
     private CorreriaBL correriaBL;
     private OrdenTrabajoBL ordenTrabajoBL;
 //    private LecturaElementoBL lecturaElementoBL;
@@ -81,7 +81,7 @@ public class DependenciaCargaDiaria {
 //    private TelemedidaBL telemedidaBL;
 
     @Inject
-    public DependenciaCargaDiaria(SiriusBL siriusBL, CorreriaBL correriaBL, OrdenTrabajoBL ordenTrabajoBL,
+    public DependenciaCargaDiaria(TalleresBL talleresBL, CorreriaBL correriaBL, OrdenTrabajoBL ordenTrabajoBL,
 //            , LecturaElementoBL lecturaElementoBL, ElementoBL elementoBL
 //            , TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL, HistoricoElementoBL historicoElementoBL
 //            , RelacionElementoBL relacionElementoBL,
@@ -95,7 +95,7 @@ public class DependenciaCargaDiaria {
 //            , LaborMaterialBL laborMaterialBL, LaborPctBL laborPctBL, ProgramacionCorreriaBL programacionCorreriaBL
 //            , NotificacionOrdenTrabajoBL notificacionOrdenTrabajoBL, LaborConceptoBL laborConceptoBL
 //            , ImpresionFacturacionBL impresionFacturacionBL, RangoFacturacionBL rangoFacturacionBL, TelemedidaBL telemedidaBL) {
-        this.siriusBL = siriusBL;
+        this.talleresBL = talleresBL;
         this.correriaBL = correriaBL;
         this.ordenTrabajoBL = ordenTrabajoBL;
 //        this.lecturaElementoBL = lecturaElementoBL;
@@ -168,7 +168,7 @@ public class DependenciaCargaDiaria {
 //                entidad = this.usuarioBL;
 //                break;
             case SIRIUS:
-                entidad = this.siriusBL;
+                entidad = this.talleresBL;
                 break;
 //            case LABOR_OBSERVACION_ELEMENTO:
 //                entidad = this.laborObservacionElementoBL;
@@ -259,7 +259,7 @@ public class DependenciaCargaDiaria {
 //                tipo = ListaUsuario.class;
 //                break;
             case SIRIUS:
-                tipo = ListaSirius.class;
+                tipo = ListaTalleres.class;
                 break;
 //            case LABOR_OBSERVACION_ELEMENTO:
 //                tipo = ListaLaborObservacionElemento.class;

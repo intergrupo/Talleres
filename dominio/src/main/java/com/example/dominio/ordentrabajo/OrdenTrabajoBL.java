@@ -24,32 +24,32 @@ import java.util.List;
 
 public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDescarga<OrdenTrabajo> {
 
-    private OrdenTrabajoReposoitorio ordenTrabajoReposoitorio;
+    private OrdenTrabajoRepositorio ordenTrabajoRepositorio;
     private CorreriaRepositorio correriaRepositorio;
     private TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL;
     private LaborXOrdenTrabajoBL laborXOrdenTrabajoBL;
 
-    public OrdenTrabajoBL(OrdenTrabajoReposoitorio ordenTrabajoReposoitorio,
+    public OrdenTrabajoBL(OrdenTrabajoRepositorio ordenTrabajoRepositorio,
                           CorreriaRepositorio correriaRepositorio,
                           TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL,
                           LaborXOrdenTrabajoBL laborXOrdenTrabajoBL) {
-        this.ordenTrabajoReposoitorio = ordenTrabajoReposoitorio;
+        this.ordenTrabajoRepositorio = ordenTrabajoRepositorio;
         this.correriaRepositorio = correriaRepositorio;
         this.tareaXOrdenTrabajoBL = tareaXOrdenTrabajoBL;
         this.laborXOrdenTrabajoBL = laborXOrdenTrabajoBL;
     }
 
     public int totalOrdenesTrabajo(String codigoCorreria) {
-        return ordenTrabajoReposoitorio.totalOrdenesTrabajo(codigoCorreria);
+        return ordenTrabajoRepositorio.totalOrdenesTrabajo(codigoCorreria);
     }
 
     public ListaOrdenTrabajo cargarOrdenesTrabajo(String codigoCorreria) {
-        return ordenTrabajoReposoitorio.cargarOrdenesTrabajo(codigoCorreria);
+        return ordenTrabajoRepositorio.cargarOrdenesTrabajo(codigoCorreria);
     }
 
     public boolean guardarOrdenesTrabajo(ListaOrdenTrabajo listaOrdenesTrabajo) {
         try {
-            return ordenTrabajoReposoitorio.guardar(listaOrdenesTrabajo);
+            return ordenTrabajoRepositorio.guardar(listaOrdenesTrabajo);
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
@@ -58,7 +58,7 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
 
     public boolean guardarOrdenTrabajo(OrdenTrabajo ordenTrabajo) {
         try {
-            return ordenTrabajoReposoitorio.guardar(ordenTrabajo);
+            return ordenTrabajoRepositorio.guardar(ordenTrabajo);
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
@@ -66,15 +66,15 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
     }
 
     public boolean tieneRegistrosOrdenTrabajo() {
-        return ordenTrabajoReposoitorio.tieneRegistros();
+        return ordenTrabajoRepositorio.tieneRegistros();
     }
 
     public OrdenTrabajo cargarOrdenTrabajo(String codigoCorreria, String codigoOrdenTrabajo) {
-        return ordenTrabajoReposoitorio.cargar(codigoCorreria, codigoOrdenTrabajo);
+        return ordenTrabajoRepositorio.cargar(codigoCorreria, codigoOrdenTrabajo);
     }
 
     public boolean actualizarOrdenTrabajo(OrdenTrabajo ordenTrabajoActiva) {
-        return ordenTrabajoReposoitorio.actualizar(ordenTrabajoActiva);
+        return ordenTrabajoRepositorio.actualizar(ordenTrabajoActiva);
     }
 
     public boolean tareaTieneLaboresEjecutadas(String codigoCorreria, String codigoOrdenTrabajo, String codigoTrabajo, String codigoTarea) {
@@ -93,7 +93,7 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
             ordenTrabajoActiva.setEstado(OrdenTrabajo.EstadoOrdenTrabajo.CANCELADA);
             obtenerDatosAuditoriaOrdenTrabajo(ordenTrabajoActiva, usuario.getCodigoUsuario());
 
-            if (ordenTrabajoReposoitorio.actualizar(ordenTrabajoActiva)) {
+            if (ordenTrabajoRepositorio.actualizar(ordenTrabajoActiva)) {
                 GuardarDatosAuditoriaCorreria(ordenTrabajoActiva.getCodigoCorreria());
 
                 if (ordenTrabajoActiva.getTrabajoXOrdenTrabajo().getTareaXOrdenTrabajoList().isEmpty()) {
@@ -117,7 +117,7 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
     }
 
     public boolean actualizarSecuencias(String codigoCorreria, int secuencia) {
-        return ordenTrabajoReposoitorio.actualizarSecuencias(codigoCorreria, secuencia);
+        return ordenTrabajoRepositorio.actualizarSecuencias(codigoCorreria, secuencia);
     }
 
     public List<String> cargarTrabajosAgrupados(String codigoCorreria) {
@@ -127,19 +127,19 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
     public boolean actualizarEstadoOrdenTrabajo(OrdenTrabajo ordenTrabajo, Usuario usuario) {
         obtenerDatosAuditoriaOrdenTrabajo(ordenTrabajo, usuario.getCodigoUsuario());
 
-        if (ordenTrabajoReposoitorio.actualizar(ordenTrabajo)) {
+        if (ordenTrabajoRepositorio.actualizar(ordenTrabajo)) {
             GuardarDatosAuditoriaCorreria(ordenTrabajo.getCodigoCorreria());
         }
         return true;
     }
 
     public boolean eliminarOT(OrdenTrabajo ordenTrabajo) {
-        return ordenTrabajoReposoitorio.eliminar(ordenTrabajo);
+        return ordenTrabajoRepositorio.eliminar(ordenTrabajo);
     }
 
     public boolean firmarOT(OrdenTrabajo ordenTrabajo, Usuario usuario) {
         obtenerDatosAuditoriaOrdenTrabajo(ordenTrabajo, usuario.getCodigoUsuario());
-        if (ordenTrabajoReposoitorio.actualizar(ordenTrabajo)) {
+        if (ordenTrabajoRepositorio.actualizar(ordenTrabajo)) {
             GuardarDatosAuditoriaCorreria(ordenTrabajo.getCodigoCorreria());
         }
         return true;
@@ -173,7 +173,7 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
     }
 
     public ListaOrdenTrabajo cargar() {
-        return ordenTrabajoReposoitorio.cargar();
+        return ordenTrabajoRepositorio.cargar();
     }
 
     @Override
@@ -218,16 +218,16 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
     public List<OrdenTrabajo> cargarXFiltro(OrdenTrabajoBusqueda filtro) {
         List<OrdenTrabajo> lista = new ArrayList<>();
         for (OrdenTrabajo ordenTrabajo : filtro.getListaOrdenTrabajo()) {
-            lista.add(ordenTrabajoReposoitorio.cargar(ordenTrabajo.getCodigoCorreria(), ordenTrabajo.getCodigoOrdenTrabajo()));
+            lista.add(ordenTrabajoRepositorio.cargar(ordenTrabajo.getCodigoCorreria(), ordenTrabajo.getCodigoOrdenTrabajo()));
         }
         return lista;
     }
 
     public ListaOrdenTrabajo cargar(OrdenTrabajoBusqueda ordenTrabajoBusqueda) {
         if (ordenTrabajoBusqueda.isTodos()) {
-            return ordenTrabajoReposoitorio.cargarOrdenesTrabajo(ordenTrabajoBusqueda.getCodigoCorreria());
+            return ordenTrabajoRepositorio.cargarOrdenesTrabajo(ordenTrabajoBusqueda.getCodigoCorreria());
         } else {
-            return ordenTrabajoReposoitorio.cargar(ordenTrabajoBusqueda);
+            return ordenTrabajoRepositorio.cargar(ordenTrabajoBusqueda);
         }
     }
 
@@ -239,10 +239,10 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
             else
                 codigosCorreriasConsulta += "'" + codigosCorreriasIntegradas.get(i).trim() + "',";
         }
-        return ordenTrabajoReposoitorio.cargar(codigosCorreriasConsulta);
+        return ordenTrabajoRepositorio.cargar(codigosCorreriasConsulta);
     }
 
     public int asignarUltimaSecuencia(String codigoCorreria) {
-        return ordenTrabajoReposoitorio.asignarUltimaSecuencia(codigoCorreria);
+        return ordenTrabajoRepositorio.asignarUltimaSecuencia(codigoCorreria);
     }
 }

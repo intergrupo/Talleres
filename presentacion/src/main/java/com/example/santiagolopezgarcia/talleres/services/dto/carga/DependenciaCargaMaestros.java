@@ -1,8 +1,8 @@
 package com.example.santiagolopezgarcia.talleres.services.dto.carga;
 
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.SiriusBL;
-import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaSirius;
+import com.example.dominio.administracion.TalleresBL;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
 
 import javax.inject.Inject;
 
@@ -83,7 +83,7 @@ public class DependenciaCargaMaestros {
 //    private ItemBL itemBL;
 //    private ItemXNotificacionBL itemXNotificacionBL;
 //    private EmpresaBL empresaBL;
-    private SiriusBL siriusBL;
+    private TalleresBL talleresBL;
 //    private LaborXTareaBL laborXTareaBL;
 //    private MarcaElementoBL marcaElementoBL;
 //    private ModeloElementoBL modeloElementoBL;
@@ -99,8 +99,8 @@ public class DependenciaCargaMaestros {
 //    private NuevaLecturaElementoDisponibleBL nuevaLecturaElementoDisponibleBL;
 
     @Inject
-    public DependenciaCargaMaestros(SiriusBL siriusBL) {
-        this.siriusBL = siriusBL;
+    public DependenciaCargaMaestros(TalleresBL talleresBL) {
+        this.talleresBL = talleresBL;
     }
 
     public LogicaNegocioBase getClaseNegocio(String nombreEntidad) {
@@ -185,7 +185,7 @@ public class DependenciaCargaMaestros {
 //                entidad = this.perfilXOpcionBL;
 //                break;
             case SIRIUS:
-                entidad = this.siriusBL;
+                entidad = this.talleresBL;
                 break;
 //            case TAREA:
 //                entidad = this.tareaBL;
@@ -315,7 +315,7 @@ public class DependenciaCargaMaestros {
 //                tipo = ListaPerfilXOpcion.class;
 //                break;
             case SIRIUS:
-                tipo = ListaSirius.class;
+                tipo = ListaTalleres.class;
                 break;
 //            case TAREA:
 //                tipo = ListaTareas.class;

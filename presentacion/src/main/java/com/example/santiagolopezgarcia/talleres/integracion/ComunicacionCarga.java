@@ -3,13 +3,13 @@ package com.example.santiagolopezgarcia.talleres.integracion;
 import android.content.Context;
 import android.util.Base64;
 
-import com.example.dominio.administracion.SiriusBL;
+import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.administracion.UsuarioBL;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.ListaOrdenTrabajo;
 import com.example.dominio.modelonegocio.Mensaje;
 import com.example.dominio.modelonegocio.OrdenTrabajo;
-import com.example.dominio.modelonegocio.Sirius;
+import com.example.dominio.modelonegocio.Talleres;
 import com.example.dominio.modelonegocio.Usuario;
 import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
 import com.example.santiagolopezgarcia.talleres.R;
@@ -20,7 +20,7 @@ import com.example.santiagolopezgarcia.talleres.integracion.carga.CargaMaestros;
 import com.example.santiagolopezgarcia.talleres.integracion.carga.IEstadoComunicacionCarga;
 import com.example.santiagolopezgarcia.talleres.integracion.carga.correria.ListaCorrerias;
 import com.example.santiagolopezgarcia.talleres.integracion.descarga.Descarga;
-import com.example.santiagolopezgarcia.talleres.services.ServicioSirius;
+import com.example.santiagolopezgarcia.talleres.services.ServicioTalleres;
 import com.example.santiagolopezgarcia.talleres.services.contracts.Suscriptor;
 import com.example.santiagolopezgarcia.talleres.services.dto.PeticionCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.PeticionDescarga;
@@ -79,10 +79,10 @@ public class ComunicacionCarga {// implements Suscriptor {
     private ControladorArchivosAdjuntos controladorArchivosAdjuntos;
     public String numeroTerminal;
     public String versionSoftware;
-    public SiriusBL siriusBL;
+    public TalleresBL talleresBL;
     public UsuarioBL usuarioBL;
     public OrdenTrabajoBL ordenTrabajoBL;
-    public Sirius sirius;
+    public Talleres talleres;
     public TipoComunicacion tipoComunicacion;
     private boolean actualizarMaestros;
 
@@ -123,13 +123,13 @@ public class ComunicacionCarga {// implements Suscriptor {
     @Inject
     public ComunicacionCarga(CargaMaestros cargaMaestros
             , CargaDiaria cargaDiaria
-            , SiriusBL siriusBL
+            , TalleresBL talleresBL
             , UsuarioBL usuarioBL
             , Descarga descarga
             , OrdenTrabajoBL ordenTrabajoBL) {
         this.cargaDiaria = cargaDiaria;
         this.cargaMaestros = cargaMaestros;
-        this.siriusBL = siriusBL;
+        this.talleresBL = talleresBL;
         this.usuarioBL = usuarioBL;
         this.descarga = descarga;
         this.ordenTrabajoBL = ordenTrabajoBL;
@@ -142,7 +142,7 @@ public class ComunicacionCarga {// implements Suscriptor {
         this.versionSoftware = this.contexto.getResources().getString(R.string.version);
         this.cargaDiaria.configurar(estadoComunicacion);
         this.cargaMaestros.configurar(estadoComunicacion);
-        this.sirius = this.siriusBL.cargarPrimerRegistro();
+        this.talleres = this.talleresBL.cargarPrimerRegistro();
         this.executorService = Executors.newSingleThreadExecutor();
         this.descarga.configurar(this.estadoComunicacion);
         this.controladorArchivosAdjuntos = new ControladorArchivosAdjuntos();
@@ -320,7 +320,7 @@ public class ComunicacionCarga {// implements Suscriptor {
                     this.iniciarCargaAdjuntos();
                     break;
                 case IntegrarDatos:
-                    if (sirius.getConfirmacion().isEmpty())
+                    if (talleres.getConfirmacion().isEmpty())
                         this.estadoComunicacion.establecerEstadoConexionTerminal(EstadoConexionTerminal.PuedeDesconectar);
                     mostrarProgresoIntegracion();
                     this.estadoComunicacion.habilitarRegreso(false);
@@ -341,11 +341,11 @@ public class ComunicacionCarga {// implements Suscriptor {
     }
 
     private void mostrarProgresoCarga() throws IOException {
-        if (hayMaestros && !sirius.getConfirmacion().isEmpty())
+        if (hayMaestros && !talleres.getConfirmacion().isEmpty())
             this.estadoComunicacion.informarFase("Paso 1 de 3. CARGA DIARIA.");
         else if (hayMaestros)
             this.estadoComunicacion.informarFase("Paso 1 de 2. CARGA DIARIA.");
-        else if (!hayMaestros && !sirius.getConfirmacion().isEmpty())
+        else if (!hayMaestros && !talleres.getConfirmacion().isEmpty())
             this.estadoComunicacion.informarFase("Paso 3 de 5. CARGA DIARIA.");
         else
             this.estadoComunicacion.informarFase("Paso 3 de 4. CARGA DIARIA.");
@@ -369,8 +369,8 @@ public class ComunicacionCarga {// implements Suscriptor {
                                     String servicio) throws Exception {
         PeticionDescarga peticionDescarga = this.crearPeticionDescarga(ruta, servicio);
         if (peticionDescarga != null) {
-            new ServicioSirius(new SuscriptorServicio(), contexto,
-                    sirius.getRutaServidor()).solicitudDescarga(peticionDescarga);
+            new ServicioTalleres(new SuscriptorServicio(), contexto,
+                    talleres.getRutaServidor()).solicitudDescarga(peticionDescarga);
         } else {
             String mensaje = "No se obtuvo la petición para descarga.";
             estadoComunicacion.informarError(new Exception(mensaje));
@@ -493,7 +493,7 @@ public class ComunicacionCarga {// implements Suscriptor {
 //            this.mostrarResultadoTareasYOrdenesCanceladas(this.cargaDiaria.getListaNotificacionOT());
 //        }
 
-        if (!sirius.getConfirmacion().isEmpty()) {
+        if (!talleres.getConfirmacion().isEmpty()) {
             if (hayMaestros)
                 this.estadoComunicacion.informarFase("Paso 3 de 3. REALIZANDO CONFIRMACIÓN.");
             else
@@ -526,11 +526,11 @@ public class ComunicacionCarga {// implements Suscriptor {
     }
 
     private void mostrarProgresoIntegracion() throws IOException {
-        if (hayMaestros && !sirius.getConfirmacion().isEmpty())
+        if (hayMaestros && !talleres.getConfirmacion().isEmpty())
             this.estadoComunicacion.informarFase("Paso 2 de 3. INTEGRANDO CORRERÍA.");
         else if (hayMaestros)
             this.estadoComunicacion.informarFase("Paso 2 de 2. INTEGRANDO CORRERÍA.");
-        else if (!hayMaestros && !sirius.getConfirmacion().isEmpty())
+        else if (!hayMaestros && !talleres.getConfirmacion().isEmpty())
             this.estadoComunicacion.informarFase("Paso 4 de 5. INTEGRANDO CORRERÍA.");
         else
             this.estadoComunicacion.informarFase("Paso 4 de 4. INTEGRANDO CORRERÍA.");
@@ -552,7 +552,7 @@ public class ComunicacionCarga {// implements Suscriptor {
                     sesionMensajeLog(this.SERVICIO_CARGA_MAESTROS, Constantes.PROCESO_INICIO_SESION,
                             Constantes.MENSAJE_INICIO_SESION, Constantes.ESTADO_OK);
                     this.estadoComunicacion.habilitarRegreso(true);
-                    if (!sirius.getConfirmacion().isEmpty())
+                    if (!talleres.getConfirmacion().isEmpty())
                         this.estadoComunicacion.informarFase("Paso 1 de 5. CARGANDO MAESTROS.");
                     else
                         this.estadoComunicacion.informarFase("Paso 1 de 4. CARGANDO MAESTROS.");
@@ -595,7 +595,7 @@ public class ComunicacionCarga {// implements Suscriptor {
                     break;
                 case IntegrarDatos:
                     this.estadoComunicacion.habilitarRegreso(false);
-                    if (!sirius.getConfirmacion().isEmpty())
+                    if (!talleres.getConfirmacion().isEmpty())
                         this.estadoComunicacion.informarFase("Paso 2 de 5. INTEGRANDO MAESTROS.");
                     else
                         this.estadoComunicacion.informarFase("Paso 2 de 4. INTEGRANDO MAESTROS.");
@@ -714,7 +714,7 @@ public class ComunicacionCarga {// implements Suscriptor {
 
         SuscriptorServicio suscriptorServicio = new SuscriptorServicio();
 
-        new ServicioSirius(suscriptorServicio, contexto, this.sirius.getRutaServidor()).solicitudCarga(peticionCarga);
+        new ServicioTalleres(suscriptorServicio, contexto, this.talleres.getRutaServidor()).solicitudCarga(peticionCarga);
     }
 
     public void solicitarDescargaDatos(String codigoServicio) {
@@ -726,7 +726,7 @@ public class ComunicacionCarga {// implements Suscriptor {
 
         SuscriptorServicio suscriptorServicio = new SuscriptorServicio();
 
-        new ServicioSirius(suscriptorServicio, contexto, this.sirius.getRutaServidor()).solicitudDescarga(peticionDescarga);
+        new ServicioTalleres(suscriptorServicio, contexto, this.talleres.getRutaServidor()).solicitudDescarga(peticionDescarga);
     }
 
     private void sesionMensajeLog(String servicio, String idProceso,
@@ -734,8 +734,8 @@ public class ComunicacionCarga {// implements Suscriptor {
         PeticionMensajeLog peticionMensajeLog = this.crearPeticionMensajeLog(servicio, idProceso, mensaje, estado);
         //registrarLog(mensaje);
         if (peticionMensajeLog != null) {
-            new ServicioSirius(new SuscriptorServicio(),
-                    this.contexto, sirius.getRutaServidor()).solicitudMensajeLog(peticionMensajeLog);
+            new ServicioTalleres(new SuscriptorServicio(),
+                    this.contexto, talleres.getRutaServidor()).solicitudMensajeLog(peticionMensajeLog);
         }
     }
 
@@ -817,7 +817,7 @@ public class ComunicacionCarga {// implements Suscriptor {
 
     private void borrarMaestros() {
         List<Usuario> usuarios = this.usuarioBL.cargarUsuarios();
-        this.siriusBL.borrarBD();
+        this.talleresBL.borrarBD();
         this.usuarioBL.guardar(usuarios);
         this.cargaDiaria.eliminarTodosLosAdjuntos();
     }
@@ -864,12 +864,12 @@ public class ComunicacionCarga {// implements Suscriptor {
             this.estadoComunicacion.informarFase("TRANSFERIENDO ARCHIVOS. (" + nombreArchivo + ")");
             PeticionCarga peticionCarga = new PeticionCarga();
             peticionCarga.CodPrograma = CODIGO_PROGRAMA;
-            peticionCarga.CodTerminal = sirius.getNumeroTerminal();
+            peticionCarga.CodTerminal = talleres.getNumeroTerminal();
             peticionCarga.IdServicio = servicio;
             peticionCarga.Sesion = SESION_CARGA;
             peticionCarga.ParamFile = nombreArchivo;
             this.estadoComunicacion.informarProgreso("Tranfiriendo archivo " + (pasoEjecucion + 1) + " de " + this.nombresArchivosAdjuntos.size());
-            new ServicioSirius(new SuscriptorServicio(pasoEjecucion), this.contexto, sirius.getRutaServidor()).solicitudCargaAdjuntos(peticionCarga);
+            new ServicioTalleres(new SuscriptorServicio(pasoEjecucion), this.contexto, talleres.getRutaServidor()).solicitudCargaAdjuntos(peticionCarga);
         } else {
             if (tipoComunicacion.equals(TipoComunicacion.ReciboWeb)) {
                 this.ejecutarReciboWeb(AccionTipoComunicacion.IntegrarDatos);
@@ -996,7 +996,7 @@ public class ComunicacionCarga {// implements Suscriptor {
                     long milliseconds = time.getTime();
                     String nombreZip = "adjuntos_" + String.valueOf(milliseconds) + ".zip";
                     FileManager.createFile(archivoZIP, ruta + nombreZip);
-                    ZipManager.unZip(ruta + nombreZip, ruta, sirius.getNumeroTerminal() + CODIGO_PROGRAMA);
+                    ZipManager.unZip(ruta + nombreZip, ruta, talleres.getNumeroTerminal() + CODIGO_PROGRAMA);
 
                     switch (tipoComunicacion) {
                         case ReciboWeb:

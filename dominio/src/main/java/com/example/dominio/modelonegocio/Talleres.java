@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by santiagolopezgarcia on 8/22/17.
  */
 
-public class Sirius implements Serializable{
+public class Talleres implements Serializable{
     private String numeroTerminal;
     private String rutaServidor;
     private String versionMaestros;
@@ -29,7 +29,7 @@ public class Sirius implements Serializable{
     private String log;
     private String versionParametrizacion;
 
-    public Sirius() {
+    public Talleres() {
         numeroTerminal = "";
         rutaServidor = "";
         versionMaestros = "";

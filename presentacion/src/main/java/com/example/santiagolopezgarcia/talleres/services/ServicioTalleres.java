@@ -3,7 +3,7 @@ package com.example.santiagolopezgarcia.talleres.services;
 import android.content.Context;
 
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;
-import com.example.santiagolopezgarcia.talleres.services.contracts.IServicioSirius;
+import com.example.santiagolopezgarcia.talleres.services.contracts.IServicioTalleres;
 import com.example.santiagolopezgarcia.talleres.services.contracts.Suscriptor;
 import com.example.santiagolopezgarcia.talleres.services.dto.PeticionCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.PeticionDescarga;
@@ -38,21 +38,21 @@ import static com.example.santiagolopezgarcia.talleres.integracion.ComunicacionC
  * Created by santiagolopezgarcia on 8/22/17.
  */
 
-public class ServicioSirius {
+public class ServicioTalleres {
 
     private Suscriptor suscriptor;
-    private IServicioSirius iServicioSirius;
-    private FabricaServicios<IServicioSirius> fabricaServicios;
+    private IServicioTalleres iServicioTalleres;
+    private FabricaServicios<IServicioTalleres> fabricaServicios;
     private Context context;
     private String url;
 
-    public ServicioSirius(Suscriptor suscriptor, Context context, String url) {
+    public ServicioTalleres(Suscriptor suscriptor, Context context, String url) {
         this.context = context;
         this.url = url;
         fabricaServicios = new FabricaServicios<>();
         try {
             if (url != null && !url.isEmpty()) {
-                iServicioSirius = fabricaServicios.getInstancia(IServicioSirius.class, context, url);
+                iServicioTalleres = fabricaServicios.getInstancia(IServicioTalleres.class, context, url);
             } else {
                 throw new IllegalArgumentException("La url para acceder al servicio no puede estar vacia");
             }
@@ -70,7 +70,7 @@ public class ServicioSirius {
 
     public void solicitudCarga(PeticionCarga peticionCarga) {
         if (suscriptor != null) {
-            Observable<RespuestaCarga> respuesta = iServicioSirius.cargar(peticionCarga);
+            Observable<RespuestaCarga> respuesta = iServicioTalleres.cargar(peticionCarga);
             respuesta
 
 
@@ -105,7 +105,7 @@ public class ServicioSirius {
 
     public void solicitudDescarga(PeticionDescarga peticionDescarga) {
         if (suscriptor != null) {
-            Observable<RespuestaDescarga> respuesta = iServicioSirius.descargar(peticionDescarga);
+            Observable<RespuestaDescarga> respuesta = iServicioTalleres.descargar(peticionDescarga);
             respuesta
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -135,7 +135,7 @@ public class ServicioSirius {
 
     public void solicitudCargaAdjuntos(PeticionCarga peticionCarga) {
         if (suscriptor != null) {
-            Observable<RespuestaCarga> respuesta = iServicioSirius.cargar(peticionCarga);
+            Observable<RespuestaCarga> respuesta = iServicioTalleres.cargar(peticionCarga);
             respuesta
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -165,7 +165,7 @@ public class ServicioSirius {
 
     public void solicitudMensajeLog(PeticionMensajeLog peticionMensajeLog) {
         if (suscriptor != null) {
-            Observable<RespuestaMensajeLog> respuesta = iServicioSirius.getMensajeLog(peticionMensajeLog);
+            Observable<RespuestaMensajeLog> respuesta = iServicioTalleres.getMensajeLog(peticionMensajeLog);
             respuesta
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

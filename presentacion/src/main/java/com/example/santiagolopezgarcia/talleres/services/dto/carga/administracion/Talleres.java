@@ -10,9 +10,9 @@ import org.simpleframework.xml.Root;
  */
 
 @Root(name = "SIRIUS")
-public class Sirius extends BaseDtoCarga {
+public class Talleres extends BaseDtoCarga {
 
-    public Sirius() {
+    public Talleres() {
         NumeroTerminal = "";
         RutaServidor = "";
         VersionSoftware = "";

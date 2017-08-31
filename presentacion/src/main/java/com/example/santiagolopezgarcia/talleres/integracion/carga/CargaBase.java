@@ -1,8 +1,8 @@
 package com.example.santiagolopezgarcia.talleres.integracion.carga;
 
-import com.example.dominio.administracion.SiriusBL;
+import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.modelonegocio.Mensaje;
-import com.example.dominio.modelonegocio.Sirius;
+import com.example.dominio.modelonegocio.Talleres;
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;
 import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDto;
 import com.example.santiagolopezgarcia.talleres.services.dto.RespuestaCarga;
@@ -25,7 +25,7 @@ import java.util.TreeMap;
  */
 public abstract class CargaBase {
 
-    protected SiriusBL siriusBL;
+    protected TalleresBL talleresBL;
 
     protected IEstadoComunicacionCarga estadoComunicacionCarga;
 
@@ -38,8 +38,8 @@ public abstract class CargaBase {
     }
 
 
-    public CargaBase(SiriusBL siriusBL) {
-        this.siriusBL = siriusBL;
+    public CargaBase(TalleresBL talleresBL) {
+        this.talleresBL = talleresBL;
     }
 
     protected <T> T leerXml(File archivo, Class<T> tipoClase) throws Exception {
@@ -120,10 +120,10 @@ public abstract class CargaBase {
         return listaDto;
     }
 
-    public boolean validarExistenciaMaestros(Sirius sirius) {
+    public boolean validarExistenciaMaestros(Talleres talleres) {
         boolean resultado = false;
-        if (sirius != null) {
-            if (sirius.getVersionMaestros() != null && !sirius.getVersionMaestros().equals("")) {
+        if (talleres != null) {
+            if (talleres.getVersionMaestros() != null && !talleres.getVersionMaestros().equals("")) {
                 resultado = true;
             }
         }
@@ -131,28 +131,28 @@ public abstract class CargaBase {
     }
 
     public boolean validarExistenciaMaestros() {
-        Sirius sirius = this.siriusBL.cargarPrimerRegistro();
-        return this.validarExistenciaMaestros(sirius);
+        Talleres talleres = this.talleresBL.cargarPrimerRegistro();
+        return this.validarExistenciaMaestros(talleres);
     }
 
     public boolean validarVersionMaestros() throws Exception {
         boolean resultado = false;
-        Sirius sirius = this.siriusBL.cargarPrimerRegistro();
-        if (this.validarExistenciaMaestros(sirius)) {
+        Talleres talleres = this.talleresBL.cargarPrimerRegistro();
+        if (this.validarExistenciaMaestros(talleres)) {
             Carga cargaDto = this.obtenerDtoCarga();
             if (cargaDto != null) {
                 int versionMestrosSistema = 0;
                 if (cargaDto.VersionMaestros != null && !cargaDto.VersionMaestros.isEmpty()) {
                     versionMestrosSistema = Integer.parseInt(cargaDto.VersionMaestros.replace(".", ""));
                 }
-                int versionMaestrosTerminal = Integer.parseInt(sirius.getVersionMaestros().replace(".", ""));
+                int versionMaestrosTerminal = Integer.parseInt(talleres.getVersionMaestros().replace(".", ""));
                 if (versionMaestrosTerminal == versionMestrosSistema) {
                     resultado = true;
                 } else if (versionMestrosSistema > versionMaestrosTerminal) {
-                    this.crearObjetoSolicitudRemplazoMaestros(cargaDto.VersionMaestros, sirius.getVersionMaestros());
+                    this.crearObjetoSolicitudRemplazoMaestros(cargaDto.VersionMaestros, talleres.getVersionMaestros());
                 } else {
                     String mensaje = "Versiones de maestros no corresponden.\nSistema: " + cargaDto.VersionMaestros
-                            + "\nTerminal: " + sirius.getVersionMaestros();
+                            + "\nTerminal: " + talleres.getVersionMaestros();
                     throw new Exception(mensaje);
                 }
             } else {

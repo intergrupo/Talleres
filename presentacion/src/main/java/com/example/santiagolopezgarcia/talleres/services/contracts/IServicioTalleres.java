@@ -15,7 +15,7 @@ import rx.Observable;
  * Created by santiagolopezgarcia on 8/22/17.
  */
 
-public interface IServicioSirius {
+public interface IServicioTalleres {
 
     //    @Headers({
 //            "Accept: application/json",
