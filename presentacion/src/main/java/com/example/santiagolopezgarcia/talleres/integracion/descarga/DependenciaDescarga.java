@@ -3,8 +3,16 @@ package com.example.santiagolopezgarcia.talleres.integracion.descarga;
 import com.example.dominio.IBaseDescarga;
 import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.correria.ProgramacionCorreriaBL;
+import com.example.dominio.labor.LaborXOrdenTrabajoBL;
+import com.example.dominio.modelonegocio.ParametrosConfirmacion;
 import com.example.dominio.notificacion.ReporteNotificacionBL;
-import com.example.dominio.ordentrabajo.TareaXOrdenTrabajoBL;
+import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
+import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.trabajo.TrabajoXOrdenTrabajoBL;
+import com.example.santiagolopezgarcia.talleres.services.dto.descarga.confirmacion.ListaConfirmacionCorreria;
+import com.example.santiagolopezgarcia.talleres.services.dto.descarga.confirmacion.ListaConfirmacionOrdenTrabajo;
+import com.example.santiagolopezgarcia.talleres.services.dto.interfaces.BaseListaDtoConfirmacion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,78 +53,29 @@ public class DependenciaDescarga {
     public static final String CARGA = "CARGA.XML";
 
     private CorreriaBL correriaBL;
-//    private OrdenTrabajoBL ordenTrabajoBL;
-//    private TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL;
-//    private LaborObservacionElementoBL laborObservacionElementoBL;
-//    private LaborLecturaBL laborLecturaBL;
-//    private LaborAforoBL laborAforoBL;
-//    private LaborCierreBL laborCierreBL;
-//    private LaborElementoLecturaBL laborElementoLecturaBL;
-//    private LaborMaterialBL laborMaterialBL;
-//    private LaborPctBL laborPctBL;
-//    private RelacionElementoBL relacionElementoBL;
+    private OrdenTrabajoBL ordenTrabajoBL;
+    private TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL;
     private ReporteNotificacionBL reporteNotificacionBL;
-//    private LaborXOrdenTrabajoBL laborXOrdenTrabajoBL;
+    private LaborXOrdenTrabajoBL laborXOrdenTrabajoBL;
     private TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL;
-//    private ElementoBL elementoBL;
-//    private ElementoDisponibleBL elementoDisponibleBL;
-//    private HistoricoElementoBL historicoElementoBL;
-//    private LecturaElementoBL lecturaElementoBL;
-//    private NuevaLecturaElementoDisponibleBL nuevaLecturaElementoDisponibleBL;
-//    private ProgramacionCorreriaBL programacionCorreriaBL;
-//    private LaborConceptoBL laborConceptoBL;
-//    private ImpresionFacturacionBL impresionFacturacionBL;
-//    private RangoFacturacionBL rangoFacturacionBL;
+    private ProgramacionCorreriaBL programacionCorreriaBL;
     private TalleresBL talleresBL;
 
     @Inject
-    public DependenciaDescarga(CorreriaBL correriaBL,
-//                               OrdenTrabajoBL ordenTrabajoBL,
-//                               LecturaElementoBL lecturaElementoBL,
-//                               TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL,
-//                               LaborObservacionElementoBL laborObservacionElementoBL,
-//                               LaborLecturaBL laborLecturaBL,
-//                               LaborAforoBL laborAforoBL,
-//                               LaborCierreBL laborCierreBL,
-//                               LaborElementoLecturaBL laborElementoLecturaBL,
-//                               LaborMaterialBL laborMaterialBL,
-//                               LaborPctBL laborPctBL,
-//                               RelacionElementoBL relacionElementoBL,
+    public DependenciaDescarga(CorreriaBL correriaBL, TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL,
+                               OrdenTrabajoBL ordenTrabajoBL,
                                ReporteNotificacionBL reporteNotificacionBL,
-//                               LaborXOrdenTrabajoBL laborXOrdenTrabajoBL,
-                               TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL
-//                               ElementoBL elementoBL, ElementoDisponibleBL elementoDisponibleBL,
-//                               HistoricoElementoBL historicoElementoBL,
-//                               NuevaLecturaElementoDisponibleBL nuevaLecturaElementoDisponibleBL,
-//                               ProgramacionCorreriaBL programacionCorreriaBL,
-//                               LaborConceptoBL laborConceptoBL,
-//                               ImpresionFacturacionBL impresionFacturacionBL,
-//                               RangoFacturacionBL rangoFacturacionBL
-                        , TalleresBL talleresBL) {
+                               LaborXOrdenTrabajoBL laborXOrdenTrabajoBL,
+                               TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL,
+                               ProgramacionCorreriaBL programacionCorreriaBL, TalleresBL talleresBL) {
         this.talleresBL = talleresBL;
         this.correriaBL = correriaBL;
-//        this.ordenTrabajoBL = ordenTrabajoBL;
-//        this.trabajoXOrdenTrabajoBL = trabajoXOrdenTrabajoBL;
-//        this.laborObservacionElementoBL = laborObservacionElementoBL;
-//        this.laborLecturaBL = laborLecturaBL;
-//        this.laborAforoBL = laborAforoBL;
-//        this.laborCierreBL = laborCierreBL;
-//        this.laborElementoLecturaBL = laborElementoLecturaBL;
-//        this.laborMaterialBL = laborMaterialBL;
-//        this.laborPctBL = laborPctBL;
-//        this.relacionElementoBL = relacionElementoBL;
+        this.ordenTrabajoBL = ordenTrabajoBL;
+        this.trabajoXOrdenTrabajoBL = trabajoXOrdenTrabajoBL;
         this.reporteNotificacionBL = reporteNotificacionBL;
-//        this.laborXOrdenTrabajoBL = laborXOrdenTrabajoBL;
+        this.laborXOrdenTrabajoBL = laborXOrdenTrabajoBL;
         this.tareaXOrdenTrabajoBL = tareaXOrdenTrabajoBL;
-//        this.elementoBL = elementoBL;
-//        this.elementoDisponibleBL = elementoDisponibleBL;
-//        this.historicoElementoBL = historicoElementoBL;
-//        this.lecturaElementoBL = lecturaElementoBL;
-//        this.nuevaLecturaElementoDisponibleBL = nuevaLecturaElementoDisponibleBL;
-//        this.programacionCorreriaBL = programacionCorreriaBL;
-//        this.laborConceptoBL = laborConceptoBL;
-//        this.impresionFacturacionBL = impresionFacturacionBL;
-//        this.rangoFacturacionBL = rangoFacturacionBL;
+        this.programacionCorreriaBL = programacionCorreriaBL;
     }
 
     public IBaseDescarga obtenerObjetoNegocio(String nombreEntidad) {
@@ -125,78 +84,30 @@ public class DependenciaDescarga {
             case CORRERIA:
                 entidad = this.correriaBL;
                 break;
-//            case LABOR_AFORO:
-//                entidad = this.laborAforoBL;
-//                break;
-//            case LABOR_CIERRE:
-//                entidad = this.laborCierreBL;
-//                break;
-//            case LABOR_ELEMENTO:
-//                entidad = this.laborElementoLecturaBL;
-//                break;
-//            case LABOR_LECTURA:
-//                entidad = this.laborLecturaBL;
-//                break;
-//            case LABOR_MATERIAL:
-//                entidad = this.laborMaterialBL;
-//                break;
-//            case LABOR_OBSERVACION_ELEMENTO:
-//                entidad = this.laborObservacionElementoBL;
-//                break;
-//            case LABOR_PCT:
-//                entidad = this.laborPctBL;
-//                break;
-//            case LABOR_X_ORDENTRABAJO:
-//                entidad = this.laborXOrdenTrabajoBL;
-//                break;
-//            case ORDEN_TRABAJO:
-//                entidad = this.ordenTrabajoBL;
-//                break;
+            case LABOR_X_ORDENTRABAJO:
+                entidad = this.laborXOrdenTrabajoBL;
+                break;
+            case ORDEN_TRABAJO:
+                entidad = this.ordenTrabajoBL;
+                break;
             case TAREA_X_ORDEN_TRABAJO:
                 entidad = this.tareaXOrdenTrabajoBL;
                 break;
-//            case RELACION_ELEMENTO:
-//                entidad = this.relacionElementoBL;
-//                break;
             case REPORTE_NOTIFICACION:
                 entidad = this.reporteNotificacionBL;
                 break;
-//            case TRABAJO_X_ORDENTRABAJO:
-//                entidad = this.trabajoXOrdenTrabajoBL;
-//                break;
-//            case ELEMENTO:
-//                entidad = this.elementoBL;
-//                break;
-//            case ELEMENTO_DISPONIBLE:
-//                entidad = this.elementoDisponibleBL;
-//                break;
-//            case HISTORIA_ELEMENTO:
-//                entidad = this.historicoElementoBL;
-//                break;
-//            case LECTURA_ELEMENTO:
-//                entidad = this.lecturaElementoBL;
-//                break;
-//            case NUEVO_LECTURA_ELEMENTO_DISPONIBLE:
-//                entidad = this.nuevaLecturaElementoDisponibleBL;
-//                break;
-//            case PROGRAMACIONCORRERIA:
-//                entidad = this.programacionCorreriaBL;
-//                break;
-//            case LABOR_CONCEPTO:
-//                entidad = this.laborConceptoBL;
-//                break;
-//            case IMPRESION_FACTURACION:
-//                entidad = this.impresionFacturacionBL;
-//                break;
-//            case RANGO_FACTURACION:
-//                entidad = this.rangoFacturacionBL;
-//                break;
-//            case CONFIRMACION_OT:
-//                entidad = this.ordenTrabajoBL;
-//                break;
-//            case CONFIRMACIONCORRERIA:
-//                entidad = this.programacionCorreriaBL;
-//                break;
+            case TRABAJO_X_ORDENTRABAJO:
+                entidad = this.trabajoXOrdenTrabajoBL;
+                break;
+            case PROGRAMACIONCORRERIA:
+                entidad = this.programacionCorreriaBL;
+                break;
+            case CONFIRMACION_OT:
+                entidad = this.ordenTrabajoBL;
+                break;
+            case CONFIRMACIONCORRERIA:
+                entidad = this.programacionCorreriaBL;
+                break;
             case CARGA:
                 entidad = this.talleresBL;
                 break;
@@ -209,7 +120,7 @@ public class DependenciaDescarga {
 
     public BaseListaDtoDescarga obtenerTipoDto(String nombreEntidad) {
         BaseListaDtoDescarga baseListaDtoDescarga = null;
-        switch (nombreEntidad.toUpperCase()) {
+//        switch (nombreEntidad.toUpperCase()) {
 //            case CORRERIA:
 //                baseListaDtoDescarga = new ListaCorrerias();
 //                break;
@@ -253,7 +164,7 @@ public class DependenciaDescarga {
 //                baseListaDtoDescarga = new ListaTrabajoXOrdenTrabajo();
 //                break;
 //            case SIRIUS:
-//                baseListaDtoDescarga = new ListaTalleres();
+//                baseListaDtoDescarga = new ListaSirius();
 //                break;
 //            case ELEMENTO:
 //                baseListaDtoDescarga = new ListaElementos();
@@ -287,31 +198,37 @@ public class DependenciaDescarga {
 //                break;
 //            default:
 //                throw new IllegalArgumentException("No se pudo obtener el tipo de listado de objetos de transferencia de datos para la entidad " + nombreEntidad);
+//
+//        }
+        return baseListaDtoDescarga;
+    }
+
+    public BaseListaDtoConfirmacion obtenerTipoDtoConfirmacion(String nombreEntidad) {
+        BaseListaDtoConfirmacion baseListaDtoDescarga;
+        switch (nombreEntidad.toUpperCase()) {
+            case CONFIRMACION_OT:
+                baseListaDtoDescarga = new ListaConfirmacionOrdenTrabajo();
+                break;
+            case CONFIRMACIONCORRERIA:
+                baseListaDtoDescarga = new ListaConfirmacionCorreria();
+                break;
+            default:
+                throw new IllegalArgumentException("No se pudo obtener el tipo de listado de objetos de transferencia de datos para la entidad " + nombreEntidad);
 
         }
         return baseListaDtoDescarga;
     }
 
-//    public BaseListaDtoConfirmacion obtenerTipoDtoConfirmacion(String nombreEntidad) {
-//        BaseListaDtoConfirmacion baseListaDtoDescarga;
-//        switch (nombreEntidad.toUpperCase()) {
-//            case CONFIRMACION_OT:
-//                baseListaDtoDescarga = new ListaConfirmacionOrdenTrabajo();
-//                break;
-//            case CONFIRMACIONCORRERIA:
-//                baseListaDtoDescarga = new ListaConfirmacionCorreria();
-//                break;
-//            default:
-//                throw new IllegalArgumentException("No se pudo obtener el tipo de listado de objetos de transferencia de datos para la entidad " + nombreEntidad);
-//
-//        }
-//        return baseListaDtoDescarga;
-//    }
-
     public List<String> obtenerListaNombreEntidades() {
+        return obtenerListaNombreEntidades(true);
+    }
+
+    public List<String> obtenerListaNombreEntidades(boolean descargaCompleta) {
         List<String> listaNombreEntidades = new ArrayList<>();
 
-        listaNombreEntidades.add(CORRERIA);
+        if(descargaCompleta) {
+            listaNombreEntidades.add(CORRERIA);
+        }
         listaNombreEntidades.add(LABOR_OBSERVACION_ELEMENTO);
         listaNombreEntidades.add(LABOR_X_ORDENTRABAJO);
         listaNombreEntidades.add(LABOR_LECTURA);
@@ -364,20 +281,20 @@ public class DependenciaDescarga {
         return listaNombreEntidades;
     }
 
-//    public List<String> obtenerListaNombreEntidadesConfirmacion(String confirmacionDescarga) {
-//        List<String> listaNombreEntidades = new ArrayList<>();
-//        ParametrosConfirmacion parametrosConfirmacion = new ParametrosConfirmacion(confirmacionDescarga);
-//        if (parametrosConfirmacion.isConfirmarCorreria()) {
-//            listaNombreEntidades.add(CONFIRMACIONCORRERIA);
-//        } else if (parametrosConfirmacion.isConfirmarOT()) {
-//            listaNombreEntidades.add(CONFIRMACION_OT);
-//        } else if (parametrosConfirmacion.isConfirmarAmbos()) {
-//            listaNombreEntidades.add(CONFIRMACIONCORRERIA);
-//            listaNombreEntidades.add(CONFIRMACION_OT);
-//        }
-//
-//        return listaNombreEntidades;
-//    }
+    public List<String> obtenerListaNombreEntidadesConfirmacion(String confirmacionDescarga) {
+        List<String> listaNombreEntidades = new ArrayList<>();
+        ParametrosConfirmacion parametrosConfirmacion = new ParametrosConfirmacion(confirmacionDescarga);
+        if (parametrosConfirmacion.isConfirmarCorreria()) {
+            listaNombreEntidades.add(CONFIRMACIONCORRERIA);
+        } else if (parametrosConfirmacion.isConfirmarOT()) {
+            listaNombreEntidades.add(CONFIRMACION_OT);
+        } else if (parametrosConfirmacion.isConfirmarAmbos()) {
+            listaNombreEntidades.add(CONFIRMACIONCORRERIA);
+            listaNombreEntidades.add(CONFIRMACION_OT);
+        }
+
+        return listaNombreEntidades;
+    }
 
     public String obtenerNumeroCarpeta(String nombreEntidad) {
         final String CARPETA_CORRERIA = "01";

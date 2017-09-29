@@ -3,11 +3,15 @@ package com.example.santiagolopezgarcia.talleres.integracion.carga;
 import com.example.dominio.IEliminarDatosPorRecarga;
 import com.example.dominio.LogicaNegocioBase;
 import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.administracion.UsuarioBL;
 import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.correria.ProgramacionCorreriaBL;
 import com.example.dominio.labor.LaborXOrdenTrabajoBL;
 import com.example.dominio.notificacion.ReporteNotificacionBL;
+import com.example.dominio.ordentrabajo.NotificacionOrdenTrabajoBL;
 import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
-import com.example.dominio.ordentrabajo.TareaXOrdenTrabajoBL;
+import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.trabajo.TrabajoXOrdenTrabajoBL;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaOrdenTrabajo;
@@ -55,73 +59,29 @@ public class DependenciaCargaDiaria {
     private TalleresBL talleresBL;
     private CorreriaBL correriaBL;
     private OrdenTrabajoBL ordenTrabajoBL;
-//    private LecturaElementoBL lecturaElementoBL;
-//    private ElementoBL elementoBL;
-//    private TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL;
-//    private HistoricoElementoBL historicoElementoBL;
-//    private RelacionElementoBL relacionElementoBL;
+    private TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL;
     private ReporteNotificacionBL reporteNotificacionBL;
-//    private LaborObservacionElementoBL laborObservacionElementoBL;
-//    private UsuarioBL usuarioBL;
+    private UsuarioBL usuarioBL;
     private TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL;
     private LaborXOrdenTrabajoBL laborXOrdenTrabajoBL;
-//    private ElementoDisponibleBL elementoDisponibleBL;
-//    private NuevaLecturaElementoDisponibleBL nuevaLecturaElementoDisponibleBL;
-//    private LaborAforoBL laborAforoBL;
-//    private LaborCierreBL laborCierreBL;
-//    private LaborElementoLecturaBL laborElementoBL;
-//    private LaborLecturaBL laborLecturaBL;
-//    private LaborMaterialBL laborMaterialBL;
-//    private LaborPctBL laborPctBL;
-//    private ProgramacionCorreriaBL programacionCorreriaBL;
-//    private NotificacionOrdenTrabajoBL notificacionOrdenTrabajoBL;
-//    private LaborConceptoBL laborConceptoBL;
-//    private ImpresionFacturacionBL impresionFacturacionBL;
-//    private RangoFacturacionBL rangoFacturacionBL;
-//    private TelemedidaBL telemedidaBL;
+    private ProgramacionCorreriaBL programacionCorreriaBL;
+    private NotificacionOrdenTrabajoBL notificacionOrdenTrabajoBL;
 
     @Inject
-    public DependenciaCargaDiaria(TalleresBL talleresBL, CorreriaBL correriaBL, OrdenTrabajoBL ordenTrabajoBL,
-//            , LecturaElementoBL lecturaElementoBL, ElementoBL elementoBL
-//            , TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL, HistoricoElementoBL historicoElementoBL
-//            , RelacionElementoBL relacionElementoBL,
-                                  ReporteNotificacionBL reporteNotificacionBL,
-//            , LaborObservacionElementoBL laborObservacionElementoBL, UsuarioBL usuarioBL,
-                                  TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL
-            , LaborXOrdenTrabajoBL laborXOrdenTrabajoBL) {
-//            , ElementoDisponibleBL elementoDisponibleBL
-//            , NuevaLecturaElementoDisponibleBL nuevaLecturaElementoDisponibleBL, LaborAforoBL laborAforoBL
-//            , LaborCierreBL laborCierreBL, LaborElementoLecturaBL laborElementoBL, LaborLecturaBL laborLecturaBL
-//            , LaborMaterialBL laborMaterialBL, LaborPctBL laborPctBL, ProgramacionCorreriaBL programacionCorreriaBL
-//            , NotificacionOrdenTrabajoBL notificacionOrdenTrabajoBL, LaborConceptoBL laborConceptoBL
-//            , ImpresionFacturacionBL impresionFacturacionBL, RangoFacturacionBL rangoFacturacionBL, TelemedidaBL telemedidaBL) {
+    public DependenciaCargaDiaria(TalleresBL talleresBL, CorreriaBL correriaBL, OrdenTrabajoBL ordenTrabajoBL
+            , TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL, ReporteNotificacionBL reporteNotificacionBL
+            , UsuarioBL usuarioBL, TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL, LaborXOrdenTrabajoBL laborXOrdenTrabajoBL
+            , ProgramacionCorreriaBL programacionCorreriaBL
+            , NotificacionOrdenTrabajoBL notificacionOrdenTrabajoBL) {
         this.talleresBL = talleresBL;
         this.correriaBL = correriaBL;
         this.ordenTrabajoBL = ordenTrabajoBL;
-//        this.lecturaElementoBL = lecturaElementoBL;
-//        this.elementoBL = elementoBL;
-//        this.trabajoXOrdenTrabajoBL = trabajoXOrdenTrabajoBL;
-//        this.historicoElementoBL = historicoElementoBL;
-//        this.relacionElementoBL = relacionElementoBL;
+        this.trabajoXOrdenTrabajoBL = trabajoXOrdenTrabajoBL;
         this.reporteNotificacionBL = reporteNotificacionBL;
-//        this.laborObservacionElementoBL = laborObservacionElementoBL;
-//        this.usuarioBL = usuarioBL;
+        this.usuarioBL = usuarioBL;
         this.tareaXOrdenTrabajoBL = tareaXOrdenTrabajoBL;
         this.laborXOrdenTrabajoBL = laborXOrdenTrabajoBL;
-//        this.elementoDisponibleBL = elementoDisponibleBL;
-//        this.nuevaLecturaElementoDisponibleBL = nuevaLecturaElementoDisponibleBL;
-//        this.laborAforoBL = laborAforoBL;
-//        this.laborCierreBL = laborCierreBL;
-//        this.laborElementoBL = laborElementoBL;
-//        this.laborLecturaBL = laborLecturaBL;
-//        this.laborMaterialBL = laborMaterialBL;
-//        this.laborPctBL = laborPctBL;
-//        this.programacionCorreriaBL = programacionCorreriaBL;
-//        this.notificacionOrdenTrabajoBL = notificacionOrdenTrabajoBL;
-//        this.laborConceptoBL = laborConceptoBL;
-//        this.impresionFacturacionBL = impresionFacturacionBL;
-//        this.rangoFacturacionBL = rangoFacturacionBL;
-//        this.telemedidaBL = telemedidaBL;
+        this.programacionCorreriaBL = programacionCorreriaBL;
     }
 
     public LogicaNegocioBase getClaseNegocio(String nombreEntidad) {
@@ -134,81 +94,24 @@ public class DependenciaCargaDiaria {
             case ORDENTRABAJO:
                 entidad = this.ordenTrabajoBL;
                 break;
-//            case ELEMENTO:
-//                entidad = this.elementoBL;
-//                break;
-//            case LECTURA_ELEMENTO:
-//                entidad = this.lecturaElementoBL;
-//                break;
-//            case TRABAJO_X_ORDENTRABAJO:
-//                entidad = this.trabajoXOrdenTrabajoBL;
-//                break;
             case TAREA_X_ORDENTRABAJO:
                 entidad = this.tareaXOrdenTrabajoBL;
                 break;
-//            case HISTORIA_ELEMENTO:
-//                entidad = this.historicoElementoBL;
-//                break;
             case LABOR_X_ORDENTRABAJO:
                 entidad = this.laborXOrdenTrabajoBL;
                 break;
-//            case RELACION_ELEMENTO:
-//                entidad = this.relacionElementoBL;
-//                break;
-//            case REPORTE_NOTIFICACION:
-//                entidad = this.reporteNotificacionBL;
-//                break;
-//            case ELEMENTO_DISPONIBLE:
-//                entidad = this.elementoDisponibleBL;
-//                break;
-//            case NUEVA_LECTURA_ELEMENTO_DISPONIBLE:
-//                entidad = this.nuevaLecturaElementoDisponibleBL;
-//                break;
-//            case USUARIO:
-//                entidad = this.usuarioBL;
-//                break;
+            case USUARIO:
+                entidad = this.usuarioBL;
+                break;
             case SIRIUS:
                 entidad = this.talleresBL;
                 break;
-//            case LABOR_OBSERVACION_ELEMENTO:
-//                entidad = this.laborObservacionElementoBL;
-//                break;
-//            case LABOR_ELEMENTO:
-//                entidad = this.laborElementoBL;
-//                break;
-//            case LABOR_LECTURA:
-//                entidad = this.laborLecturaBL;
-//                break;
-//            case LABOR_MATERIAL:
-//                entidad = this.laborMaterialBL;
-//                break;
-//            case LABOR_AFORO:
-//                entidad = this.laborAforoBL;
-//                break;
-//            case LABOR_CIERRE:
-//                entidad = this.laborCierreBL;
-//                break;
-//            case LABOR_PCT:
-//                entidad = this.laborPctBL;
-//                break;
-//            case PROGRAMACIONCORRERIA:
-//                entidad = this.programacionCorreriaBL;
-//                break;
-//            case NOTIFICACION_ORDENTRABAJO:
-//                entidad = this.notificacionOrdenTrabajoBL;
-//                break;
-//            case IMPRESION_FACTURACION:
-//                entidad = this.impresionFacturacionBL;
-//                break;
-//            case LABOR_CONCEPTO:
-//                entidad = this.laborConceptoBL;
-//                break;
-//            case RANGO_FACTURACION:
-//                entidad = this.rangoFacturacionBL;
-//                break;
-//            case LECTURAS:
-//                entidad = this.telemedidaBL;
-//                break;
+            case PROGRAMACIONCORRERIA:
+                entidad = this.programacionCorreriaBL;
+                break;
+            case NOTIFICACION_ORDENTRABAJO:
+                entidad = this.notificacionOrdenTrabajoBL;
+                break;
             default:
                 throw new IllegalArgumentException("La entidad no se encuentra implementada obtener la logica de negocio. (" + nombreEntidad + ")");
         }

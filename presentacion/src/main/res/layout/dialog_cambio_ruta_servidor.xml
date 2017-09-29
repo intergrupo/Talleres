@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="20dp"
+        android:text="@string/titulo_ruta_servidor_mayuscula"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold"
+        android:id="@+id/tvTitulo" />
+
+    <EditText
+        android:id="@+id/etRutaServidorGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@+id/tvTitulo"
+        android:layout_alignEnd="@+id/linearLayout20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/etRutaServidorGuardar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/linearLayout20">
+
+        <Button
+            android:id="@+id/btnCancelarRuta"
+            style="@style/EstiloBotones"
+            android:text="@string/titulo_cancelar_mayuscula"/>
+
+        <Button
+            android:id="@+id/btnGuardarRuta"
+            style="@style/EstiloBotones"
+            android:text="@string/titulo_guardar_mayuscula"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvItemCorreria"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="5dp"
+    android:foreground="?attr/selectableItemBackground"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/lyContenedorControles"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lyContenedorInformacionEncabezado"
+                android:layout_marginLeft="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvCodigoCorreriaAdmin"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    style="@style/EstiloTextoContenido" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnMasInfoCorreria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/EstiloBotones"
+                android:text="+ INFO"
+                android:textColor="@color/verdeclaro"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/tvDescripcionCorreriaAdmin"
+                style="@style/EstiloTextoContenido"
+                android:layout_below="@+id/lyContenedorInformacionEncabezado"
+                android:layout_alignStart="@+id/lyContenedorInformacionEncabezado"
+                android:layout_toStartOf="@+id/btnMasInfoCorreria" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lyContenedorMasInfo"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/titulo_inicio_labor"
+                android:id="@+id/tvTituloFechaInicioLabor"
+                android:gravity="right"
+                style="@style/EstiloTextoTitulo"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/tvTituloFechaUltimaLabor"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/tvFechaInicioLabor"
+                android:singleLine="true"
+                style="@style/EstiloTextoContenido"
+                android:layout_below="@+id/tvTituloFechaInicioLabor"
+                android:layout_alignStart="@+id/tvTituloFechaInicioLabor"
+                android:layout_marginLeft="10dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/titulo_ultima_labor"
+                    android:id="@+id/tvTituloFechaUltimaLabor"
+                    android:layout_marginRight="50dp"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@+id/tvFechaInicioLabor"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvFechaUltimaLabor"
+                    android:layout_below="@+id/tvTituloFechaUltimaLabor"
+                    style="@style/EstiloTextoContenido"
+                    android:layout_alignStart="@+id/tvTituloFechaUltimaLabor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/titulo_Fecha_Fin_Jornada"
+                    android:id="@+id/tvTituloFechaFinJornada"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_above="@+id/tvFechaUltimaLabor"
+                    android:layout_alignStart="@+id/tvFechaFinJornada" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_below="@+id/tvTituloFechaFinJornada"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvFechaFinJornada"
+                    android:layout_toEndOf="@+id/tvTituloFechaUltimaLabor"
+                    style="@style/EstiloTextoContenido" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/titulo_fecha_ultima_carga"
+                    android:id="@+id/tvTituloFechaUltimaCarga"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    style="@style/EstiloTextoContenido"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvFechaUltimaCarga"
+                    android:layout_below="@+id/tvTituloFechaUltimaCarga"
+                    android:layout_alignStart="@+id/tvTituloFechaUltimaCarga" />
+
+                <TextView
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvTituloFechaUltimaDescarga"
+                    android:text="@string/titulo_fecha_ultima_descarga"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/tvTituloFechaUltimaCarga" />
+
+                <TextView
+                    style="@style/EstiloTextoContenido"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvFechaUltimaDescarga"
+                    android:layout_alignBottom="@+id/tvFechaUltimaCarga"
+                    android:layout_toEndOf="@+id/tvTituloFechaUltimaCarga" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/titulo_fecha_ultimo_envio"
+                    android:id="@+id/tvTituloFechaUltimoEnvio"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    style="@style/EstiloTextoContenido"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvFechaUltimoEnvio"
+                    android:layout_below="@+id/tvTituloFechaUltimoEnvio"
+                    android:layout_alignStart="@+id/tvTituloFechaUltimoEnvio" />
+
+                <TextView
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/titulo_fecha_ultimo_recibo"
+                    android:id="@+id/tvTituloFechaUltimoRecibo"
+                    android:layout_alignBottom="@+id/tvTituloFechaUltimoEnvio"
+                    android:layout_toEndOf="@+id/tvTituloFechaUltimoEnvio" />
+
+                <TextView
+                    style="@style/EstiloTextoContenido"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvFechaUltimoRecibo"
+                    android:layout_alignBottom="@+id/tvFechaUltimoEnvio"
+                    android:layout_toEndOf="@+id/tvTituloFechaUltimoEnvio" />
+
+                <View
+                    style="@style/Separator"
+                    android:layout_width="fill_parent"
+                    android:layout_below="@+id/tvFechaUltimoRecibo"
+                    android:id="@+id/Separador" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/rlContenedorOpciones"
+                    android:layout_alignTop="@+id/Separador"
+                    android:layout_alignParentStart="true">
+                    <LinearLayout
+                        android:id="@+id/lyDescargaCentral"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.25"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ivDescargaCentral"
+                            android:src="@mipmap/ic_descarga_central"
+                            android:background="@android:color/transparent"
+                            android:layout_alignParentTop="true"
+                            android:layout_toStartOf="@+id/ibReciboWeb" />
+
+                        <TextView
+                            style="@style/EstiloTextoBotones"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="@string/titulo_descarga_central"
+                            android:id="@+id/tvDescargaCentral"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lyEnvioWeb"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.25"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ivEnvioWeb"
+                            android:src="@mipmap/ic_envio_web"
+                            android:background="@android:color/transparent"
+                            android:layout_alignParentTop="true" />
+                        <TextView
+                            style="@style/EstiloTextoBotones"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="@string/titulo_envio_web"
+                            android:id="@+id/tvEnvioWeb"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lyEnvioDirecto"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.25"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ivEnvioDirecto"
+                            android:layout_alignParentBottom="false"
+                            android:src="@mipmap/ic_envio_directo"
+                            android:background="@android:color/transparent" />
+                        <TextView
+                            style="@style/EstiloTextoBotones"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="@string/titulo_envio_directo"
+                            android:id="@+id/tvEnvioDirecto"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lyEliminarCorreria"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.25"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ivEliminarCorreria"
+                            android:layout_alignParentBottom="false"
+                            android:src="@mipmap/ic_eliminar_correria"
+                            android:background="@android:color/transparent" />
+                        <TextView
+                            style="@style/EstiloTextoBotones"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="@string/titulo_eliminar_correria"
+                            android:id="@+id/tvEliminarCorreria"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

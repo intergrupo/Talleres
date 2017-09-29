@@ -62,18 +62,9 @@ public class ListaCorrerias implements BaseListaDto<com.example.dominio.modelone
                         correria.setFechaCarga(correriaXml.FechaCarga);
                     }
 
-
-
-                    try {
-                        correria.setFechaProgramacion(DateHelper.convertirStringADate(
-                                correriaXml.FechaProgramacion,DateHelper.TipoFormato.ddMMyyyy));
-                        correria.setFechaInicioCorreria(DateHelper.convertirStringADate(
-                                correriaXml.FechaInicioCorreria, DateHelper.TipoFormato.yyyyMMddTHHmmss));
-                        correria.setFechaUltimaCorreria(DateHelper.convertirStringADate(
-                                correriaXml.FechaUltimaCorreria, DateHelper.TipoFormato.yyyyMMddTHHmmss));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
+                    correria.setFechaProgramacion(correriaXml.FechaProgramacion);
+                    correria.setFechaInicioCorreria(correriaXml.FechaInicioCorreria);
+                    correria.setFechaUltimaCorreria(correriaXml.FechaUltimaCorreria);
                     correria.setFechaFinJornada(correriaXml.FechaFinJornada);
                     correria.setFechaUltimaDescarga(correriaXml.FechaUltimaDescarga);
                     correria.setFechaUltimoEnvio(correriaXml.FechaUltimoEnvio);

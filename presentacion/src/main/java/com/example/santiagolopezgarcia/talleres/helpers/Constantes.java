@@ -2,6 +2,8 @@ package com.example.santiagolopezgarcia.talleres.helpers;
 
 import android.os.Environment;
 
+import android.os.Environment;
+
 import java.io.File;
 
 /**
@@ -9,7 +11,7 @@ import java.io.File;
  */
 
 public class Constantes {
-    public static final String NOMBRE_CARPETA_SIRIUS = "Talleres";
+    public static final String NOMBRE_CARPETA_SIRIUS = "Sirius";
     public static final String NOMBRE_CARPETA_ADJUNTOS = "SiriusAdjuntos";
     public static final String NOMBRE_CARPETA_CARGA = "Carga";
     public static final String NOMBRE_CARPETA_DESCARGA = "Descarga";
@@ -27,8 +29,9 @@ public class Constantes {
     public static final String NOMBRE_ARCHIVO_ZIP_DIAGRAMS = "diagrams.zip";
     public static final String NOMBRE_CARPETA_CAMERA = "Camera";
     public static final String NOMBRE_CARPETA_DIAGRAMS = "Diagrams";
-//    public static final String NOMBRE_CARPETA_DESCARGA_ADJUNTOS = "DescargaAdjuntos";
+    //    public static final String NOMBRE_CARPETA_DESCARGA_ADJUNTOS = "DescargaAdjuntos";
     public static final String NOMBRE_CARPETA_lOGOS_EMPRESA = "LogosEmpresa";
+    public static final String NOMBRE_CARPETA_TEMPLATES = "Templates";
     public static final String NOMBRE_CARPETA_LOG = "Log terminal";
     public static final String NOMBRE_CARPETA_BLUETOOTH = "Bluetooth";
     public static final String NOMBRE_CARPETA_RECIBO_DIRECTO = "ReciboDirecto";
@@ -42,6 +45,16 @@ public class Constantes {
     public static final String NOMBRE_IMAGEN_LOGO_EPM = "logoepm.JPG";
     public static final String NOMBRE_IMAGEN_LOGO_ESSA_4p = "logoessa_4p.JPG";
     public static final String NOMBRE_IMAGEN_LOGO_ESSA = "logoessa.JPG";
+    public static final String NOMBRE_IMAGEN_1F2H_ASIMETRICO = "1F 2H Asimetrico.JPG";
+    public static final String NOMBRE_IMAGEN_1F2H_SIMETRICO = "1F 2H Simetrico.JPG";
+    public static final String NOMBRE_IMAGEN_1F3H_ASIMETRICO = "1F 3H Asimetrico.JPG";
+    public static final String NOMBRE_IMAGEN_1F3H_SIMETRICO = "1F 3H Simetrico.JPG";
+    public static final String NOMBRE_IMAGEN_2F3H_ASIMETRICO_2 = "2F 3H Asimetrico_2.JPG";
+    public static final String NOMBRE_IMAGEN_2F3H_ASIMETRICO = "2F 3H Asimetrico.JPG";
+    public static final String NOMBRE_IMAGEN_2F3H_SIMETRICO = "2F 3H Simetrico.JPG";
+    public static final String NOMBRE_IMAGEN_3F4H_ASIMETRICO = "3F 4H Asimetrico.JPG";
+    public static final String NOMBRE_IMAGEN_3F4H_SIMETRICO = "3F 4H Simetrico.JPG";
+    public static final String NOMBRE_IMAGEN_TEMPLATE_FIRMA = "Template_Firma.JPG";
     public final static String PROCESO_INICIO_SESION = "IS";
     public final static String PROCESO_FIN_SESION = "FS";
     public final static String MENSAJE_INICIO_SESION = "Inicio sesion";
@@ -85,6 +98,10 @@ public class Constantes {
 
     public static String traerRutaLogoEmpresa() {
         return Environment.getExternalStorageDirectory() + File.separator + NOMBRE_CARPETA_SIRIUS + File.separator + NOMBRE_CARPETA_lOGOS_EMPRESA + File.separator;
+    }
+
+    public static String traerRutaTemplates() {
+        return Environment.getExternalStorageDirectory() + File.separator + NOMBRE_CARPETA_SIRIUS + File.separator + NOMBRE_CARPETA_TEMPLATES + File.separator;
     }
 
     public static String traerRutaBluetooth(){

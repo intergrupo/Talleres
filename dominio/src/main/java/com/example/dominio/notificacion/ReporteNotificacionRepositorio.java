@@ -70,11 +70,14 @@ public interface ReporteNotificacionRepositorio extends RepositorioBase<ReporteN
 
     List<ReporteNotificacion> cargar(String codigoCorreria, String codigoOrdenTrabajo);
 
-    List<ReporteNotificacion> cargarReporteNotificacionXNotificacion(String codigoNotificacion);
+    List<ReporteNotificacion> cargarReporteNotificacionXNotificacion(String codigoCorreria, String codigoOT,
+                                                                     String codigoTarea, String codigoNotificacion);
+
+    List<ReporteNotificacion> cargarReporteNotificacionXItems(String codigoCorreria, String codigoOT, String codigoTarea,
+                                                              String codigoNotificacion, String codigoItems);
 
     List<ArchivoAdjunto> cargarArchivosXFiltro(String codigoCorreria, String codigoOrdenTrabajo, String codigoTarea);
 
     List<ArchivoAdjunto> cargarArchivosXFiltro(String codigoCorreria, String codigoOrdenTrabajo,
                                                String codigoTarea, String codigoLabor, String codigoNotificacion);
 }
-

@@ -15,14 +15,15 @@ public class Correria implements Serializable {
     private String descripcion;
     private String advertencia;
     private String observacion;
-    private Date fechaProgramacion;
+    @Nullable
+    private String fechaProgramacion;
     private Empresa empresa;
     private String codigoContrato;
     private String fechaCarga;
     @Nullable
-    private Date fechaInicioCorreria;
+    private String fechaInicioCorreria;
     @Nullable
-    private Date fechaUltimaCorreria;
+    private String fechaUltimaCorreria;
     private String fechaUltimoEnvio;
     private String fechaUltimoRecibo;
     private String fechaFinJornada;
@@ -81,11 +82,11 @@ public class Correria implements Serializable {
         this.observacion = observacion;
     }
 
-    public Date getFechaProgramacion() {
+    public String getFechaProgramacion() {
         return fechaProgramacion;
     }
 
-    public void setFechaProgramacion(Date fechaProgramacion) {
+    public void setFechaProgramacion(String fechaProgramacion) {
         this.fechaProgramacion = fechaProgramacion;
     }
 
@@ -113,19 +114,19 @@ public class Correria implements Serializable {
         this.fechaCarga = fechaCarga;
     }
 
-    public Date getFechaInicioCorreria() {
+    public String getFechaInicioCorreria() {
         return fechaInicioCorreria;
     }
 
-    public void setFechaInicioCorreria(Date fechaInicioCorreria) {
+    public void setFechaInicioCorreria(String fechaInicioCorreria) {
         this.fechaInicioCorreria = fechaInicioCorreria;
     }
 
-    public Date getFechaUltimaCorreria() {
+    public String getFechaUltimaCorreria() {
         return fechaUltimaCorreria;
     }
 
-    public void setFechaUltimaCorreria(Date fechaUltimaCorreria) {
+    public void setFechaUltimaCorreria(String fechaUltimaCorreria) {
         this.fechaUltimaCorreria = fechaUltimaCorreria;
     }
 

@@ -27,7 +27,7 @@ public class TareaXTrabajoOrdenTrabajo implements Serializable {
     private Date fechaDescarga;
     private List<LaborXOrdenTrabajo> laborXOrdenTrabajoList;
     private String parametros;
-    private int concecutivo;
+    private int consecutivo;
     private boolean nueva;
 
     public boolean tieneClave() {
@@ -145,12 +145,12 @@ public class TareaXTrabajoOrdenTrabajo implements Serializable {
         this.parametros = parametros;
     }
 
-    public int getConcecutivo() {
-        return concecutivo;
+    public int getConsecutivo() {
+        return consecutivo;
     }
 
-    public void setConcecutivo(int concecutivo) {
-        this.concecutivo = concecutivo;
+    public void setConsecutivo(int concecutivo) {
+        this.consecutivo = concecutivo;
     }
 
     public boolean isNueva() {

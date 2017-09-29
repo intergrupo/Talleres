@@ -3,20 +3,23 @@ package com.example.santiagolopezgarcia.talleres.integracion.descarga;
 import com.example.dominio.IBaseDescarga;
 import com.example.dominio.administracion.TalleresBL;
 import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.correria.ProgramacionCorreriaBL;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.OrdenTrabajo;
 import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;
+import com.example.dominio.modelonegocio.ParametrosConfirmacion;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.dominio.notificacion.ReporteNotificacionBL;
 import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
-import com.example.dominio.ordentrabajo.TareaXOrdenTrabajoBL;
-import com.example.santiagolopezgarcia.talleres.TalleresApp;
+import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
+import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;
 import com.example.santiagolopezgarcia.talleres.integracion.IEstadoComunicacion;
 import com.example.santiagolopezgarcia.talleres.services.dto.descarga.administracion.ListaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.descarga.correria.ListaCorrerias;
 import com.example.santiagolopezgarcia.talleres.services.dto.descarga.ordentrabajo.ListaOrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.services.dto.descarga.ordentrabajo.ListaTareaXOrdenTrabajo;
+import com.example.santiagolopezgarcia.talleres.services.dto.interfaces.BaseListaDtoConfirmacion;
 import com.example.utilidades.FileManager;
 import com.example.utilidades.Log;
 import com.example.utilidades.helpers.DateHelper;
@@ -51,8 +54,9 @@ public class Descarga {
     TalleresBL talleresBL;
     private String sesion;
     private List<String> codigosCorreriasIntegradas;
+    private List<String> codigosOTsIntegradas;
     private String versionSoftware;
-    private TalleresApp app;
+    private SiriusApp app;
 
     @Inject
     public Descarga(DependenciaDescarga dependenciaDescarga
@@ -69,7 +73,7 @@ public class Descarga {
         this.ordenTrabajoBL = ordenTrabajoBL;
     }
 
-    public void setApp(TalleresApp app) {
+    public void setApp(SiriusApp app) {
         this.app = app;
     }
 
@@ -79,6 +83,10 @@ public class Descarga {
 
     public void setVersionSoftware(String versionSoftware) {
         this.versionSoftware = versionSoftware;
+    }
+
+    public void setCodigosOTsIntegradas(List<String> codigosOTsIntegradas) {
+        this.codigosOTsIntegradas = codigosOTsIntegradas;
     }
 
     public void setCodigosCorreriasIntegradas(List<String> codigosCorreriasIntegradas) {
@@ -100,11 +108,11 @@ public class Descarga {
         return ruta;
     }
 
-//    public String generarArchivosXmlDtoConfirmacion(String ruta) throws Exception {
-//        FileManager.deleteFolderContent(ruta);
-//        this.generarXmlDtoConfirmacion(ruta);
-//        return ruta;
-//    }
+    public String generarArchivosXmlDtoConfirmacion(String ruta) throws Exception {
+        FileManager.deleteFolderContent(ruta);
+        this.generarXmlDtoConfirmacion(ruta);
+        return ruta;
+    }
 
     public String generarArchivosXmlDtoEnvio(String codigoCorreria, String ruta, Talleres talleres) throws Exception {
         this.codigoCorreria = codigoCorreria;
@@ -210,60 +218,57 @@ public class Descarga {
         }
     }
 
-//    private void generarXmlDtoConfirmacion(String ruta) throws Exception {
-//        this.archivosGenerados = new ArrayList<>();
-//        String ultimoNombreEntidad = "";
-//        try {
-//            Talleres talleres = talleresBL.cargarPrimerRegistro();
-//            ParametrosConfirmacion parametrosConfirmacion = new ParametrosConfirmacion(talleres.getConfirmacion());
-//            if (!parametrosConfirmacion.isNoConfirmar()) {
-//                List<String> nombresEntidades = this.dependenciaDescarga.
-//                        obtenerListaNombreEntidadesConfirmacion(talleres.getConfirmacion());
-//
-//                for (String nombreEntidad : nombresEntidades) {
-//                    ultimoNombreEntidad = nombreEntidad;
-//                    IBaseDescarga baseDescarga = this.dependenciaDescarga.obtenerObjetoNegocio(nombreEntidad);
-//                    List listaNegocio;
-//                    if (nombreEntidad.equals(DependenciaDescarga.CONFIRMACION_OT)) {
-//                        listaNegocio = ((OrdenTrabajoBL) baseDescarga).cargar(codigosCorreriasIntegradas);
-//                    } else if (nombreEntidad.equals(DependenciaDescarga.CONFIRMACIONCORRERIA)) {
-//                        listaNegocio = ((ProgramacionCorreriaBL) baseDescarga).cargar(codigosCorreriasIntegradas);
-//                    } else {
-//                        listaNegocio = baseDescarga.cargarXCorreria(codigoCorreria);
-//                    }
-//
-//                    convertirDatosAdtoConfirmacion(listaNegocio, nombreEntidad, ruta);
-//                }
-//            }
-//        } catch (Exception exc) {
-//            Log.error(exc, " Error generando xml de de Dto " + ultimoNombreEntidad);
-//            registrarLog(" Error generando xml de de Dto " + ultimoNombreEntidad);
-//            throw exc;
-//        }
-//    }
+    private void generarXmlDtoConfirmacion(String ruta) throws Exception {
+        this.archivosGenerados = new ArrayList<>();
+        String ultimoNombreEntidad = "";
+        try {
+            Talleres talleres = talleresBL.cargarPrimerRegistro();
+            List<String> nombresEntidades = this.dependenciaDescarga.
+                    obtenerListaNombreEntidadesConfirmacion(talleres.getConfirmacion());
 
-//    private void convertirDatosAdtoConfirmacion(List listaNegocio, String nombreEntidad, String ruta) {
-//        if (listaNegocio != null && listaNegocio.size() > 0) {
-//            String nombreCarpeta = this.dependenciaDescarga.obtenerNumeroCarpetaConfirmacion(nombreEntidad);
-//            BaseListaDtoConfirmacion listaDtoDescarga = this.dependenciaDescarga.obtenerTipoDtoConfirmacion(nombreEntidad);
-//            try {
-//                listaDtoDescarga.convertirListaDominioAListaDto(listaNegocio, talleresBL.cargarPrimerRegistro().getNumeroTerminal(),
-//                        DateHelper.convertirDateAString(new Date(), DateHelper.TipoFormato.yyyyMMddTHHmmss), sesion);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//            String rutaCarpeta = ruta + nombreCarpeta;
-//            new File(rutaCarpeta).mkdirs();
-//            File file = new File(rutaCarpeta, nombreEntidad);
-//            Serializer serializer = new Persister();
-//            try {
-//                serializer.write(listaDtoDescarga, file);
-//            } catch (Exception exc) {
-//            }
-//
-//            this.archivosGenerados.add(rutaCarpeta);
-//        }
-//    }
+            for (String nombreEntidad : nombresEntidades) {
+                ultimoNombreEntidad = nombreEntidad;
+                IBaseDescarga baseDescarga = this.dependenciaDescarga.obtenerObjetoNegocio(nombreEntidad);
+                List listaNegocio;
+                if (nombreEntidad.equals(DependenciaDescarga.CONFIRMACION_OT) && codigosOTsIntegradas.size() > 0) {
+                    listaNegocio = ((OrdenTrabajoBL) baseDescarga).cargar(codigosOTsIntegradas);
+                } else if (nombreEntidad.equals(DependenciaDescarga.CONFIRMACIONCORRERIA)) {
+                    listaNegocio = ((ProgramacionCorreriaBL) baseDescarga).cargar(codigosCorreriasIntegradas);
+                } else {
+                    listaNegocio = baseDescarga.cargarXCorreria(codigoCorreria);
+                }
+
+                convertirDatosAdtoConfirmacion(listaNegocio, nombreEntidad, ruta);
+            }
+        } catch (Exception exc) {
+            Log.error(exc, " Error generando xml de de Dto " + ultimoNombreEntidad);
+            registrarLog(" Error generando xml de de Dto " + ultimoNombreEntidad);
+            throw exc;
+        }
+    }
+
+    private void convertirDatosAdtoConfirmacion(List listaNegocio, String nombreEntidad, String ruta) {
+        if (listaNegocio != null && listaNegocio.size() > 0) {
+            String nombreCarpeta = this.dependenciaDescarga.obtenerNumeroCarpetaConfirmacion(nombreEntidad);
+            BaseListaDtoConfirmacion listaDtoDescarga = this.dependenciaDescarga.obtenerTipoDtoConfirmacion(nombreEntidad);
+            try {
+                listaDtoDescarga.convertirListaDominioAListaDto(listaNegocio, talleresBL.cargarPrimerRegistro().getNumeroTerminal(),
+                        DateHelper.convertirDateAString(new Date(), DateHelper.TipoFormato.yyyyMMddTHHmmss), sesion);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            String rutaCarpeta = ruta + nombreCarpeta;
+            new File(rutaCarpeta).mkdirs();
+            File file = new File(rutaCarpeta, nombreEntidad);
+            Serializer serializer = new Persister();
+            try {
+                serializer.write(listaDtoDescarga, file);
+            } catch (Exception exc) {
+            }
+
+            this.archivosGenerados.add(rutaCarpeta);
+        }
+    }
 
     private void generarXmlDtoEnvio(OrdenTrabajoBusqueda ordenTrabajoBusqueda, String ruta, Talleres talleres) throws Exception {
         this.archivosGenerados = new ArrayList<>();
@@ -297,7 +302,7 @@ public class Descarga {
         this.archivosGenerados = new ArrayList<>();
         String ultimoNombreEntidad = "";
         try {
-            List<String> nombresEntidades = this.dependenciaDescarga.obtenerListaNombreEntidades();
+            List<String> nombresEntidades = this.dependenciaDescarga.obtenerListaNombreEntidades(false);
             for (String nombreEntidad : nombresEntidades) {
                 ultimoNombreEntidad = nombreEntidad;
                 IBaseDescarga baseDescarga = this.dependenciaDescarga.obtenerObjetoNegocio(nombreEntidad);

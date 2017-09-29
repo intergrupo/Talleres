@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.dominio.modelonegocio.Perfil;
-import com.example.dominio.view.PerfilRepositorio;
+import com.example.dominio.administracion.PerfilRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 
 import java.text.ParseException;

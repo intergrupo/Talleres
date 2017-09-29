@@ -34,7 +34,7 @@ public class  OrdenTrabajo implements Serializable {
     private String sesion;
     @Nullable
     private Date fechaCarga;
-    private int concecutivo;
+    private int consecutivo;
     private String imprimirFactura;
     private String codigoOrdenTrabajoRelacionada;
 
@@ -166,12 +166,12 @@ public class  OrdenTrabajo implements Serializable {
         return fechaInicioOrdenTrabajo;
     }
 
-    public int getConcecutivo() {
-        return concecutivo;
+    public int getConsecutivo() {
+        return consecutivo;
     }
 
-    public void setConcecutivo(int concecutivo) {
-        this.concecutivo = concecutivo;
+    public void setConsecutivo(int concecutivo) {
+        this.consecutivo = concecutivo;
     }
 
     public void setFechaInicioOrdenTrabajo(Date fechaInicioOrdenTrabajo) {

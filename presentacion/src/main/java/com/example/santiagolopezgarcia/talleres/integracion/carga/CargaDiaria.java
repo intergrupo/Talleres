@@ -13,13 +13,14 @@ import com.example.dominio.modelonegocio.Item;
 import com.example.dominio.modelonegocio.LaborXOrdenTrabajo;
 import com.example.dominio.modelonegocio.LaborXTarea;
 import com.example.dominio.modelonegocio.Mensaje;
+import com.example.dominio.modelonegocio.NotificacionOrdenTrabajo;
 import com.example.dominio.modelonegocio.Tarea;
 import com.example.dominio.modelonegocio.TareaXTrabajoOrdenTrabajo;
 import com.example.dominio.modelonegocio.Trabajo;
 import com.example.dominio.notificacion.ItemBL;
 import com.example.dominio.notificacion.ReporteNotificacionBL;
-import com.example.dominio.ordentrabajo.TareaXOrdenTrabajoBL;
-import com.example.dominio.ordentrabajo.TrabajoBL;
+import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.trabajo.TrabajoBL;
 import com.example.dominio.tarea.TareaBL;
 import com.example.santiagolopezgarcia.talleres.data.OperadorDatos;
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;
@@ -34,7 +35,10 @@ import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDtoOtTarea
 import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDtoOtTrabajoTarea;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.Carga;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ListaCarga;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaNotificacionOrdenTrabajo;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaOrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaTareaXOrdenTrabajo;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.OrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.TareaXOrdenTrabajo;
 import com.example.utilidades.FileManager;
 import com.example.utilidades.helpers.DateHelper;
@@ -59,30 +63,38 @@ public class CargaDiaria extends CargaBase {
     private ItemBL itemBL;
     private LaborXTareaBL laborXTareaBL;
     private LaborXOrdenTrabajoBL laborXOrdenTrabajoBL;
-    //    private List<Lectura> listaLecturas = new ArrayList<>();
+    private List<NotificacionOrdenTrabajo> listaNotificacionOT = new ArrayList<>();
     private DependenciaCargaDiaria dependenciaCargaDiaria;
     private SolicitudRemplazoCorreria solicitudRemplazoCorreria;
     private SolicitudRemplazoTarea solicitudRemplazoTarea;
     private ListaCorrerias listaCorrerias;
+    private ListaOrdenTrabajo listaOTs;
     private List<String> codigoCorreriasAConfirmar;
+    private List<String> codigosOTAConfirmar;
 
     @Inject
-    public CargaDiaria(TalleresBL talleresBL, CorreriaBL correriaBL, ItemBL itemBL
-            , DependenciaCargaDiaria dependenciaCargaDiaria, TrabajoBL trabajoBL
-            , TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL, TareaBL tareaBL
-            , LaborXOrdenTrabajoBL laborXOrdenTrabajoBL, LaborXTareaBL laborXTareaBL) {
+    public CargaDiaria(TalleresBL talleresBL, CorreriaBL correriaBL
+            , DependenciaCargaDiaria dependenciaCargaDiaria
+            , TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL
+            , ItemBL itemBL
+            , TrabajoBL trabajoBL
+            , TareaBL tareaBL
+            , LaborXTareaBL laborXTareaBL
+            , LaborXOrdenTrabajoBL laborXOrdenTrabajoBL) {
         super(talleresBL);
         this.correriaBL = correriaBL;
         this.tareaXOrdenTrabajoBL = tareaXOrdenTrabajoBL;
-        this.dependenciaCargaDiaria = dependenciaCargaDiaria;
-        this.laborXOrdenTrabajoBL = laborXOrdenTrabajoBL;
         this.itemBL = itemBL;
-        this.tareaBL = tareaBL;
+        this.dependenciaCargaDiaria = dependenciaCargaDiaria;
         this.trabajoBL = trabajoBL;
+        this.tareaBL = tareaBL;
         this.laborXTareaBL = laborXTareaBL;
+        this.laborXOrdenTrabajoBL = laborXOrdenTrabajoBL;
+
         this.solicitudRemplazoCorreria = new SolicitudRemplazoCorreria();
         this.solicitudRemplazoTarea = new SolicitudRemplazoTarea();
         this.codigoCorreriasAConfirmar = new ArrayList<>();
+        this.codigosOTAConfirmar = new ArrayList<>();
     }
 
     public List<String> getCodigoCorreriasAConfirmar() {
@@ -98,6 +110,20 @@ public class CargaDiaria extends CargaBase {
         return listaCorrerias;
     }
 
+    public List<String> getCodigosOTsAConfirmar() {
+        asignarListaOTsIntegradas();
+
+        if (listaOTs != null) {
+            for (OrdenTrabajo ordenTrabajo : listaOTs.Sirius_OrdenTrabajo) {
+                codigosOTAConfirmar.add(ordenTrabajo.CodigoOrdenTrabajo);
+            }
+        }
+        return codigosOTAConfirmar;
+    }
+
+    public List<NotificacionOrdenTrabajo> getListaNotificacionOT() {
+        return listaNotificacionOT;
+    }
 
     @Override
     protected Carga obtenerDtoCarga() throws Exception {
@@ -205,6 +231,14 @@ public class CargaDiaria extends CargaBase {
                 break;
         }
         return posicion;
+    }
+
+    public void asignarListaOTsIntegradas() {
+        try {
+            listaOTs = this.obtenerListaDto(ListaOrdenTrabajo.class, DependenciaCargaDiaria.ORDENTRABAJO, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean validarCorrerias() throws Exception {
@@ -405,9 +439,9 @@ public class CargaDiaria extends CargaBase {
                                         this.crearLaborXOrdenTrabajo((ListaTareaXOrdenTrabajo) listaDto);
                                     }
 
-//                                    if (listaDto instanceof ListaNotificacionOrdenTrabajo) {
-//                                        listaNotificacionOT = listaNegocio;
-//                                    }
+                                    if (listaDto instanceof ListaNotificacionOrdenTrabajo) {
+                                        listaNotificacionOT = listaNegocio;
+                                    }
 
                                     if (logicaNegocio instanceof UsuarioBL) {
                                         ((UsuarioBL) logicaNegocio).modificarDespuesDeCarga();

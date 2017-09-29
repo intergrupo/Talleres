@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:weightSum="1"
+        android:id="@+id/linearLayout19">
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="50dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="1.00"
+            android:text="@string/titulo_numero_terminal"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ilNumeroTerminal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout19"
+        android:layout_alignStart="@+id/rlContenedorOpciones"
+        android:layout_marginTop="15dp">
+
+        <EditText
+            android:hint="@string/hint_numero_terminal"
+            android:id="@+id/etNumeroTerminal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/rlContenedorOpciones"
+        android:layout_below="@+id/ilNumeroTerminal"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/btnGuardarSirius"
+            style="@style/EstiloBotones"
+            android:text="@string/titulo_guardar_mayuscula"/>
+
+    </LinearLayout>
+</RelativeLayout>

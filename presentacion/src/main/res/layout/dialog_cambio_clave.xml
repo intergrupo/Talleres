@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dimension_izquierda"
+    android:paddingRight="@dimen/dimension_derecha"
+    android:id="@+id/ContenedorPrincipal">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="20dp"
+        android:text="@string/titulo_contraseña_mayuscula"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold"
+        android:id="@+id/tvTitulo" />
+
+
+    <TextView
+        android:id="@+id/tvNombreUsuario"
+        style="@style/EstiloTextoContenido"
+        android:paddingTop="10dp"
+        android:gravity="left" />
+
+    <TextView
+        android:id="@+id/tvIdentificacionUsuario"
+        style="@style/EstiloTextoContenido"
+        android:paddingBottom="10dp"
+        android:gravity="left" />
+
+    <TextView
+        android:id="@+id/tvMensaje"
+        style="@style/EstiloTextoTitulo"
+        android:paddingBottom="30dp"
+        android:paddingTop="10dp"
+        android:text="@string/titulo_su_contraseña_ha_expirado_proceda_a_su_cambio"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tiNuevaClave"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etNuevaClave"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/titulo_digite_nueva_clave"
+            android:inputType="numberPassword"
+            android:maxLength="4"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tiConfirmacionNuevaClave"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etConfirmacionNuevaClave"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/titulo_confirme_la_nueva_clave"
+            android:inputType="numberPassword"
+            android:maxLength="4"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:id="@+id/rlContenedorOpciones"
+        android:paddingBottom="15dp">
+
+        <Button
+            android:id="@+id/btnCancelar"
+            style="@style/EstiloBotones"
+            android:text="@string/titulo_cancelar_mayuscula"/>
+
+        <Button
+            android:id="@+id/btnGuardar"
+            style="@style/EstiloBotones"
+            android:text="@string/titulo_guardar_mayuscula"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

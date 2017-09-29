@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grisfondo">
+
+
+    <Spinner
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/spImpresora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvVersion"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"></Spinner>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout"
+        android:layout_above="@+id/tvUrlSiriusServer"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="@string/titulo_sirius_server"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            style="@style/EstiloTextoContenido"
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:id="@+id/textView4"/>
+
+        <ImageView
+            android:id="@+id/ivExplorador"
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_navegador_web"/>
+
+
+
+    </LinearLayout>
+
+    <View style="@style/Separador"
+        android:layout_above="@+id/linearLayout18"
+        android:layout_alignEnd="@+id/linearLayout18" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout18"
+        android:baselineAligned="false"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:id="@+id/ivWifi"
+                android:src="@mipmap/ic_wifi_gris"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/titulo_wifi"
+                style="@style/EstiloTextoContenido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5">
+
+            <ImageView
+                android:id="@+id/ivParametrizacion2D"
+                android:src="@mipmap/ic_parame_2d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/titulo_parametrizaci_n_2d"
+                style="@style/EstiloTextoContenido"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvUrlSiriusServer"
+        android:text="@string/presione_para_ingresar_una_url"
+        android:textColor="@color/grisclaro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/EstiloTextoContenido"
+        android:layout_marginLeft="8dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

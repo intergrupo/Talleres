@@ -14,7 +14,7 @@ public interface TalleresRepositorio extends RepositorioBase<Talleres> {
 
     Talleres cargarPrimerRegistro() throws ParseException;
 
-    boolean guardar(List<Talleres> listaSirius);
+    boolean guardar(List<Talleres> listaTalleres);
 
     boolean actualizar(Talleres talleres);
 

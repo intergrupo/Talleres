@@ -1,0 +1,50 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.epm.presentacion.view.activities.AdministracionActivity">
+    <group
+        android:id="@+id/menu_group_lista_elementos"
+        android:visible="true">
+        <item
+            android:id="@+id/action_nuevo_usuario"
+            android:icon="@mipmap/ic_plus"
+            android:orderInCategory="100"
+            android:title="@string/titulo_nuevo"
+            app:showAsAction="always" />
+
+        <!-- <item
+             android:id="@+id/action_configuracion_wifi"
+             android:icon="@mipmap/ic_config_blanco"
+             android:orderInCategory="100"
+             android:title="@string/titulo_nuevo"
+             app:showAsAction="always" /> -->
+
+        <item
+            android:id="@+id/action_finalizar_sirius"
+            android:icon="@mipmap/ic_turn_off_blanco"
+            android:orderInCategory="100"
+            android:title="@string/titulo_nuevo"
+            app:showAsAction="always" />
+
+        <!--<item-->
+        <!--android:id="@+id/action_guardar_configuracion"-->
+        <!--android:icon="@mipmap/ic_save"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="Guardar"-->
+        <!--app:showAsAction="always" />-->
+        <item android:id="@+id/action_menu_configuracion"
+            android:title="Opciones"
+            android:orderInCategory="100"
+            android:icon="@mipmap/ic_more"
+            app:showAsAction="always">
+
+            <menu>
+                <item
+                    android:id="@+id/action_log"
+                    android:orderInCategory="100"
+                    android:title="@string/titulo_log"
+                    app:showAsAction="never" />
+            </menu>
+        </item>
+    </group>
+</menu>

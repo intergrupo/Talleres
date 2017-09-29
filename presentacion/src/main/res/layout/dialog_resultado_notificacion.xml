@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/svContenedorPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:background="@color/grisfondo"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titulo"
+        style="@style/EstiloTextoTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="RESULTADO NOTIFICACIÓN OT"
+        android:textColor="@color/verde" />
+
+    <HorizontalScrollView
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/titulo"
+        android:id="@+id/hv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="false"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_above="@+id/btnAceptar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:background="@color/grisclaro"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTituloCorreria"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:text="Correría" />
+
+                <TextView
+                    android:id="@+id/tvTituloOrden"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:text="Orden" />
+
+                <TextView
+                    android:id="@+id/tvTituloIdTarea"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:text="IdTarea" />
+
+                <TextView
+                    android:id="@+id/tvTituloTarea"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:text="Tarea" />
+
+                <TextView
+                    android:id="@+id/tvTituloOperacion"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:text="Operación" />
+
+                <TextView
+                    android:id="@+id/tvTituloDescripcion"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:text="Descripcion" />
+
+                <TextView
+                    android:id="@+id/tvTituloResultado"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:text="Resultado" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvResultado"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:layout_marginTop="5dp"
+                android:background="@color/grisfondo"
+                android:fadeScrollbars="false" />
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+
+    <Button
+        android:id="@+id/btnAceptar"
+        style="@style/EstiloBotones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/titulo_aceptar_mayuscula" />
+
+</RelativeLayout>

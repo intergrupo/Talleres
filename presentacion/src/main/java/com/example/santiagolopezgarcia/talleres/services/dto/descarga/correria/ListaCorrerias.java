@@ -40,17 +40,9 @@ public class ListaCorrerias implements BaseListaDtoDescarga<Correria, com.exampl
             correriaDto.Parametros = correriaNegocio.getParametros();
             correriaDto.RecargaCorreria = BooleanHelper.ToString(correriaNegocio.isRecargaCorreria());
             correriaDto.Observacion = correriaNegocio.getObservacion();
-
-            try {
-                correriaDto.FechaProgramacion = DateHelper.convertirDateAString(
-                        correriaNegocio.getFechaProgramacion(), DateHelper.TipoFormato.ddMMyyyy);
-                correriaDto.FechaInicioCorreria = DateHelper.convertirDateAString(
-                        correriaNegocio.getFechaInicioCorreria(), DateHelper.TipoFormato.yyyyMMddTHHmmss);
-                correriaDto.FechaUltimaCorreria = DateHelper.convertirDateAString(
-                        correriaNegocio.getFechaUltimaCorreria(), DateHelper.TipoFormato.yyyyMMddTHHmmss);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            correriaDto.FechaProgramacion = correriaNegocio.getFechaProgramacion();
+            correriaDto.FechaInicioCorreria = correriaNegocio.getFechaInicioCorreria();
+            correriaDto.FechaUltimaCorreria = correriaNegocio.getFechaUltimaCorreria();
             correriaDto.Fecha = fecha;
             correriaDto.NumeroTerminal = numeroTerminal;
             correriaDto.Sesion = sesion;

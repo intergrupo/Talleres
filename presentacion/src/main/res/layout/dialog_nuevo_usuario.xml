@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@color/grisfondo">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NUEVO USUARIO"
+        android:textStyle="bold"
+        style="@style/EstiloTextoContenido"
+        android:gravity="center"/>
+    <TextView
+        android:textColor="@color/negro"
+        style="@style/EstiloTextoContenido"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/tvContratoNuevo"/>
+
+    <Spinner
+        android:layout_margin="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spPerfilNuevo"
+        android:spinnerMode="dialog" />
+
+    <EditText
+        android:layout_margin="5dp"
+        android:id="@+id/etIdentificacionNuevo"
+        android:inputType="number"
+        android:hint="Identificación"
+        android:maxLength="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_margin="5dp"
+        android:id="@+id/etNombreNuevo"
+        android:hint="Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelarNuevoUsuario"
+            style="@style/EstiloBotones"
+            android:text="@string/titulo_cancelar_mayuscula"/>
+
+        <Button
+            android:id="@+id/btnGuardarNuevoUsuario"
+            style="@style/EstiloBotones"
+            android:text="@string/titulo_guardar_mayuscula"/>
+
+    </LinearLayout>
+
+</LinearLayout>

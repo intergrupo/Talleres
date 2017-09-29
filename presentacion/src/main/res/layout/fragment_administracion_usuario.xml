@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="?attr/selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="@color/grisfondo">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout4">
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp">
+
+        <TextView
+            style="@style/EstiloTextoContenido"
+            android:gravity="left"
+            android:id="@+id/tvUsuarioAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/EstiloTextoContenido"
+            android:gravity="left"
+            android:id="@+id/tvIdentificacionAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/EstiloTextoContenido"
+            android:gravity="left"
+            android:id="@+id/tvPerfilUsuarioAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvAdministracionUsuarios"
+        android:layout_width="match_parent"
+        android:background="@color/grisfondo"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentStart="true">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

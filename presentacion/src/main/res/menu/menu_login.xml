@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity">
+    <item
+        android:id="@+id/menulogin"
+        android:icon="@drawable/img_menu_negro"
+        android:title="menu"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_administracion_login"
+                android:orderInCategory="100"
+                android:title="Administración"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+</menu>

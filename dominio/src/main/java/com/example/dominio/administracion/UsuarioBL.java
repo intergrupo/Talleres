@@ -2,7 +2,6 @@ package com.example.dominio.administracion;
 
 import com.example.dominio.LogicaNegocioBase;
 import com.example.dominio.modelonegocio.Usuario;
-import com.example.dominio.view.UsuarioRepositorio;
 
 import java.text.ParseException;
 import java.util.List;

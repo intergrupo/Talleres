@@ -9,7 +9,7 @@ import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;
  * Created by santiagolopezgarcia on 8/22/17.
  */
 
-interface OrdenTrabajoRepositorio extends RepositorioBase<OrdenTrabajo> {
+public interface OrdenTrabajoRepositorio extends RepositorioBase<OrdenTrabajo> {
 
     ListaOrdenTrabajo cargarOrdenesTrabajo(String codigoCorreria);
 

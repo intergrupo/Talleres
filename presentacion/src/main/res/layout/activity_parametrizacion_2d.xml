@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="8dp"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lyVersionSoftware">
+
+        <TextView
+            style="@style/EstiloTextoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_version"/>
+
+        <TextView
+            android:id="@+id/tvVersionSoftware"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EstiloTextoContenido"
+            android:text="@string/version"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyFechaActualSoftware"
+        android:layout_below="@+id/lyVersionSoftware"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/EstiloTextoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha Actual: "/>
+
+        <TextView
+            android:id="@+id/tvFechaActualSofware"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EstiloTextoContenido"/>
+    </LinearLayout>
+
+    <View android:id="@+id/separadorParam" style="@style/Separator"
+        android:layout_below="@+id/lyFechaActualSoftware"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:id="@+id/lyVersionParam2D"
+        android:layout_below="@+id/separadorParam"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/EstiloTextoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_version"/>
+
+        <TextView
+            android:id="@+id/tvVersionParam2D"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EstiloTextoContenido" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyFechaParam2D"
+        android:layout_below="@+id/lyVersionParam2D"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/EstiloTextoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_fecha_param2d_con_dos_puntos"/>
+
+        <TextView
+            android:id="@+id/tvFechaParam2D"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EstiloTextoContenido"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lyVencimientoParam2D"
+        android:layout_below="@+id/lyFechaParam2D"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/EstiloTextoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_vencimiento_con_dos_puntos"/>
+
+        <TextView
+            android:id="@+id/tvVencimientoParam2D"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EstiloTextoContenido"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyDescripcionParam2D"
+        android:layout_below="@+id/lyVencimientoParam2D"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/EstiloTextoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_descripcion"/>
+
+        <EditText
+            android:id="@+id/etDescripcionParam2D"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EstiloTextoContenido"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnAplicarParametrizacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/EstiloBotones"
+        android:layout_below="@id/lyDescripcionParam2D"
+        android:background="@color/verde"
+        android:text="@string/titulo_aplicar_mayuscula"
+        android:textColor="@color/blanco"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvNotaParametrizacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/EstiloTextoContenido"
+        android:text="@string/alerta_parametrizacion_2D"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/rojo"/>
+</RelativeLayout>

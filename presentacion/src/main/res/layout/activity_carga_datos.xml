@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/pbCargar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        style="?android:attr/progressBarStyleLarge"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/circular_progress_bar"
+        android:visibility="visible"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:id="@+id/tvMensajeFase"
+        style="@style/EstiloTextoTitoloActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pbCargar"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:gravity="left"/>
+
+    <TextView
+        android:id="@+id/tvMensajeCargando"
+        style="@style/EstiloTextoContenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMensajeFase"
+        android:layout_margin="10dp"
+        android:gravity="left"
+        android:textColor="@color/verde" />
+
+    <!--<com.epm.presentacion.util.NumberProgressBar-->
+    <!--android:id="@+id/number_progress_bar"-->
+    <!--style="NumberProgressBar_Passing_Green"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_margin="8dp"-->
+    <!--app:progress_reached_bar_height="25dp"-->
+    <!--app:progress_reached_color="@color/verde"-->
+    <!--app:progress_text_color="@color/verde"-->
+    <!--app:progress_text_size="25dp"-->
+    <!--app:progress_unreached_bar_height="25dp"-->
+    <!--app:progress_unreached_color="@color/gris" />-->
+
+    <TextView
+        android:id="@+id/tvMensajeAdvertenciaConexion"
+        style="@style/EstiloTextoContenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMensajeCargando"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="@string/mensaje_carga_no_desconecte"
+        android:background="@color/rojo"
+        android:textColor="@color/blanco" />
+
+    <TextView
+        android:id="@+id/tvMensajeCarga"
+        style="@style/EstiloTextoTitoloActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMensajeAdvertenciaConexion"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:padding="5dp"
+        android:textColor="@color/blanco" />
+</RelativeLayout>

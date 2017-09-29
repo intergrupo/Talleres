@@ -2,7 +2,7 @@ package com.example.santiagolopezgarcia.talleres.di.modulos;
 
 import android.content.Context;
 
-import com.example.santiagolopezgarcia.talleres.TalleresApp;
+import com.example.santiagolopezgarcia.talleres.SiriusApp;
 
 import javax.inject.Singleton;
 
@@ -16,9 +16,9 @@ import dagger.Provides;
 @Module
 public class ModuloAplicacion {
 
-    private final TalleresApp application;
+    private final SiriusApp application;
 
-    public ModuloAplicacion(TalleresApp application) {
+    public ModuloAplicacion(SiriusApp application) {
 
         this.application = application;
     }

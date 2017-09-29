@@ -1,18 +1,177 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ContenedorPrincipal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.santiagolopezgarcia.talleres.view.actividades.LoginActivity">
+    android:background="@color/grisfondo"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:weightSum="1"
+    tools:context=".view.activities.LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ContenedorControles">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/ContenedorEncabezado"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="41dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icono" />
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/ContenedorVersion">
+
+                <TextView
+                    android:id="@+id/tvSirius"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="SIRIUS"
+                    android:textColor="@color/gris"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvVersion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/ivSirius"
+                    android:text="@string/version"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/verdeoscuro" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignEnd="@+id/btnIniciarSesion"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@mipmap/img_logo" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTerminal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/ContenedorEncabezado"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:paddingBottom="50dp"
+            android:paddingTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/negro"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spListaCorreria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/tvTerminal"
+            android:paddingTop="10dp"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/btnIniciarSesion"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="right"
+            android:background="@color/verde"
+            android:text="@string/titulo_iniciar_sesion_mayuscula"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+
+        <RelativeLayout
+            android:id="@+id/contenedorIdentiicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/spListaCorreria">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ilIdentificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/ivIdentificacion">
+
+                <EditText
+                    android:id="@+id/etIdentificacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:maxLength="30" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/ivIdentificacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ilIdentificacion"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_user" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ContenedorContraseña"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contenedorIdentiicacion">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ilClave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/ivClave">
+
+                <EditText
+                    android:id="@+id/etClave"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif"
+                    android:inputType="numberPassword"
+                    android:maxLength="4"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/ivClave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ilClave"
+                android:layout_alignParentStart="false"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_pass" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
+

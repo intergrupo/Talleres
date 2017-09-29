@@ -12,7 +12,11 @@ import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;
 import com.example.dominio.modelonegocio.Tarea;
 import com.example.dominio.modelonegocio.TareaXTrabajoOrdenTrabajo;
 import com.example.dominio.modelonegocio.Usuario;
+import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
+import com.example.utilidades.helpers.DateHelper;
+import com.example.utilidades.helpers.StringHelper;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -156,10 +160,21 @@ public class OrdenTrabajoBL implements LogicaNegocioBase<OrdenTrabajo>, IBaseDes
     private void GuardarDatosAuditoriaCorreria(String codigoCorreria) {
         Correria correria = correriaRepositorio.cargar(codigoCorreria);
 
-        if (correria.getFechaInicioCorreria() == null) {
-            correria.setFechaInicioCorreria(new Date());
-        } else {
-            correria.setFechaUltimaCorreria(new Date());
+        try {
+            if (correria.getFechaInicioCorreria() == null) {
+                correria.setFechaInicioCorreria(DateHelper.convertirDateAString(
+                        new Date(), DateHelper.TipoFormato.yyyyMMddTHHmmss));
+            } else {
+                correria.setFechaUltimaCorreria((DateHelper.convertirDateAString(
+                        new Date(), DateHelper.TipoFormato.yyyyMMddTHHmmss)));
+            }
+        }catch (ParseException e){
+            try {
+                StringHelper.registrarLog(e.getMessage());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
         }
         correriaRepositorio.actualizar(correria);
     }

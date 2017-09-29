@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewResultado"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_margin="3dp"
+            android:id="@+id/tvCodigoCorreria"
+            style="@style/EstiloTextoContenido"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+
+        <TextView
+            android:layout_margin="3dp"
+            android:id="@+id/tvCodigoOT"
+            style="@style/EstiloTextoContenido"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_margin="3dp"
+            android:id="@+id/tvCodigoTarea"
+            style="@style/EstiloTextoContenido"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_margin="3dp"
+            android:id="@+id/tvTarea"
+            style="@style/EstiloTextoContenido"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_margin="3dp"
+            android:id="@+id/tvOperacion"
+            style="@style/EstiloTextoContenido"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+
+        <TextView
+            android:layout_margin="3dp"
+            android:id="@+id/tvDescripcion"
+            style="@style/EstiloTextoContenido"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+
+        <TextView
+            android:layout_margin="3dp"
+            android:id="@+id/tvResultado"
+            style="@style/EstiloTextoContenido"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <View style="@style/Separador" android:layout_marginBottom="0dp"/>
+
+</LinearLayout>

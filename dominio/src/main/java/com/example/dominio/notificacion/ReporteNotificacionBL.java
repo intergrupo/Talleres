@@ -203,8 +203,13 @@ public class ReporteNotificacionBL implements LogicaNegocioBase<ReporteNotificac
         return reporteNotificacionRepositorio.cargarReporteNotificacion(codigoCorreria);
     }
 
-    public List<ReporteNotificacion> cargarReporteNotificacionXNotificacion(String codigoNotificacion) {
-        return reporteNotificacionRepositorio.cargarReporteNotificacionXNotificacion(codigoNotificacion);
+    public List<ReporteNotificacion> cargarReporteNotificacionXNotificacion(String codigoCorreria, String codigoOT, String codigoTarea, String codigoNotificacion) {
+        return reporteNotificacionRepositorio.cargarReporteNotificacionXNotificacion(codigoCorreria, codigoOT, codigoTarea, codigoNotificacion);
+    }
+
+    public List<ReporteNotificacion> cargarReporteNotificacionXItems(String codigoCorreria, String codigoOT,
+                                                                     String codigoTarea, String codigoNotificacion, String codigoItems) {
+        return reporteNotificacionRepositorio.cargarReporteNotificacionXItems(codigoCorreria, codigoOT, codigoTarea, codigoNotificacion, codigoItems);
     }
 
     public List<String> cargarNombreArchivos() {

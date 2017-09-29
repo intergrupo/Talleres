@@ -1,6 +1,8 @@
 package com.example.santiagolopezgarcia.talleres.integracion;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 
 import com.example.dominio.administracion.TalleresBL;
@@ -9,11 +11,12 @@ import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.ListaOrdenTrabajo;
 import com.example.dominio.modelonegocio.Mensaje;
 import com.example.dominio.modelonegocio.OrdenTrabajo;
+import com.example.dominio.modelonegocio.ParametrosConfirmacion;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.dominio.modelonegocio.Usuario;
 import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
 import com.example.santiagolopezgarcia.talleres.R;
-import com.example.santiagolopezgarcia.talleres.TalleresApp;
+import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;
 import com.example.santiagolopezgarcia.talleres.integracion.carga.CargaDiaria;
 import com.example.santiagolopezgarcia.talleres.integracion.carga.CargaMaestros;
@@ -27,7 +30,9 @@ import com.example.santiagolopezgarcia.talleres.services.dto.PeticionDescarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.PeticionMensajeLog;
 import com.example.santiagolopezgarcia.talleres.services.dto.RespuestaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.RespuestaDescarga;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.NotificacionOrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.util.ControladorArchivosAdjuntos;
+import com.example.santiagolopezgarcia.talleres.view.popups.ResultadoNotificacionOTPopUp;
 import com.example.utilidades.FileManager;
 import com.example.utilidades.Log;
 import com.example.utilidades.ZipManager;
@@ -65,7 +70,6 @@ public class ComunicacionCarga {// implements Suscriptor {
     private final String SERVICIO_TELEMEDIDA = "27";
     private final String SESION_CARGA = UUID.randomUUID().toString();
     private Descarga descarga;
-//    private ParametrosTelemedida parametrosTelemedida;
     private boolean hayMaestros;
 
     private int progreso10 = 10;
@@ -84,12 +88,11 @@ public class ComunicacionCarga {// implements Suscriptor {
     public OrdenTrabajoBL ordenTrabajoBL;
     public Talleres talleres;
     public TipoComunicacion tipoComunicacion;
-    private boolean actualizarMaestros;
 
     private IEstadoComunicacionCarga estadoComunicacion;
     private ExecutorService executorService;
 
-    List<ArchivoAdjunto> nombresArchivosAdjuntos;
+    private List<ArchivoAdjunto> nombresArchivosAdjuntos;
     private ListaCorrerias listaCorrerias;
     private List<String> codigosCorreriasIntegradas = new ArrayList<>();
 
@@ -135,7 +138,7 @@ public class ComunicacionCarga {// implements Suscriptor {
         this.ordenTrabajoBL = ordenTrabajoBL;
     }
 
-    public void configurar(TalleresApp siriusApp, Context contexto, IEstadoComunicacionCarga estadoComunicacion) {
+    public void configurar(SiriusApp siriusApp, Context contexto, IEstadoComunicacionCarga estadoComunicacion) {
         this.contexto = contexto;
         this.estadoComunicacion = estadoComunicacion;
         this.numeroTerminal = siriusApp.getCodigoTerminal();
@@ -147,7 +150,6 @@ public class ComunicacionCarga {// implements Suscriptor {
         this.descarga.configurar(this.estadoComunicacion);
         this.controladorArchivosAdjuntos = new ControladorArchivosAdjuntos();
     }
-
 
     public void ejecutar(TipoComunicacion tipoComunicacion) {
         if (tipoComunicacion.equals(TipoComunicacion.ReciboDirecto)) {
@@ -166,57 +168,8 @@ public class ComunicacionCarga {// implements Suscriptor {
                     else
                         this.ejecutarCargaCentral(AccionTipoComunicacion.ValidacionExistenciaMaestro);
                     break;
-                case Telemedida:
-                    this.ejecutarTelemedida(TransferirComprimido);
-                    break;
             }
             this.tipoComunicacion = tipoComunicacion;
-        }
-    }
-
-    private void ejecutarTelemedida(AccionTipoComunicacion accionTipoComunicacion) {
-        this.ejecutarTelemedidaAsync(accionTipoComunicacion);
-    }
-
-    private void ejecutarTelemedidaAsync(AccionTipoComunicacion accionTipoComunicacion) {
-        Runnable runnable = () -> {
-            ejecutarTelemedidaSync(accionTipoComunicacion);
-        };
-        this.executorService.execute(runnable);
-    }
-
-    private void ejecutarTelemedidaSync(AccionTipoComunicacion accionTipoComunicacion) {
-        try {
-            switch (accionTipoComunicacion) {
-                case TransferirComprimido:
-                    sesionMensajeLog(SERVICIO_TELEMEDIDA, Constantes.PROCESO_INICIO_SESION,
-                            Constantes.MENSAJE_INICIO_SESION, Constantes.ESTADO_OK);
-                    this.estadoComunicacion.informarFase("Paso 1 de 2. CARGA LECTURAS.");
-                    this.estadoComunicacion.habilitarRegreso(true);
-                    this.estadoComunicacion.informarProgreso("Cargando Datos...", (progreso10 * 1));
-                    this.solicitarCargaDatos(this.SERVICIO_TELEMEDIDA);
-                    break;
-                case IntegrarDatos:
-                    this.estadoComunicacion.establecerEstadoConexionTerminal(EstadoConexionTerminal.PuedeDesconectar);
-                    this.estadoComunicacion.informarFase("Paso 2 de 2. INTEGRANDO LECTURAS.");
-                    this.estadoComunicacion.habilitarRegreso(false);
-                    this.estadoComunicacion.informarProgreso((progreso10 * 8));
-                    this.cargaDiaria.integrar(TipoComunicacion.Telemedida);
-                    this.estadoComunicacion.establecerCargaSatisfactoria();
-                    this.estadoComunicacion.informarProgreso((progreso10 * 10));
-//
-//                    if (this.cargaDiaria.getListaLecturas().size() > 0) {
-//                        this.mostrarResultadoLecturas(this.cargaDiaria.getListaLecturas());
-//                    }
-                    break;
-            }
-
-        } catch (Exception e) {
-            try {
-                estadoComunicacion.informarError(e);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
         }
     }
 
@@ -231,7 +184,7 @@ public class ComunicacionCarga {// implements Suscriptor {
         this.executorService.execute(runnable);
     }
 
-    public void ejecutarReciboWeb(AccionTipoComunicacion accionTipoComunicacion) {
+    private void ejecutarReciboWeb(AccionTipoComunicacion accionTipoComunicacion) {
         this.ejecutarReciboWebAsync(accionTipoComunicacion);
     }
 
@@ -326,9 +279,9 @@ public class ComunicacionCarga {// implements Suscriptor {
                     this.estadoComunicacion.habilitarRegreso(false);
                     this.estadoComunicacion.informarProgreso((progreso10 * 8));
                     this.cargaDiaria.integrar(TipoComunicacion.CargarCentral);
-                    this.estadoComunicacion.establecerCargaSatisfactoria();
-                    this.estadoComunicacion.informarProgreso((progreso10 * 10));
-                    validarConfirmacionYTerminar();
+                    talleres = talleresBL.cargarPrimerRegistro();
+                    confirmacion();
+                    terminar();
                     break;
             }
         } catch (Exception e) {
@@ -340,30 +293,28 @@ public class ComunicacionCarga {// implements Suscriptor {
         }
     }
 
-    private void mostrarProgresoCarga() throws IOException {
-        if (hayMaestros && !talleres.getConfirmacion().isEmpty())
-            this.estadoComunicacion.informarFase("Paso 1 de 3. CARGA DIARIA.");
-        else if (hayMaestros)
-            this.estadoComunicacion.informarFase("Paso 1 de 2. CARGA DIARIA.");
-        else if (!hayMaestros && !talleres.getConfirmacion().isEmpty())
-            this.estadoComunicacion.informarFase("Paso 3 de 5. CARGA DIARIA.");
-        else
-            this.estadoComunicacion.informarFase("Paso 3 de 4. CARGA DIARIA.");
+    private void terminar() {
+        if (this.cargaDiaria.getListaNotificacionOT().size() > 0) {
+            this.mostrarResultadoTareasYOrdenesCanceladas(this.cargaDiaria.getListaNotificacionOT());
+        }
+        this.estadoComunicacion.establecerEstadoConexionTerminal(EstadoConexionTerminal.PuedeDesconectar);
+        this.estadoComunicacion.establecerCargaSatisfactoria();
+        this.estadoComunicacion.informarProgreso((progreso10 * 10));
     }
 
-//    private void mostrarResultadoTareasYOrdenesCanceladas(List<NotificacionOrdenTrabajo> listaNotificacionOT) {
-//        ResultadoNotificacionOTPopUp resultadoNotificacionOTPopUp = new ResultadoNotificacionOTPopUp();
-//        resultadoNotificacionOTPopUp.setListaNotificacionOT(listaNotificacionOT);
-//        FragmentManager fragmentManager = ((AppCompatActivity) contexto).getSupportFragmentManager();
-//        resultadoNotificacionOTPopUp.show(fragmentManager, "");
-//    }
+    private void mostrarProgresoCarga() throws IOException {
+        if (hayMaestros)
+            this.estadoComunicacion.informarFase("Paso 1 de 2. CARGA CORRERÍA.");
+        else
+            this.estadoComunicacion.informarFase("Paso 3 de 4. CARGA CORRERÍA.");
+    }
 
-//    private void mostrarResultadoLecturas(List<Lectura> listaLecturas) {
-//        ResultadoLecturasPopUp resultadoLecturasPopUp = new ResultadoLecturasPopUp();
-//        resultadoLecturasPopUp.setListaLecturas(listaLecturas);
-//        FragmentManager fragmentManager = ((AppCompatActivity) contexto).getSupportFragmentManager();
-//        resultadoLecturasPopUp.show(fragmentManager, "");
-//    }
+    private void mostrarResultadoTareasYOrdenesCanceladas(List<com.example.dominio.modelonegocio.NotificacionOrdenTrabajo> listaNotificacionOT) {
+        ResultadoNotificacionOTPopUp resultadoNotificacionOTPopUp = new ResultadoNotificacionOTPopUp();
+        resultadoNotificacionOTPopUp.setListaNotificacionOT(listaNotificacionOT);
+        FragmentManager fragmentManager = ((AppCompatActivity) contexto).getSupportFragmentManager();
+        resultadoNotificacionOTPopUp.show(fragmentManager, "");
+    }
 
     private void enviarZipAServidor(String ruta,
                                     String servicio) throws Exception {
@@ -486,21 +437,18 @@ public class ComunicacionCarga {// implements Suscriptor {
         }
     }
 
-    private void validarConfirmacionYTerminar() throws Exception {
+    private boolean confirmacion() throws Exception {
         sesionMensajeLog(SERVICIO_CONFIRMACION, Constantes.PROCESO_INICIO_SESION,
                 Constantes.MENSAJE_INICIO_SESION, Constantes.ESTADO_OK);
-//        if (this.cargaDiaria.getListaNotificacionOT().size() > 0) {
-//            this.mostrarResultadoTareasYOrdenesCanceladas(this.cargaDiaria.getListaNotificacionOT());
-//        }
 
-        if (!talleres.getConfirmacion().isEmpty()) {
-            if (hayMaestros)
-                this.estadoComunicacion.informarFase("Paso 3 de 3. REALIZANDO CONFIRMACIÓN.");
-            else
-                this.estadoComunicacion.informarFase("Paso 5 de 5. REALIZANDO CONFIRMACIÓN.");
+        ParametrosConfirmacion parametrosConfirmacion = new ParametrosConfirmacion(talleres.getConfirmacion());
+
+        if (!parametrosConfirmacion.isNoConfirmar()) {
+            this.estadoComunicacion.informarFase("Paso 1 de 1. REALIZANDO CONFIRMACIÓN.");
             this.descarga.setSesion("T_" + SESION_CARGA);
+            this.descarga.setCodigosOTsIntegradas(this.cargaDiaria.getCodigosOTsAConfirmar());
             this.descarga.setCodigosCorreriasIntegradas(this.cargaDiaria.getCodigoCorreriasAConfirmar());
-//            this.descarga.generarArchivosXmlDtoConfirmacion(Constantes.traerRutaDescarga());
+            this.descarga.generarArchivosXmlDtoConfirmacion(Constantes.traerRutaDescarga());
             actualizarEstadoComunicacionBD();
             String rutaArchivoComprimido = Constantes.traerRutaDescarga() + numeroTerminal + ".zip";
             ZipManager.zip(this.descarga.getArchivosGenerados(), rutaArchivoComprimido,
@@ -508,10 +456,8 @@ public class ComunicacionCarga {// implements Suscriptor {
             this.enviarZipAServidor(rutaArchivoComprimido,
                     SERVICIO_CONFIRMACION);
         }
+        return !parametrosConfirmacion.isNoConfirmar();
 
-        this.estadoComunicacion.establecerEstadoConexionTerminal(EstadoConexionTerminal.PuedeDesconectar);
-        this.estadoComunicacion.establecerCargaSatisfactoria();
-        this.estadoComunicacion.informarProgreso((progreso10 * 10));
     }
 
     private void actualizarEstadoComunicacionBD() {
@@ -526,12 +472,8 @@ public class ComunicacionCarga {// implements Suscriptor {
     }
 
     private void mostrarProgresoIntegracion() throws IOException {
-        if (hayMaestros && !talleres.getConfirmacion().isEmpty())
-            this.estadoComunicacion.informarFase("Paso 2 de 3. INTEGRANDO CORRERÍA.");
-        else if (hayMaestros)
+        if (hayMaestros)
             this.estadoComunicacion.informarFase("Paso 2 de 2. INTEGRANDO CORRERÍA.");
-        else if (!hayMaestros && !talleres.getConfirmacion().isEmpty())
-            this.estadoComunicacion.informarFase("Paso 4 de 5. INTEGRANDO CORRERÍA.");
         else
             this.estadoComunicacion.informarFase("Paso 4 de 4. INTEGRANDO CORRERÍA.");
     }
@@ -552,10 +494,7 @@ public class ComunicacionCarga {// implements Suscriptor {
                     sesionMensajeLog(this.SERVICIO_CARGA_MAESTROS, Constantes.PROCESO_INICIO_SESION,
                             Constantes.MENSAJE_INICIO_SESION, Constantes.ESTADO_OK);
                     this.estadoComunicacion.habilitarRegreso(true);
-                    if (!talleres.getConfirmacion().isEmpty())
-                        this.estadoComunicacion.informarFase("Paso 1 de 5. CARGANDO MAESTROS.");
-                    else
-                        this.estadoComunicacion.informarFase("Paso 1 de 4. CARGANDO MAESTROS.");
+                    this.estadoComunicacion.informarFase("Paso 1 de 4. CARGANDO MAESTROS.");
                     estadoComunicacion.informarProgreso("Cargando datos...", progreso10 * 3);
                     this.solicitarCargaDatos(this.SERVICIO_CARGA_MAESTROS);
                     break;
@@ -595,10 +534,7 @@ public class ComunicacionCarga {// implements Suscriptor {
                     break;
                 case IntegrarDatos:
                     this.estadoComunicacion.habilitarRegreso(false);
-                    if (!talleres.getConfirmacion().isEmpty())
-                        this.estadoComunicacion.informarFase("Paso 2 de 5. INTEGRANDO MAESTROS.");
-                    else
-                        this.estadoComunicacion.informarFase("Paso 2 de 4. INTEGRANDO MAESTROS.");
+                    this.estadoComunicacion.informarFase("Paso 2 de 4. INTEGRANDO MAESTROS.");
                     estadoComunicacion.informarProgreso(progreso10 * 7);
                     this.cargaMaestros.setActualizarMaestros(this.cargaDiaria.obtenerCargaDTO() != null ?
                             this.cargaDiaria.obtenerCargaDTO().VersionMaestros : null);
@@ -690,9 +626,9 @@ public class ComunicacionCarga {// implements Suscriptor {
                     this.cargaDiaria.integrar(TipoComunicacion.ReciboDirecto);
                     this.estadoComunicacion.establecerCargaSatisfactoria();
                     this.estadoComunicacion.informarProgreso((progreso10 * 10));
-//                    if (this.cargaDiaria.getListaNotificacionOT().size() > 0) {
-//                        this.mostrarResultadoTareasYOrdenesCanceladas(this.cargaDiaria.getListaNotificacionOT());
-//                    }
+                    if (this.cargaDiaria.getListaNotificacionOT().size() > 0) {
+                        this.mostrarResultadoTareasYOrdenesCanceladas(this.cargaDiaria.getListaNotificacionOT());
+                    }
                     FileManager.eliminarCarpetaRecursivo(new File(Constantes.traerRutaReciboDirecto()));
                     break;
             }
@@ -869,7 +805,8 @@ public class ComunicacionCarga {// implements Suscriptor {
             peticionCarga.Sesion = SESION_CARGA;
             peticionCarga.ParamFile = nombreArchivo;
             this.estadoComunicacion.informarProgreso("Tranfiriendo archivo " + (pasoEjecucion + 1) + " de " + this.nombresArchivosAdjuntos.size());
-            new ServicioTalleres(new SuscriptorServicio(pasoEjecucion), this.contexto, talleres.getRutaServidor()).solicitudCargaAdjuntos(peticionCarga);
+            new ServicioTalleres(new SuscriptorServicio(pasoEjecucion), this.contexto,
+                    talleres.getRutaServidor()).solicitudCargaAdjuntos(peticionCarga);
         } else {
             if (tipoComunicacion.equals(TipoComunicacion.ReciboWeb)) {
                 this.ejecutarReciboWeb(AccionTipoComunicacion.IntegrarDatos);
@@ -937,13 +874,6 @@ public class ComunicacionCarga {// implements Suscriptor {
                                 , ComunicacionCarga.CODIGO_PROGRAMA);
                         ejecutarReciboWeb(AccionTipoComunicacion.ValidacionVersionApp);
                         break;
-                    case SERVICIO_TELEMEDIDA:
-                        cargaDiaria.postEjecucionServicioCarga((RespuestaCarga) datos
-                                , Constantes.NOMBRE_CARPETA_TELEMEDIDA
-                                , numeroTerminal
-                                , ComunicacionCarga.CODIGO_PROGRAMA);
-                        ejecutarTelemedida(AccionTipoComunicacion.IntegrarDatos);
-                        break;
                     case SERVICIO_CONFIRMACION:
                         RespuestaDescarga respuestaDescarga = (RespuestaDescarga) datos;
                         if (respuestaDescarga.Resultado) {
@@ -951,6 +881,7 @@ public class ComunicacionCarga {// implements Suscriptor {
                                     Constantes.MENSAJE_FIN_SESION, Constantes.ESTADO_OK);
                             FileManager.deleteFolderContent(new File(Constantes.traerRutaDescarga()).getAbsolutePath());
                             FileManager.eliminarCarpetaRecursivo(new File(Constantes.traerRutaDescarga()));
+                            terminar();
                         } else {
                             estadoComunicacion.informarError(new Exception(respuestaDescarga.Mensaje));
                         }
@@ -985,9 +916,9 @@ public class ComunicacionCarga {// implements Suscriptor {
                     archivoZIP = FileManager.convertStringToByteArray(respuestaCarga.Binario);
                     File archivo = new File(nombresArchivosAdjuntos.get(pasoEjecucion).getRutaArchivo());
                     String ruta;
-                    if (FileManager.existFolder(archivo)){
+                    if (FileManager.existFolder(archivo)) {
                         ruta = nombresArchivosAdjuntos.get(pasoEjecucion).getRutaArchivo();
-                    }else{
+                    } else {
                         ruta = Constantes.traerRutaAdjuntos();
                     }
                     new File(ruta).mkdirs();

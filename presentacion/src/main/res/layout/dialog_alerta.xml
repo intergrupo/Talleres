@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ryContenedorPrincipal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvMensajeAlert"
+        android:layout_below="@+id/tvTituloAlerta"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="left|center"
+        android:layout_margin="10dp"
+        style="@style/EstiloTextoContenido" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="18dp"
+        android:id="@+id/tvTituloAlerta"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="true"
+        style="@style/EstiloTextoTitulo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@+id/btnGuardarObservacion" />
+
+    <Button
+        android:id="@+id/btnSiAlerta"
+        style="@style/EstiloBotones"
+        android:layout_marginRight="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvMensajeAlert" />
+
+    <Button
+        android:id="@+id/btnNoAlerta"
+        style="@style/EstiloBotones"
+        android:layout_below="@+id/tvMensajeAlert"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
