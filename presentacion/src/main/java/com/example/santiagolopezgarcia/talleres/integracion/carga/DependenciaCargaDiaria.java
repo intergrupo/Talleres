@@ -12,10 +12,17 @@ import com.example.dominio.ordentrabajo.NotificacionOrdenTrabajoBL;
 import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
 import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
 import com.example.dominio.trabajo.TrabajoXOrdenTrabajoBL;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.acceso.ListaUsuario;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.correria.ListaCorrerias;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.correria.ListaProgramacionCorreria;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.labor.ListaLaborXOrdenTrabajo;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.notificacion.ListaReporteNotificacion;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaNotificacionOrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaOrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaTareaXOrdenTrabajo;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.trabajo.ListaTrabajoXOrdenTrabajo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,87 +129,36 @@ public class DependenciaCargaDiaria {
     public Class obtenerTipoDto(String nombreEntidad) {
         Class tipo;
         switch (nombreEntidad) {
-//            case CORRERIA:
-//                tipo = ListaC.class;
-//                break;
+            case CORRERIA:
+                tipo = ListaCorrerias.class;
+                break;
             case ORDENTRABAJO:
                 tipo = ListaOrdenTrabajo.class;
                 break;
-//            case ELEMENTO:
-//                tipo = ListaElementos.class;
-//                break;
-//            case LECTURA_ELEMENTO:
-//                tipo = ListaLecturaElemento.class;
-//                break;
-//            case TRABAJO_X_ORDENTRABAJO:
-//                tipo = ListaTrabajoXOrdenTrabajo.class;
-//                break;
+            case TRABAJO_X_ORDENTRABAJO:
+                tipo = ListaTrabajoXOrdenTrabajo.class;
+                break;
             case TAREA_X_ORDENTRABAJO:
                 tipo = ListaTareaXOrdenTrabajo.class;
                 break;
-//            case HISTORIA_ELEMENTO:
-//                tipo = ListaHistoriaElemento.class;
-//                break;
-//            case LABOR_X_ORDENTRABAJO:
-//                tipo = ListaLaborXOrdenTrabajo.class;
-//                break;
-//            case RELACION_ELEMENTO:
-//                tipo = ListaRelacionElemento.class;
-//                break;
-//            case REPORTE_NOTIFICACION:
-//                tipo = ListaReporteNotificacion.class;
-//                break;
-//            case ELEMENTO_DISPONIBLE:
-//                tipo = ListaElementoDisponible.class;
-//                break;
-//            case NUEVA_LECTURA_ELEMENTO_DISPONIBLE:
-//                tipo = ListaNuevaLecturaElementoDisponible.class;
-//                break;
-//            case USUARIO:
-//                tipo = ListaUsuario.class;
-//                break;
+            case LABOR_X_ORDENTRABAJO:
+                tipo = ListaLaborXOrdenTrabajo.class;
+                break;
+            case REPORTE_NOTIFICACION:
+                tipo = ListaReporteNotificacion.class;
+                break;
+            case USUARIO:
+                tipo = ListaUsuario.class;
+                break;
             case SIRIUS:
                 tipo = ListaTalleres.class;
                 break;
-//            case LABOR_OBSERVACION_ELEMENTO:
-//                tipo = ListaLaborObservacionElemento.class;
-//                break;
-//            case LABOR_ELEMENTO:
-//                tipo = ListaLaborElemento.class;
-//                break;
-//            case LABOR_LECTURA:
-//                tipo = ListaLaborLectura.class;
-//                break;
-//            case LABOR_MATERIAL:
-//                tipo = ListaLaborMaterial.class;
-//                break;
-//            case LABOR_AFORO:
-//                tipo = ListaLaborAforo.class;
-//                break;
-//            case LABOR_CIERRE:
-//                tipo = ListaLaborCierre.class;
-//                break;
-//            case LABOR_PCT:
-//                tipo = ListaLaborPCT.class;
-//                break;
-//            case PROGRAMACIONCORRERIA:
-//                tipo = ListaProgramacionCorreria.class;
-//                break;
-//            case NOTIFICACION_ORDENTRABAJO:
-//                tipo = ListaNotificacionOrdenTrabajo.class;
-//                break;
-//            case IMPRESION_FACTURACION:
-//                tipo = ListaImpresion.class;
-//                break;
-//            case LABOR_CONCEPTO:
-//                tipo = ListaLaborConcepto.class;
-//                break;
-//            case RANGO_FACTURACION:
-//                tipo = ListaRangoFacturacion.class;
-//                break;
-//            case LECTURAS:
-//                tipo = ListaLecturas.class;
-//                break;
+            case PROGRAMACIONCORRERIA:
+                tipo = ListaProgramacionCorreria.class;
+                break;
+            case NOTIFICACION_ORDENTRABAJO:
+                tipo = ListaNotificacionOrdenTrabajo.class;
+                break;
             case CARGA:
                 tipo = ListaCarga.class;
                 break;
@@ -214,49 +170,16 @@ public class DependenciaCargaDiaria {
 
     public List<String> obtenerNombresEntidadesAEliminarPorRecarga() {
         List<String> listaEntidades = new ArrayList<>();
-//        listaEntidades.add(LaborAforoBL.class.getSimpleName());
-//        listaEntidades.add(LaborCierreBL.class.getSimpleName());
-//        listaEntidades.add(LaborElementoLecturaBL.class.getSimpleName());
-//        listaEntidades.add(LaborLecturaBL.class.getSimpleName());
-//        listaEntidades.add(LaborMaterialBL.class.getSimpleName());
-//        listaEntidades.add(LaborObservacionElementoBL.class.getSimpleName());
-//        listaEntidades.add(LaborPctBL.class.getSimpleName());
         listaEntidades.add(ReporteNotificacionBL.class.getSimpleName());
-//        listaEntidades.add(ImpresionFacturacionBL.class.getSimpleName());
-//        listaEntidades.add(LaborConceptoBL.class.getSimpleName());
-//        listaEntidades.add(RangoFacturacionBL.class.getSimpleName());
         return listaEntidades;
     }
 
     public IEliminarDatosPorRecarga obtenerEntidadAEliminarPorRecarga(String nombreEntidad) {
         IEliminarDatosPorRecarga eliminarDatosPorRecarga = null;
 
-//        if (nombreEntidad.equals(LaborAforoBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborAforoBL;
-//        } else if (nombreEntidad.equals(LaborCierreBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborCierreBL;
-//        } else if (nombreEntidad.equals(LaborElementoLecturaBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborElementoBL;
-//        } else if (nombreEntidad.equals(LaborLecturaBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborLecturaBL;
-//        } else if (nombreEntidad.equals(LaborMaterialBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborMaterialBL;
-//        } else if (nombreEntidad.equals(LaborObservacionElementoBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborObservacionElementoBL;
-//        } else if (nombreEntidad.equals(LaborPctBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborPctBL;
-//        } else
-            if (nombreEntidad.equals(ReporteNotificacionBL.class.getSimpleName())) {
-                eliminarDatosPorRecarga = this.reporteNotificacionBL;
-            }
-//        } else if (nombreEntidad.equals(LaborConceptoBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.laborConceptoBL;
-//        }else if (nombreEntidad.equals(ImpresionFacturacionBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.impresionFacturacionBL;
-//        } else if (nombreEntidad.equals(RangoFacturacionBL.class.getSimpleName())) {
-//            eliminarDatosPorRecarga = this.rangoFacturacionBL;
-//        }
-
+        if (nombreEntidad.equals(ReporteNotificacionBL.class.getSimpleName())) {
+            eliminarDatosPorRecarga = this.reporteNotificacionBL;
+        }
         return eliminarDatosPorRecarga;
     }
 }

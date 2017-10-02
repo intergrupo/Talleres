@@ -1,16 +1,14 @@
-package com.example.santiagolopezgarcia.talleres.integracion.carga.notificacion;
-
-import com.example.santiagolopezgarcia.talleres.services.dto.carga.BaseDtoCarga;
+package com.example.santiagolopezgarcia.talleres.services.dto.descarga.notificacion;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- * Created by santiagolopezgarcia on 8/22/17.
+ * Created by santiagolopezgarcia on 10/2/17.
  */
 
 @Root(name = "SIRIUS_REPORTENOTIFICACION")
-public class ReporteNotificacion extends BaseDtoCarga {
+public class ReporteNotificacion {
 
     public ReporteNotificacion() {
         CodigoCorreria = "";
@@ -49,10 +47,9 @@ public class ReporteNotificacion extends BaseDtoCarga {
     @Element
     public String Orden;
 
-    @Element(required = false)
+    @Element
     public String Descripcion;
 
     @Element(required = false)
     public String Descarga;
-
 }

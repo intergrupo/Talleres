@@ -1,4 +1,4 @@
-package com.example.santiagolopezgarcia.talleres.integracion.carga.notificacion;
+package com.example.santiagolopezgarcia.talleres.services.dto.carga.notificacion;
 
 import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDto;
 import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDtoOtTarea;

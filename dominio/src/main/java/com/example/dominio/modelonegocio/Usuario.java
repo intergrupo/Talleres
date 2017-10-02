@@ -3,6 +3,7 @@ package com.example.dominio.modelonegocio;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import java.util.Date;
  * Created by santiagolopezgarcia on 8/8/17.
  */
 
-public class Usuario {
+public class Usuario implements Serializable{
     private String codigoUsuario;
     private Perfil perfil;
     private String nombre;

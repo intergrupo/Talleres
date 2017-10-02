@@ -1,8 +1,48 @@
 package com.example.santiagolopezgarcia.talleres.services.dto.carga;
 
 import com.example.dominio.LogicaNegocioBase;
+import com.example.dominio.acceso.DepartamentoBL;
+import com.example.dominio.acceso.MultiOpcionBL;
+import com.example.dominio.acceso.MunicipioBL;
+import com.example.dominio.administracion.ContratoBL;
+import com.example.dominio.administracion.OpcionBL;
+import com.example.dominio.administracion.PerfilBL;
+import com.example.dominio.administracion.PerfilXOpcionBL;
 import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.correria.EmpresaBL;
+import com.example.dominio.impresion.ParrafoImpresionBL;
+import com.example.dominio.impresion.SeccionImpresionBL;
+import com.example.dominio.labor.LaborBL;
+import com.example.dominio.labor.LaborXTareaBL;
+import com.example.dominio.modelonegocio.ListaMultiOpcion;
+import com.example.dominio.modelonegocio.ListaOpcion;
+import com.example.dominio.modelonegocio.ListaTareaXTrabajo;
+import com.example.dominio.modelonegocio.ListaTareas;
+import com.example.dominio.modelonegocio.ListaTrabajo;
+import com.example.dominio.notificacion.ItemBL;
+import com.example.dominio.notificacion.ItemXNotificacionBL;
+import com.example.dominio.notificacion.NotificacionBL;
+import com.example.dominio.ordentrabajo.EstadoBL;
+import com.example.dominio.tarea.TareaBL;
+import com.example.dominio.tarea.TareaXTrabajoBL;
+import com.example.dominio.trabajo.TrabajoBL;
+import com.example.dominio.trabajo.TrabajoXContratoBL;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.acceso.ListaPerfil;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.acceso.ListaPerfilXOpcion;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaDepartamento;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaMunicipio;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.correria.ListaContrato;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.correria.ListaEmpresa;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.impresion.ListaParrafoImpresion;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.impresion.ListaSeccionImpresion;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.labor.ListaLabor;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.labor.ListaLaborXTarea;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.notificacion.ListaItem;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.notificacion.ListaItemXNotificacion;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.notificacion.ListaNotificacion;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.ordentrabajo.ListaEstados;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.trabajo.ListaTrabajoXContrato;
 
 import javax.inject.Inject;
 
@@ -55,180 +95,129 @@ public class DependenciaCargaMaestros {
     public static final String CONCEPTO = "FAC_CONCEPTO.XML";
     public static final String GRUPO_LECTURA = "FAC_GRUPOLECTURA.XML";
     public static final String CARGA = "CARGA.XML";
-//
-//    private EstadoBL estadoBL;
-//    private TareaBL tareaBL;
-//    private CausaNoLecturaBL causaNoLecturaBL;
-//    private TipoLecturaBL tipoLecturaBL;
-//    private TrabajoBL trabajoBL;
-//    private ObservacionConsumoBL observacionConsumoBL;
-//    private ObservacionAdicionalBL observacionAdicionalBL;
-//    private ContratoBL contratoBL;
-//    private PerfilBL perfilBL;
-//    private DepartamentoBL departamentoBL;
-//    private MunicipioBL municipioBL;
-//    private LaborBL laborBL;
-//    private ElementoAforoBL elementoAforoBL;
-//    private ElementoAforoXLaborBL elementoAforoXLaborBL;
-//    private UnidadBL unidadBL;
-//    private MaterialBL materialBL;
-//    private MaterialXLaborBL materialXLaborBL;
-//    private MultiOpcionBL multiOpcionBL;
-//    private OperacionBL operacionBL;
-//    private ObservacionElementoBL observacionElementoBL;
-//    private ParametroPctBL parametroPctBL;
-//    private OpcionBL opcionBL;
-//    private PerfilXOpcionBL perfilXOpcionBL;
-//    private NotificacionBL notificacionBL;
-//    private ItemBL itemBL;
-//    private ItemXNotificacionBL itemXNotificacionBL;
-//    private EmpresaBL empresaBL;
+
+    private EstadoBL estadoBL;
+    private TareaBL tareaBL;
+    private TrabajoBL trabajoBL;
+    private ContratoBL contratoBL;
+    private PerfilBL perfilBL;
+    private DepartamentoBL departamentoBL;
+    private MunicipioBL municipioBL;
+    private LaborBL laborBL;
+    private MultiOpcionBL multiOpcionBL;
+    private OpcionBL opcionBL;
+    private PerfilXOpcionBL perfilXOpcionBL;
+    private NotificacionBL notificacionBL;
+    private ItemBL itemBL;
+    private ItemXNotificacionBL itemXNotificacionBL;
+    private EmpresaBL empresaBL;
     private TalleresBL talleresBL;
-//    private LaborXTareaBL laborXTareaBL;
-//    private MarcaElementoBL marcaElementoBL;
-//    private ModeloElementoBL modeloElementoBL;
-//    private TipoElementoBL tipoElementoBL;
-//    private UbicacionElementoBL ubicacionElementoBL;
-//    private TareaXTrabajoBL tareaXTrabajoBL;
-//    private TrabajoXContratoBL trabajoXContratoBL;
-//    private SeccionImpresionBL seccionImpresionBL;
-//    private ParrafoImpresionBL parrafoImpresionBL;
-//    private ConceptoBL conceptoBL;
-//    private GrupoLecturaBL grupoLecturaBL;
-//    private ElementoDisponibleBL elementoDisponibleBL;
-//    private NuevaLecturaElementoDisponibleBL nuevaLecturaElementoDisponibleBL;
+    private LaborXTareaBL laborXTareaBL;
+    private TareaXTrabajoBL tareaXTrabajoBL;
+    private TrabajoXContratoBL trabajoXContratoBL;
+    private SeccionImpresionBL seccionImpresionBL;
+    private ParrafoImpresionBL parrafoImpresionBL;
 
     @Inject
-    public DependenciaCargaMaestros(TalleresBL talleresBL) {
+    public DependenciaCargaMaestros(EstadoBL estadoBL, TareaBL tareaBL, TrabajoBL trabajoBL, ContratoBL contratoBL,
+                                    PerfilBL perfilBL, DepartamentoBL departamentoBL, MunicipioBL municipioBL,
+                                    LaborBL laborBL, MultiOpcionBL multiOpcionBL, OpcionBL opcionBL,
+                                    PerfilXOpcionBL perfilXOpcionBL,
+                                    NotificacionBL notificacionBL, ItemBL itemBL,
+                                    ItemXNotificacionBL itemXNotificacionBL,
+                                    EmpresaBL empresaBL, TalleresBL talleresBL,
+                                    LaborXTareaBL laborXTareaBL, TareaXTrabajoBL tareaXTrabajoBL,
+                                    TrabajoXContratoBL trabajoXContratoBL,ParrafoImpresionBL parrafoImpresionBL,
+                                    SeccionImpresionBL seccionImpresionBL) {
+        this.estadoBL = estadoBL;
+        this.tareaBL = tareaBL;
+        this.trabajoBL = trabajoBL;
+        this.contratoBL = contratoBL;
+        this.perfilBL = perfilBL;
+        this.departamentoBL = departamentoBL;
+        this.municipioBL = municipioBL;
+        this.laborBL = laborBL;
+        this.multiOpcionBL = multiOpcionBL;
+        this.opcionBL = opcionBL;
+        this.perfilXOpcionBL = perfilXOpcionBL;
+        this.notificacionBL = notificacionBL;
+        this.itemBL = itemBL;
+        this.itemXNotificacionBL = itemXNotificacionBL;
+        this.empresaBL = empresaBL;
         this.talleresBL = talleresBL;
+        this.laborXTareaBL = laborXTareaBL;
+        this.tareaXTrabajoBL = tareaXTrabajoBL;
+        this.trabajoXContratoBL = trabajoXContratoBL;
+        this.parrafoImpresionBL=parrafoImpresionBL;
+        this.seccionImpresionBL=seccionImpresionBL;
     }
 
     public LogicaNegocioBase getClaseNegocio(String nombreEntidad) {
         LogicaNegocioBase entidad = null;
         switch (nombreEntidad) {
-//            case CAUSA_NO_LECTURA:
-//                entidad = causaNoLecturaBL;
-//                break;
-//            case CONTRATO:
-//                entidad = this.contratoBL;
-//                break;
-//            case DEPARTAMENTO:
-//                entidad = this.departamentoBL;
-//                break;
-//            case ELEMENTO_AFORO:
-//                entidad = this.elementoAforoBL;
-//                break;
-//            case ELEMENTO_AFORO_X_LABOR:
-//                entidad = elementoAforoXLaborBL;
-//                break;
-//            case EMPRESA:
-//                entidad = this.empresaBL;
-//                break;
-//            case ESTADO:
-//                entidad = this.estadoBL;
-//                break;
-//            case ITEM:
-//                entidad = this.itemBL;
-//                break;
-//            case ITEM_X_NOTIFICACION:
-//                entidad = this.itemXNotificacionBL;
-//                break;
-//            case LABOR:
-//                entidad = this.laborBL;
-//                break;
-//            case LABOR_X_TAREA:
-//                entidad = this.laborXTareaBL;
-//                break;
-//            case MARCAR_ELEMENTO:
-//                entidad = this.marcaElementoBL;
-//                break;
-//            case MATERIAL:
-//                entidad = this.materialBL;
-//                break;
-//            case MATERIAL_X_LABOR:
-//                entidad = this.materialXLaborBL;
-//                break;
-//            case MODELO_ELEMENTO:
-//                entidad = this.modeloElementoBL;
-//                break;
-//            case MULTIOPCION:
-//                entidad = this.multiOpcionBL;
-//                break;
-//            case MUNICIPIO:
-//                entidad = this.municipioBL;
-//                break;
-//            case NOTIFICACION:
-//                entidad = this.notificacionBL;
-//                break;
-//            case OBSERVACION_ADICIONAL_LECTURA:
-//                entidad = this.observacionAdicionalBL;
-//                break;
-//            case OBSERVACION_CONSUMO:
-//                entidad = this.observacionConsumoBL;
-//                break;
-//            case OBSERVACION_ELEMENTO:
-//                entidad = this.observacionElementoBL;
-//                break;
-//            case OPCION:
-//                entidad = this.opcionBL;
-//                break;
-//            case OPERACION:
-//                entidad = this.operacionBL;
-//                break;
-//            case PARAMETRO_PCT:
-//                entidad = this.parametroPctBL;
-//                break;
-//            case PERFIL:
-//                entidad = this.perfilBL;
-//                break;
-//            case PERFIL_X_OPCION:
-//                entidad = this.perfilXOpcionBL;
-//                break;
+            case CONTRATO:
+                entidad = this.contratoBL;
+                break;
+            case DEPARTAMENTO:
+                entidad = this.departamentoBL;
+                break;
+            case EMPRESA:
+                entidad = this.empresaBL;
+                break;
+            case ESTADO:
+                entidad = this.estadoBL;
+                break;
+            case ITEM:
+                entidad = this.itemBL;
+                break;
+            case ITEM_X_NOTIFICACION:
+                entidad = this.itemXNotificacionBL;
+                break;
+            case LABOR:
+                entidad = this.laborBL;
+                break;
+            case LABOR_X_TAREA:
+                entidad = this.laborXTareaBL;
+                break;
+            case MULTIOPCION:
+                entidad = this.multiOpcionBL;
+                break;
+            case MUNICIPIO:
+                entidad = this.municipioBL;
+                break;
+            case NOTIFICACION:
+                entidad = this.notificacionBL;
+                break;
+            case OPCION:
+                entidad = this.opcionBL;
+                break;
+            case PERFIL:
+                entidad = this.perfilBL;
+                break;
+            case PERFIL_X_OPCION:
+                entidad = this.perfilXOpcionBL;
+                break;
             case SIRIUS:
                 entidad = this.talleresBL;
                 break;
-//            case TAREA:
-//                entidad = this.tareaBL;
-//                break;
-//            case TAREAXTRABAJO:
-//                entidad = this.tareaXTrabajoBL;
-//                break;
-//            case TIPO_ELEMENTO:
-//                entidad = this.tipoElementoBL;
-//                break;
-//            case TIPO_LECTURA:
-//                entidad = this.tipoLecturaBL;
-//                break;
-//            case TRABAJO:
-//                entidad = this.trabajoBL;
-//                break;
-//            case TRABAJO_X_CONTRATO:
-//                entidad = this.trabajoXContratoBL;
-//                break;
-//            case UBICACION_ELEMENTO:
-//                entidad = this.ubicacionElementoBL;
-//                break;
-//            case UNIDAD:
-//                entidad = this.unidadBL;
-//                break;
-//            case SECCION_IMPRESION:
-//                entidad = this.seccionImpresionBL;
-//                break;
-//            case PARRAFO_IMPRESION:
-//                entidad = this.parrafoImpresionBL;
-//                break;
-//            case CONCEPTO:
-//                entidad = this.conceptoBL;
-//                break;
-//            case GRUPO_LECTURA:
-//                entidad = this.grupoLecturaBL;
-//                break;
-//            case ELEMENTO_DISPONIBLE:
-//                entidad = this.elementoDisponibleBL;
-//                break;
-//            case NUEVA_LECTURA_ELEMENTO_DISPONIBLE:
-//                entidad = this.nuevaLecturaElementoDisponibleBL;
-//                break;
+            case TAREA:
+                entidad = this.tareaBL;
+                break;
+            case TAREAXTRABAJO:
+                entidad = this.tareaXTrabajoBL;
+                break;
+            case TRABAJO:
+                entidad = this.trabajoBL;
+                break;
+            case TRABAJO_X_CONTRATO:
+                entidad = this.trabajoXContratoBL;
+                break;
+            case SECCION_IMPRESION:
+                entidad = this.seccionImpresionBL;
+                break;
+            case PARRAFO_IMPRESION:
+                entidad = this.parrafoImpresionBL;
+                break;
         }
         return entidad;
     }
@@ -236,132 +225,72 @@ public class DependenciaCargaMaestros {
     public Class obtenerTipoDto(String nombreEntidad) {
         Class tipo;
         switch (nombreEntidad) {
-//            case CAUSA_NO_LECTURA:
-//                tipo = ListaCausaNoLectura.class;
-//                break;
-//            case CONTRATO:
-//                tipo = ListaContrato.class;
-//                break;
-//            case DEPARTAMENTO:
-//                tipo = ListaDepartamento.class;
-//                break;
-//            case ELEMENTO_AFORO:
-//                tipo = ListaElementoAforo.class;
-//                break;
-//            case ELEMENTO_AFORO_X_LABOR:
-//                tipo = ListaElementoAforoXLabor.class;
-//                break;
-//            case EMPRESA:
-//                tipo = ListaEmpresa.class;
-//                break;
-//            case ESTADO:
-//                tipo = ListaEstados.class;
-//                break;
-//            case ITEM:
-//                tipo = ListaItem.class;
-//                break;
-//            case ITEM_X_NOTIFICACION:
-//                tipo = ListaItemXNotificacion.class;
-//                break;
-//            case LABOR:
-//                tipo = ListaLabor.class;
-//                break;
-//            case LABOR_X_TAREA:
-//                tipo = ListaLaborXTarea.class;
-//                break;
-//            case MARCAR_ELEMENTO:
-//                tipo = ListaMarcaElemento.class;
-//                break;
-//            case MATERIAL:
-//                tipo = ListaMaterial.class;
-//                break;
-//            case MATERIAL_X_LABOR:
-//                tipo = ListaMaterialXLabor.class;
-//                break;
-//            case MODELO_ELEMENTO:
-//                tipo = ListaModeloElemento.class;
-//                break;
-//            case MULTIOPCION:
-//                tipo = ListaMultiOpcion.class;
-//                break;
-//            case MUNICIPIO:
-//                tipo = ListaMunicipio.class;
-//                break;
-//            case NOTIFICACION:
-//                tipo = ListaNotificacion.class;
-//                break;
-//            case OBSERVACION_ADICIONAL_LECTURA:
-//                tipo = ListaObservacionAdicional.class;
-//                break;
-//            case OBSERVACION_CONSUMO:
-//                tipo = ListaObservacionConsumo.class;
-//                break;
-//            case OBSERVACION_ELEMENTO:
-//                tipo = ListaObservacionElemento.class;
-//                break;
-//            case OPCION:
-//                tipo = ListaOpcion.class;
-//                break;
-//            case OPERACION:
-//                tipo = ListaOperacion.class;
-//                break;
-//            case PARAMETRO_PCT:
-//                tipo = ListaParametroPCT.class;
-//                break;
-//            case PERFIL:
-//                tipo = ListaPerfil.class;
-//                break;
-//            case PERFIL_X_OPCION:
-//                tipo = ListaPerfilXOpcion.class;
-//                break;
+            case CONTRATO:
+                tipo = ListaContrato.class;
+                break;
+            case DEPARTAMENTO:
+                tipo = ListaDepartamento.class;
+                break;
+            case EMPRESA:
+                tipo = ListaEmpresa.class;
+                break;
+            case ESTADO:
+                tipo = ListaEstados.class;
+                break;
+            case ITEM:
+                tipo = ListaItem.class;
+                break;
+            case ITEM_X_NOTIFICACION:
+                tipo = ListaItemXNotificacion.class;
+                break;
+            case LABOR:
+                tipo = ListaLabor.class;
+                break;
+            case LABOR_X_TAREA:
+                tipo = ListaLaborXTarea.class;
+                break;
+            case MULTIOPCION:
+                tipo = ListaMultiOpcion.class;
+                break;
+            case MUNICIPIO:
+                tipo = ListaMunicipio.class;
+                break;
+            case NOTIFICACION:
+                tipo = ListaNotificacion.class;
+                break;
+            case OPCION:
+                tipo = ListaOpcion.class;
+                break;
+            case PERFIL:
+                tipo = ListaPerfil.class;
+                break;
+            case PERFIL_X_OPCION:
+                tipo = ListaPerfilXOpcion.class;
+                break;
             case SIRIUS:
                 tipo = ListaTalleres.class;
                 break;
-//            case TAREA:
-//                tipo = ListaTareas.class;
-//                break;
-//            case TAREAXTRABAJO:
-//                tipo = ListaTareaXTrabajo.class;
-//                break;
-//            case TIPO_ELEMENTO:
-//                tipo = ListaTiposElemento.class;
-//                break;
-//            case TIPO_LECTURA:
-//                tipo = ListaTipoLectura.class;
-//                break;
-//            case TRABAJO:
-//                tipo = ListaTrabajo.class;
-//                break;
-//            case TRABAJO_X_CONTRATO:
-//                tipo = ListaTrabajoXContrato.class;
-//                break;
-//            case UBICACION_ELEMENTO:
-//                tipo = ListaUbicacionElemento.class;
-//                break;
-//            case UNIDAD:
-//                tipo = ListaUnidad.class;
-//                break;
-//            case PARRAFO_IMPRESION:
-//                tipo = ListaParrafoImpresion.class;
-//                break;
-//            case SECCION_IMPRESION:
-//                tipo = ListaSeccionImpresion.class;
-//                break;
-//            case CONCEPTO:
-//                tipo = ListaConcepto.class;
-//                break;
-//            case GRUPO_LECTURA:
-//                tipo = ListaGrupoLectura.class;
-//                break;
-//            case CARGA:
-//                tipo = ListaCarga.class;
-//                break;
-//            case ELEMENTO_DISPONIBLE:
-//                tipo = ListaElementoDisponible.class;
-//                break;
-//            case NUEVA_LECTURA_ELEMENTO_DISPONIBLE:
-//                tipo = ListaNuevaLecturaElementoDisponible.class;
-//                break;
+            case TAREA:
+                tipo = ListaTareas.class;
+                break;
+            case TAREAXTRABAJO:
+                tipo = ListaTareaXTrabajo.class;
+                break;
+            case TRABAJO:
+                tipo = ListaTrabajo.class;
+                break;
+            case TRABAJO_X_CONTRATO:
+                tipo = ListaTrabajoXContrato.class;
+                break;
+            case PARRAFO_IMPRESION:
+                tipo = ListaParrafoImpresion.class;
+                break;
+            case SECCION_IMPRESION:
+                tipo = ListaSeccionImpresion.class;
+                break;
+            case CARGA:
+                tipo = ListaCarga.class;
+                break;
             default:
                 throw new IllegalArgumentException("La entidad no se encuentra implementada para DTO. (" + nombreEntidad + ")");
         }

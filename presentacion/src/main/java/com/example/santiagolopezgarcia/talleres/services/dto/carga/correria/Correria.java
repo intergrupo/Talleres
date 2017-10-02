@@ -1,4 +1,4 @@
-package com.example.santiagolopezgarcia.talleres.integracion.carga.correria;
+package com.example.santiagolopezgarcia.talleres.services.dto.carga.correria;
 
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.BaseDtoCarga;
 

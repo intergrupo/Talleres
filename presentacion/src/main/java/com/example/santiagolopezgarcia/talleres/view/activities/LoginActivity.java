@@ -26,6 +26,7 @@ import com.example.dominio.administracion.UsuarioBL;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.dominio.modelonegocio.Usuario;
 import com.example.santiagolopezgarcia.talleres.R;
+import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.presenters.LoginPresenter;
 import com.example.santiagolopezgarcia.talleres.util.LectorCodigoBarra;
 import com.example.santiagolopezgarcia.talleres.view.interfaces.Item;
@@ -171,7 +172,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void mostrarCorrerias() {
-//        TalleresApp app = (TalleresApp) getApplication();
+//        SiriusApp app = (SiriusApp) getApplication();
 //        app.setUsuario(presentador.getUsuario());
 //        Intent intent = new Intent(this, PrincipalActivity.class);
 //        intent.putExtra(Correria.class.getName(), presentador.getCorreriaActual());
