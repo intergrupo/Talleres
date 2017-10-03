@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.santiagolopezgarcia.talleres.R;
 import com.example.santiagolopezgarcia.talleres.util.ContenedorDependencia;

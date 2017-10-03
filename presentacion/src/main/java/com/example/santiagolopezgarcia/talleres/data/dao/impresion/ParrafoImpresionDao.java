@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.example.dominio.impresion.ParrafoImpresionRepositorio;
+import com.example.dominio.bussinesslogic.impresion.ParrafoImpresionRepositorio;
 import com.example.dominio.modelonegocio.ParrafoImpresion;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 

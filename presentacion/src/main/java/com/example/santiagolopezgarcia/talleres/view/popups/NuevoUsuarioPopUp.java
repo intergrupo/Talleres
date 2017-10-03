@@ -10,9 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.dominio.administracion.ContratoBL;
-import com.example.dominio.administracion.PerfilBL;
-import com.example.dominio.administracion.UsuarioBL;
+import com.example.dominio.bussinesslogic.administracion.ContratoBL;
+import com.example.dominio.bussinesslogic.administracion.PerfilBL;
+import com.example.dominio.bussinesslogic.administracion.UsuarioBL;
 import com.example.dominio.modelonegocio.Contrato;
 import com.example.dominio.modelonegocio.Perfil;
 import com.example.dominio.modelonegocio.Talleres;
@@ -23,8 +23,6 @@ import com.example.santiagolopezgarcia.talleres.util.ContenedorDependencia;
 import com.example.santiagolopezgarcia.talleres.util.LectorCodigoBarra;
 import com.example.santiagolopezgarcia.talleres.view.activities.AdministracionActivity;
 import com.example.santiagolopezgarcia.talleres.view.adapters.PerfilSpinnerAdapter;
-import com.example.santiagolopezgarcia.talleres.view.popups.AlertaPopUp;
-import com.example.santiagolopezgarcia.talleres.view.popups.BasePopup;
 
 import javax.inject.Inject;
 

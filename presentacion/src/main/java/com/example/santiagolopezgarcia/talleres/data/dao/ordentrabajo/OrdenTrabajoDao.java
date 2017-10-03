@@ -4,12 +4,13 @@ package com.example.santiagolopezgarcia.talleres.data.dao.ordentrabajo;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+
+import com.example.dominio.bussinesslogic.ordentrabajo.OrdenTrabajoRepositorio;
 import com.example.dominio.modelonegocio.ListaOrdenTrabajo;
 import com.example.dominio.modelonegocio.OrdenTrabajo;
 import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;
 import com.example.dominio.modelonegocio.Trabajo;
 import com.example.dominio.modelonegocio.TrabajoXOrdenTrabajo;
-import com.example.dominio.ordentrabajo.*;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.santiagolopezgarcia.talleres.data.dao.acceso.MunicipioDao;
 import com.example.santiagolopezgarcia.talleres.data.dao.correria.CorreriaDao;

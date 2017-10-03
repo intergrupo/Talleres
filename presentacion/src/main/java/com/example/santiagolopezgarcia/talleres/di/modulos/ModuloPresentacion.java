@@ -1,66 +1,67 @@
 package com.example.santiagolopezgarcia.talleres.di.modulos;
 
-import com.example.dominio.acceso.DepartamentoBL;
-import com.example.dominio.acceso.DepartamentoRepositorio;
-import com.example.dominio.acceso.MultiOpcionBL;
-import com.example.dominio.acceso.MultiOpcionRepositorio;
-import com.example.dominio.acceso.MunicipioBL;
-import com.example.dominio.acceso.MunicipioRepositorio;
-import com.example.dominio.acceso.PermisoBL;
-import com.example.dominio.administracion.ContratoBL;
-import com.example.dominio.administracion.ContratoRepositorio;
-import com.example.dominio.administracion.OpcionBL;
-import com.example.dominio.administracion.OpcionRepositorio;
-import com.example.dominio.administracion.PerfilBL;
-import com.example.dominio.administracion.PerfilRepositorio;
-import com.example.dominio.administracion.PerfilXOpcionBL;
-import com.example.dominio.administracion.PerfilXOpcionRepositorio;
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.administracion.TalleresRepositorio;
-import com.example.dominio.administracion.UsuarioBL;
-import com.example.dominio.administracion.UsuarioRepositorio;
-import com.example.dominio.auditoria.FirmarLaboresYTareas;
-import com.example.dominio.correria.CorreriaBL;
-import com.example.dominio.correria.CorreriaRepositorio;
-import com.example.dominio.correria.EmpresaBL;
-import com.example.dominio.correria.EmpresaRepositorio;
-import com.example.dominio.correria.ProgramacionCorreriaBL;
-import com.example.dominio.correria.ProgramacionCorreriaRepositorio;
-import com.example.dominio.impresion.ParrafoImpresionBL;
-import com.example.dominio.impresion.ParrafoImpresionRepositorio;
-import com.example.dominio.impresion.SeccionImpresionBL;
-import com.example.dominio.impresion.SeccionImpresionRepositorio;
-import com.example.dominio.labor.LaborBL;
-import com.example.dominio.labor.LaborRepositorio;
-import com.example.dominio.labor.LaborXOrdenTrabajoBL;
-import com.example.dominio.labor.LaborXOrdenTrabajoRepositorio;
-import com.example.dominio.labor.LaborXTareaBL;
-import com.example.dominio.labor.LaborXTareaRepositorio;
-import com.example.dominio.notificacion.ItemBL;
-import com.example.dominio.notificacion.ItemRepositorio;
-import com.example.dominio.notificacion.ItemXNotificacionBL;
-import com.example.dominio.notificacion.ItemXNotificacionRepositorio;
-import com.example.dominio.notificacion.NotificacionBL;
-import com.example.dominio.notificacion.NotificacionRepositorio;
-import com.example.dominio.notificacion.ReporteNotificacionBL;
-import com.example.dominio.notificacion.ReporteNotificacionRepositorio;
-import com.example.dominio.ordentrabajo.EstadoBL;
-import com.example.dominio.ordentrabajo.EstadoRepositorio;
-import com.example.dominio.ordentrabajo.NotificacionOrdenTrabajoBL;
-import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
-import com.example.dominio.ordentrabajo.OrdenTrabajoRepositorio;
-import com.example.dominio.tarea.TareaBL;
-import com.example.dominio.tarea.TareaRepositorio;
-import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
-import com.example.dominio.tarea.TareaXOrdenTrabajoRepositorio;
-import com.example.dominio.tarea.TareaXTrabajoBL;
-import com.example.dominio.tarea.TareaXTrabajoRepositorio;
-import com.example.dominio.trabajo.TrabajoBL;
-import com.example.dominio.trabajo.TrabajoRepositorio;
-import com.example.dominio.trabajo.TrabajoXContratoBL;
-import com.example.dominio.trabajo.TrabajoXContratoRepositorio;
-import com.example.dominio.trabajo.TrabajoXOrdenTrabajoBL;
-import com.example.dominio.trabajo.TrabajoXOrdenTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.acceso.DepartamentoBL;
+import com.example.dominio.bussinesslogic.acceso.DepartamentoRepositorio;
+import com.example.dominio.bussinesslogic.acceso.MultiOpcionBL;
+import com.example.dominio.bussinesslogic.acceso.MultiOpcionRepositorio;
+import com.example.dominio.bussinesslogic.acceso.MunicipioBL;
+import com.example.dominio.bussinesslogic.acceso.MunicipioRepositorio;
+import com.example.dominio.bussinesslogic.acceso.PermisoBL;
+import com.example.dominio.bussinesslogic.administracion.ContratoBL;
+import com.example.dominio.bussinesslogic.administracion.ContratoRepositorio;
+import com.example.dominio.bussinesslogic.administracion.OpcionBL;
+import com.example.dominio.bussinesslogic.administracion.OpcionRepositorio;
+import com.example.dominio.bussinesslogic.administracion.PerfilBL;
+import com.example.dominio.bussinesslogic.administracion.PerfilRepositorio;
+import com.example.dominio.bussinesslogic.administracion.PerfilXOpcionBL;
+import com.example.dominio.bussinesslogic.administracion.PerfilXOpcionRepositorio;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresRepositorio;
+import com.example.dominio.bussinesslogic.administracion.UsuarioBL;
+import com.example.dominio.bussinesslogic.administracion.UsuarioRepositorio;
+import com.example.dominio.bussinesslogic.auditoria.FirmarLaboresYTareas;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaRepositorio;
+import com.example.dominio.bussinesslogic.correria.EmpresaBL;
+import com.example.dominio.bussinesslogic.correria.EmpresaRepositorio;
+import com.example.dominio.bussinesslogic.correria.ProgramacionCorreriaBL;
+import com.example.dominio.bussinesslogic.correria.ProgramacionCorreriaRepositorio;
+import com.example.dominio.bussinesslogic.impresion.ParrafoImpresionBL;
+import com.example.dominio.bussinesslogic.impresion.ParrafoImpresionRepositorio;
+import com.example.dominio.bussinesslogic.impresion.SeccionImpresionBL;
+import com.example.dominio.bussinesslogic.impresion.SeccionImpresionRepositorio;
+import com.example.dominio.bussinesslogic.labor.LaborBL;
+import com.example.dominio.bussinesslogic.labor.LaborRepositorio;
+import com.example.dominio.bussinesslogic.labor.LaborXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.labor.LaborXOrdenTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.labor.LaborXTareaBL;
+import com.example.dominio.bussinesslogic.labor.LaborXTareaRepositorio;
+import com.example.dominio.bussinesslogic.notificacion.ItemBL;
+import com.example.dominio.bussinesslogic.notificacion.ItemRepositorio;
+import com.example.dominio.bussinesslogic.notificacion.ItemXNotificacionBL;
+import com.example.dominio.bussinesslogic.notificacion.ItemXNotificacionRepositorio;
+import com.example.dominio.bussinesslogic.notificacion.NotificacionBL;
+import com.example.dominio.bussinesslogic.notificacion.NotificacionRepositorio;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionBL;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionRepositorio;
+import com.example.dominio.bussinesslogic.ordentrabajo.BuscadorOrdenTrabajo;
+import com.example.dominio.bussinesslogic.ordentrabajo.EstadoBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.EstadoRepositorio;
+import com.example.dominio.bussinesslogic.ordentrabajo.NotificacionOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.OrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.OrdenTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.tarea.TareaBL;
+import com.example.dominio.bussinesslogic.tarea.TareaRepositorio;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.tarea.TareaXTrabajoBL;
+import com.example.dominio.bussinesslogic.tarea.TareaXTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoBL;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoRepositorio;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXContratoBL;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXContratoRepositorio;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXOrdenTrabajoRepositorio;
 
 import dagger.Module;
 import dagger.Provides;
@@ -245,6 +246,14 @@ public class ModuloPresentacion {
                                                           FirmarLaboresYTareas firmarLaboresYTareas) {
         return new NotificacionOrdenTrabajoBL(ordenTrabajoRepositorio, tareaXOrdenTrabajoRepositorio,
                 laborRepositorio, firmarLaboresYTareas);
+    }
+
+    @Provides
+    BuscadorOrdenTrabajo buscadorOrdenTrabajo(OrdenTrabajoBL buscadorOrdenTrabajo,
+                                              TrabajoXOrdenTrabajoBL trabajoXOrdenTrabajoBL,
+                                              TareaXOrdenTrabajoBL tareaXOrdenTrabajoBL) {
+        return new BuscadorOrdenTrabajo(buscadorOrdenTrabajo, trabajoXOrdenTrabajoBL,
+                tareaXOrdenTrabajoBL);
     }
 
 }

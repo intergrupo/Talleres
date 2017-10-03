@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.dominio.modelonegocio.Usuario;
-import com.example.dominio.administracion.UsuarioRepositorio;
+import com.example.dominio.bussinesslogic.administracion.UsuarioRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.santiagolopezgarcia.talleres.data.dao.correria.ContratoDao;
 import com.example.utilidades.helpers.DateHelper;

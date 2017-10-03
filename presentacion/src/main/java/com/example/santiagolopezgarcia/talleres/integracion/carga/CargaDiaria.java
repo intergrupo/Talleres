@@ -2,11 +2,11 @@ package com.example.santiagolopezgarcia.talleres.integracion.carga;
 
 import com.example.dominio.IEliminarDatosPorRecarga;
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.administracion.UsuarioBL;
-import com.example.dominio.correria.CorreriaBL;
-import com.example.dominio.labor.LaborXOrdenTrabajoBL;
-import com.example.dominio.labor.LaborXTareaBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.UsuarioBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.labor.LaborXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.labor.LaborXTareaBL;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.FiltroCarga;
 import com.example.dominio.modelonegocio.Item;
@@ -17,11 +17,11 @@ import com.example.dominio.modelonegocio.NotificacionOrdenTrabajo;
 import com.example.dominio.modelonegocio.Tarea;
 import com.example.dominio.modelonegocio.TareaXTrabajoOrdenTrabajo;
 import com.example.dominio.modelonegocio.Trabajo;
-import com.example.dominio.notificacion.ItemBL;
-import com.example.dominio.notificacion.ReporteNotificacionBL;
-import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
-import com.example.dominio.trabajo.TrabajoBL;
-import com.example.dominio.tarea.TareaBL;
+import com.example.dominio.bussinesslogic.notificacion.ItemBL;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionBL;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoBL;
+import com.example.dominio.bussinesslogic.tarea.TareaBL;
 import com.example.santiagolopezgarcia.talleres.data.OperadorDatos;
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;
 import com.example.santiagolopezgarcia.talleres.integracion.ComunicacionCarga;
@@ -145,35 +145,17 @@ public class CargaDiaria extends CargaBase {
             case DependenciaCargaDiaria.ORDENTRABAJO:
                 posicion = 1;
                 break;
-            case DependenciaCargaDiaria.ELEMENTO:
-                posicion = 2;
-                break;
-            case DependenciaCargaDiaria.LECTURA_ELEMENTO:
-                posicion = 3;
-                break;
             case DependenciaCargaDiaria.TRABAJO_X_ORDENTRABAJO:
                 posicion = 4;
                 break;
             case DependenciaCargaDiaria.TAREA_X_ORDENTRABAJO:
                 posicion = 5;
                 break;
-            case DependenciaCargaDiaria.HISTORIA_ELEMENTO:
-                posicion = 6;
-                break;
             case DependenciaCargaDiaria.LABOR_X_ORDENTRABAJO:
                 posicion = 7;
                 break;
-            case DependenciaCargaDiaria.RELACION_ELEMENTO:
-                posicion = 8;
-                break;
             case DependenciaCargaDiaria.REPORTE_NOTIFICACION:
                 posicion = 9;
-                break;
-            case DependenciaCargaDiaria.ELEMENTO_DISPONIBLE:
-                posicion = 10;
-                break;
-            case DependenciaCargaDiaria.NUEVA_LECTURA_ELEMENTO_DISPONIBLE:
-                posicion = 11;
                 break;
             case DependenciaCargaDiaria.USUARIO:
                 posicion = 12;
@@ -181,50 +163,11 @@ public class CargaDiaria extends CargaBase {
             case DependenciaCargaDiaria.SIRIUS:
                 posicion = 13;
                 break;
-            case DependenciaCargaDiaria.LABOR_ELEMENTO:
-                posicion = 14;
-                break;
-            case DependenciaCargaDiaria.LABOR_LECTURA:
-                posicion = 15;
-                break;
-
-            case DependenciaCargaDiaria.LABOR_OBSERVACION_ELEMENTO:
-                posicion = 16;
-                break;
-
-            case DependenciaCargaDiaria.LABOR_MATERIAL:
-                posicion = 17;
-                break;
-
-            case DependenciaCargaDiaria.LABOR_AFORO:
-                posicion = 18;
-                break;
-
-            case DependenciaCargaDiaria.LABOR_CIERRE:
-                posicion = 19;
-                break;
-
-            case DependenciaCargaDiaria.LABOR_PCT:
-                posicion = 20;
-                break;
-
             case DependenciaCargaDiaria.PROGRAMACIONCORRERIA:
                 posicion = 21;
                 break;
-            case DependenciaCargaDiaria.IMPRESION_FACTURACION:
-                posicion = 22;
-                break;
-            case DependenciaCargaDiaria.LABOR_CONCEPTO:
-                posicion = 23;
-                break;
-            case DependenciaCargaDiaria.RANGO_FACTURACION:
-                posicion = 24;
-                break;
             case DependenciaCargaDiaria.NOTIFICACION_ORDENTRABAJO:
                 posicion = 25;
-                break;
-            case DependenciaCargaDiaria.LECTURAS:
-                posicion = 26;
                 break;
             case DependenciaCargaDiaria.CARGA:
                 posicion = 27;

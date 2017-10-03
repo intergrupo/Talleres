@@ -12,13 +12,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.dominio.modelonegocio.ParametrosOpcionAdministracion;
 import com.example.dominio.modelonegocio.Talleres;
-import com.example.dominio.notificacion.ReporteNotificacionBL;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionBL;
 import com.example.santiagolopezgarcia.talleres.R;
 import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;

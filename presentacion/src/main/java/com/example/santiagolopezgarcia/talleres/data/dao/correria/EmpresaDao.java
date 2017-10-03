@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.example.dominio.correria.EmpresaRepositorio;
+import com.example.dominio.bussinesslogic.correria.EmpresaRepositorio;
 import com.example.dominio.modelonegocio.Empresa;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 

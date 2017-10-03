@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.dominio.administracion.UsuarioBL;
+import com.example.dominio.bussinesslogic.administracion.UsuarioBL;
 import com.example.dominio.modelonegocio.ParametrosOpcionAdministracion;
 import com.example.dominio.modelonegocio.Usuario;
 import com.example.santiagolopezgarcia.talleres.R;

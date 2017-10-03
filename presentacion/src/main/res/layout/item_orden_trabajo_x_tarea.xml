@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:id="@+id/ContenedorPrincipal">
+
+    <LinearLayout
+        android:id="@+id/ContenedorEncabezado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/transparent"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_toEndOf="@+id/ivIconoTareaOrdenTrabajo"
+        android:layout_alignParentEnd="false">
+
+        <TextView
+            style="@style/EstiloTextoTitulo"
+            android:id="@+id/tvDescripcionTarea"
+            android:layout_below="@+id/tvNombreTitulo"
+            android:text="@string/titulo_descripcion_tarea"
+            android:background="@android:color/transparent"
+            android:singleLine="true"
+            android:layout_width="match_parent" />
+
+        <TextView
+            android:id="@+id/tvNombre"
+            style="@style/EstiloTextoContenido"
+            android:layout_below="@+id/tvNombreTitulo"
+            android:text="@string/titulo_nombre"
+            android:background="@android:color/transparent"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/tvDireccion"
+            style="@style/EstiloTextoContenido"
+            android:layout_below="@+id/tvNombreTitulo"
+            android:text="@string/titulo_direccion"
+            android:background="@android:color/transparent"
+            android:singleLine="true"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivIconoTareaOrdenTrabajo"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_pendiente"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/ContenedorEncabezado" />
+
+</RelativeLayout>

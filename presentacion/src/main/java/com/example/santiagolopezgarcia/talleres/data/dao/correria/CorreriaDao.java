@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.example.dominio.correria.CorreriaRepositorio;
+import com.example.dominio.bussinesslogic.correria.CorreriaRepositorio;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.utilidades.helpers.BooleanHelper;

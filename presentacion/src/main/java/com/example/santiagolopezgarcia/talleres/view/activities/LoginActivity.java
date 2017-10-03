@@ -22,7 +22,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.dominio.administracion.UsuarioBL;
+import com.example.dominio.bussinesslogic.administracion.UsuarioBL;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.dominio.modelonegocio.Usuario;
 import com.example.santiagolopezgarcia.talleres.R;
@@ -172,14 +172,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void mostrarCorrerias() {
-//        SiriusApp app = (SiriusApp) getApplication();
-//        app.setUsuario(presentador.getUsuario());
-//        Intent intent = new Intent(this, PrincipalActivity.class);
-//        intent.putExtra(Correria.class.getName(), presentador.getCorreriaActual());
-//        dependencia.getApp().setCodigoCorreria(presentador.getCorreriaActual().getCodigoCorreria());
-//        startActivity(intent);
-//        finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        SiriusApp app = (SiriusApp) getApplication();
+        app.setUsuario(presentador.getUsuario());
+        Intent intent = new Intent(this, PrincipalActivity.class);
+        intent.putExtra(Correria.class.getName(), presentador.getCorreriaActual());
+        dependencia.getApp().setCodigoCorreria(presentador.getCorreriaActual().getCodigoCorreria());
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
     @Override

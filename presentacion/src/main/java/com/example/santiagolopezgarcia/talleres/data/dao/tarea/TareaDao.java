@@ -5,14 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.dominio.modelonegocio.Tarea;
-import com.example.dominio.tarea.TareaRepositorio;
+import com.example.dominio.bussinesslogic.tarea.TareaRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.santiagolopezgarcia.talleres.data.dao.DaoBase.STRING_TYPE;
 
 /**
  * Created by santiagolopezgarcia on 9/25/17.

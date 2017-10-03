@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.dominio.modelonegocio.Notificacion;
-import com.example.dominio.notificacion.NotificacionRepositorio;
+import com.example.dominio.bussinesslogic.notificacion.NotificacionRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 
 import java.text.ParseException;

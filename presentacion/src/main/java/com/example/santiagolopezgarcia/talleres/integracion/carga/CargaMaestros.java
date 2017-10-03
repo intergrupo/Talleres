@@ -1,11 +1,10 @@
 package com.example.santiagolopezgarcia.talleres.integracion.carga;
 
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
 import com.example.santiagolopezgarcia.talleres.data.OperadorDatos;
 import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDto;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.Carga;
-import com.example.santiagolopezgarcia.talleres.services.dto.carga.DependenciaCargaMaestros;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.ListaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
 
@@ -73,47 +72,8 @@ public class CargaMaestros extends CargaBase {
             case DependenciaCargaMaestros.ESTADO:
                 posicion = 8;
                 break;
-            case DependenciaCargaMaestros.RANGO:
-                posicion = 9;
-                break;
-            case DependenciaCargaMaestros.TIPO_ELEMENTO:
-                posicion = 10;
-                break;
-            case DependenciaCargaMaestros.CAUSA_NO_LECTURA:
-                posicion = 11;
-                break;
-            case DependenciaCargaMaestros.TIPO_LECTURA:
-                posicion = 12;
-                break;
-            case DependenciaCargaMaestros.OBSERVACION_CONSUMO:
-                posicion = 13;
-                break;
-            case DependenciaCargaMaestros.OBSERVACION_ADICIONAL_LECTURA:
-                posicion = 14;
-                break;
-            case DependenciaCargaMaestros.UBICACION_ELEMENTO:
-                posicion = 15;
-                break;
-            case DependenciaCargaMaestros.ELEMENTO_AFORO:
-                posicion = 16;
-                break;
-            case DependenciaCargaMaestros.UNIDAD:
-                posicion = 17;
-                break;
-            case DependenciaCargaMaestros.MATERIAL:
-                posicion = 18;
-                break;
             case DependenciaCargaMaestros.MULTIOPCION:
                 posicion = 19;
-                break;
-            case DependenciaCargaMaestros.OPERACION:
-                posicion = 20;
-                break;
-            case DependenciaCargaMaestros.OBSERVACION_ELEMENTO:
-                posicion = 21;
-                break;
-            case DependenciaCargaMaestros.LOCALIDAD:
-                posicion = 22;
                 break;
             case DependenciaCargaMaestros.OPCION:
                 posicion = 23;
@@ -130,29 +90,14 @@ public class CargaMaestros extends CargaBase {
             case DependenciaCargaMaestros.TAREAXTRABAJO:
                 posicion = 27;
                 break;
-            case DependenciaCargaMaestros.MARCAR_ELEMENTO:
-                posicion = 28;
-                break;
-            case DependenciaCargaMaestros.MODELO_ELEMENTO:
-                posicion = 29;
-                break;
             case DependenciaCargaMaestros.LABOR_X_TAREA:
                 posicion = 30;
-                break;
-            case DependenciaCargaMaestros.MATERIAL_X_LABOR:
-                posicion = 31;
-                break;
-            case DependenciaCargaMaestros.PARAMETRO_PCT:
-                posicion = 32;
                 break;
             case DependenciaCargaMaestros.PERFIL_X_OPCION:
                 posicion = 33;
                 break;
             case DependenciaCargaMaestros.ITEM_X_NOTIFICACION:
                 posicion = 34;
-                break;
-            case DependenciaCargaMaestros.ELEMENTO_AFORO_X_LABOR:
-                posicion = 35;
                 break;
             case DependenciaCargaMaestros.SIRIUS:
                 posicion = 36;
@@ -163,20 +108,8 @@ public class CargaMaestros extends CargaBase {
             case DependenciaCargaMaestros.PARRAFO_IMPRESION:
                 posicion = 38;
                 break;
-            case DependenciaCargaMaestros.CONCEPTO:
-                posicion = 43;
-                break;
-            case DependenciaCargaMaestros.GRUPO_LECTURA:
-                posicion = 44;
-                break;
             case DependenciaCargaMaestros.CARGA:
                 posicion = 45;
-                break;
-            case DependenciaCargaMaestros.ELEMENTO_DISPONIBLE:
-                posicion = 46;
-                break;
-            case DependenciaCargaMaestros.NUEVA_LECTURA_ELEMENTO_DISPONIBLE:
-                posicion = 47;
                 break;
         }
         return posicion;

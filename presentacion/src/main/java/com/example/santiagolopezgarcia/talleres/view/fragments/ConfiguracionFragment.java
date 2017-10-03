@@ -12,14 +12,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.santiagolopezgarcia.talleres.R;
 import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.presenters.ConfiguracionPresenter;
 import com.example.santiagolopezgarcia.talleres.view.activities.Parametrizacion2DActivity;
 import com.example.santiagolopezgarcia.talleres.view.adapters.StringAdapter;
-import com.example.santiagolopezgarcia.talleres.view.interfaces.BaseView;
 import com.example.santiagolopezgarcia.talleres.view.interfaces.IAdministracionConfiguracionView;
 import com.example.santiagolopezgarcia.talleres.view.interfaces.IAdministracionView;
 import com.example.santiagolopezgarcia.talleres.view.popups.CambiarRutaPopUp;

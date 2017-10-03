@@ -3,7 +3,7 @@ package com.example.santiagolopezgarcia.talleres.integracion;
 import android.content.Context;
 import android.util.Base64;
 
-import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.Mensaje;
 import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;

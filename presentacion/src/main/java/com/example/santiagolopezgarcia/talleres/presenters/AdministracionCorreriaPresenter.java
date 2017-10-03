@@ -1,6 +1,6 @@
 package com.example.santiagolopezgarcia.talleres.presenters;
 
-import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.dominio.modelonegocio.Opcion;
 import com.example.dominio.modelonegocio.ParametrosOpcionAdministracion;

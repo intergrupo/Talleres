@@ -1,6 +1,6 @@
 package com.example.santiagolopezgarcia.talleres.presenters;
 
-import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.view.interfaces.IAdministracionConfiguracionView;

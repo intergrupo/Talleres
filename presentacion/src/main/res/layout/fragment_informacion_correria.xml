@@ -1,0 +1,192 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ContenedorPrincipal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/grisfondo"
+    android:orientation="vertical"
+    android:scrollbars="vertical">
+
+    <ScrollView
+        android:id="@+id/svControles"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadeScrollbars="false">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ContenedorEncabezado"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/grisfondo"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimension_izquierda"
+            android:paddingRight="@dimen/dimension_derecha"
+            android:paddingTop="@dimen/dimension_superior"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/ContenedorTerminal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTerminal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TERMINAL"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/negro"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvFecha"
+                    style="@style/EstiloTextoContenido"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="05 Abr 2016" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvVersion"
+                style="@style/EstiloTextoContenido"
+                android:layout_alignEnd="@+id/ContenedorTerminal"
+                android:layout_below="@+id/ContenedorTerminal"
+                android:text="@string/version"
+                android:textColor="@color/verdeoscuro" />
+
+            <TextView
+                android:id="@+id/tvNombreUsuario"
+                style="@style/EstiloTextoContenido"
+                android:text="NOMBRE USUARIO"
+                android:layout_below="@+id/tvVersion"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/EstiloTextoContenido"
+                android:id="@+id/tvArea"
+                android:layout_below="@+id/ContendorCorreria"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/tvAdvertencia"
+                style="@style/EstiloTextoContenido"
+                android:layout_width="fill_parent"
+                android:layout_height="160dp"
+                android:layout_below="@+id/tvArea"
+                android:paddingBottom="5dp"
+                android:paddingTop="10dp"
+                android:text="ADVERTENCIA" />
+
+            <RelativeLayout
+                android:id="@+id/ContenedorObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/tvAdvertencia"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/rectangulo"
+                android:orientation="vertical">
+
+                <EditText
+                    android:layout_height="match_parent"
+                    android:id="@+id/etObservacionCorreria"
+                    style="@style/EstiloTextoCaptura"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:hint="Escriba sus observaciones."
+                    android:imeOptions="actionDone"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="vertical"
+                    android:background="@null"
+                    android:maxLength="50"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_margin="5dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ContenedorUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvNombreUsuario"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTituloUsuario"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_alignLeft="@+id/tvVersion"
+                    android:layout_below="@+id/tvVersion"
+                    android:text="@string/titulo_codigo"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:id="@+id/tvCodigoUsuario"
+                    style="@style/EstiloTextoContenido"
+                    android:layout_alignEnd="@+id/tvVersion"
+                    android:layout_below="@+id/tvTituloUsuario"
+                    android:text="CODIGO USUARIO" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvNombreCorreria"
+                style="@style/EstiloTextoContenido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE CORRERIA"
+                android:textStyle="bold"
+                android:layout_below="@+id/ContenedorUsuario"
+                android:layout_alignParentStart="true"
+                android:paddingTop="5dp"
+                android:layout_alignParentEnd="true" />
+
+            <LinearLayout
+                android:id="@+id/ContendorCorreria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/tvNombreCorreria"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/tvTituloCodigoCorreria"
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvNombreUsuario"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/tvNombreUsuario"
+                    android:text="@string/titulo_codigo"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:id="@+id/tvCodigoCorreria"
+                    style="@style/EstiloTextoContenido"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tvAdvertencia"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/tvTituloCodigoCorreria"
+                    android:text="CODIGO CORRERIA" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

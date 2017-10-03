@@ -2,7 +2,7 @@ package com.example.santiagolopezgarcia.talleres.presenters;
 
 import android.app.Activity;
 
-import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.dominio.modelonegocio.Mensaje;
 import com.example.santiagolopezgarcia.talleres.SiriusApp;

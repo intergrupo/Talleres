@@ -12,6 +12,7 @@ import com.example.santiagolopezgarcia.talleres.data.dao.administracion.Talleres
 import com.example.santiagolopezgarcia.talleres.data.dao.correria.ContratoDao;
 import com.example.santiagolopezgarcia.talleres.data.dao.correria.CorreriaDao;
 import com.example.santiagolopezgarcia.talleres.data.dao.correria.EmpresaDao;
+import com.example.santiagolopezgarcia.talleres.data.dao.correria.ProgramacionCorreriaDao;
 import com.example.santiagolopezgarcia.talleres.data.dao.impresion.ParrafoImpresionDao;
 import com.example.santiagolopezgarcia.talleres.data.dao.impresion.SeccionImpresionDao;
 import com.example.santiagolopezgarcia.talleres.data.dao.labor.LaborDao;
@@ -72,6 +73,7 @@ public class AdministradorBaseDatos implements AdministradorBaseDatosInterface {
             lista.add(TalleresDao.CREAR_SCRIPT);
             lista.add(ParrafoImpresionDao.CREAR_SCRIPT);
             lista.add(SeccionImpresionDao.CREAR_SCRIPT);
+            lista.add(ProgramacionCorreriaDao.CREAR_SCRIPT);
         }
         return lista;
     }

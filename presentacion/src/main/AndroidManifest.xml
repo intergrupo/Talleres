@@ -37,6 +37,57 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.activities.PrincipalActivity"
+            android:label="@string/titulo_correria_mayuscula"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyNoActionBarShadowTheme" />
+        <activity
+            android:name=".view.activities.MapaOrdenesTrabajo"
+            android:label="@string/titulo_mapa_mayuscula"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.activities.MapaTareas"
+            android:label="@string/titulo_mapa_mayuscula"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.activities.CargaDatosActivity"
+            android:label="@string/string_carga_de_datos"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyNoActionBarShadowTheme" />
+        <activity
+            android:name=".view.activities.DescargaDatosActivity"
+            android:label="@string/string_descarga_de_datos"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyNoActionBarShadowTheme" />
+        <activity
+            android:name=".view.activities.AdministracionActivity"
+            android:label="@string/titulo_actividad_administracion"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyNoActionBarShadowTheme" />
+        <activity
+            android:name=".view.activities.Parametrizacion2DActivity"
+            android:label="@string/titulo_actividad_parametrizacion_2d"
+            android:screenOrientation="portrait" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAslPrCrW6G-h6X96JiQx_s4h-MuIpXea8" />
+        <!--
+             ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".view.activities.DescargaDatosParcialActivity"
+            android:label="@string/titulo_descarga_parcial_de_datos"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyNoActionBarShadowTheme" />
+
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@ import android.os.Looper;
 import android.os.StatFs;
 import android.util.Log;
 
-import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.santiagolopezgarcia.talleres.view.activities.LoginActivity;
 import com.example.utilidades.helpers.StringHelper;

@@ -2,13 +2,13 @@ package com.example.santiagolopezgarcia.talleres.presenters;
 
 import android.app.Activity;
 
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.dominio.modelonegocio.Mensaje;
 import com.example.dominio.modelonegocio.Talleres;
-import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
-import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.OrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoBL;
 import com.example.santiagolopezgarcia.talleres.R;
 import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.integracion.ComunicacionCarga;

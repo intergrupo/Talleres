@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.example.dominio.acceso.MultiOpcionRepositorio;
+import com.example.dominio.bussinesslogic.acceso.MultiOpcionRepositorio;
 import com.example.dominio.modelonegocio.ListaMultiOpcion;
 import com.example.dominio.modelonegocio.MultiOpcion;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;

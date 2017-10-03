@@ -20,6 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    useLibrary 'org.apache.http.legacy'
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
@@ -47,11 +48,13 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'com.google.guava:guava:20.0'
+    compile 'org.apache.commons:commons-lang3:3.5'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.github.aakira:expandable-layout:1.4.1@aar'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    compile 'com.google.android.gms:play-services-maps:8.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     compile 'org.apache.commons:commons-lang3:3.5'
     testCompile 'junit:junit:4.12'

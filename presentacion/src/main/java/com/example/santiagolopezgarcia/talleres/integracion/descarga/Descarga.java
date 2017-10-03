@@ -1,17 +1,16 @@
 package com.example.santiagolopezgarcia.talleres.integracion.descarga;
 
 import com.example.dominio.IBaseDescarga;
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.correria.CorreriaBL;
-import com.example.dominio.correria.ProgramacionCorreriaBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.correria.ProgramacionCorreriaBL;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.OrdenTrabajo;
 import com.example.dominio.modelonegocio.OrdenTrabajoBusqueda;
-import com.example.dominio.modelonegocio.ParametrosConfirmacion;
 import com.example.dominio.modelonegocio.Talleres;
-import com.example.dominio.notificacion.ReporteNotificacionBL;
-import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
-import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.OrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoBL;
 import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.helpers.Constantes;
 import com.example.santiagolopezgarcia.talleres.integracion.IEstadoComunicacion;

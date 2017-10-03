@@ -7,7 +7,7 @@ import android.database.Cursor;
 import com.example.dominio.modelonegocio.ArchivoAdjunto;
 import com.example.dominio.modelonegocio.FiltroCarga;
 import com.example.dominio.modelonegocio.ReporteNotificacion;
-import com.example.dominio.notificacion.ReporteNotificacionRepositorio;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.santiagolopezgarcia.talleres.data.dao.correria.CorreriaDao;
 import com.example.utilidades.helpers.BooleanHelper;

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.dominio.modelonegocio.Estado;
-import com.example.dominio.ordentrabajo.EstadoRepositorio;
+import com.example.dominio.bussinesslogic.ordentrabajo.EstadoRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 
 import java.text.ParseException;

@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ContenedorPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="false"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ContenedorEncabezado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <LinearLayout
+                android:id="@+id/ContenedorControlesEncabezado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/EstiloTextoTitulo"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.00"
+                    android:text="@string/titulo_titulo_busqueda"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <ImageView
+                    android:id="@+id/ibLimpiar"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@mipmap/ic_clean_form" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ContenedorOpcionesSeleccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbTodos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.98"
+                    android:checked="false"
+                    android:text="@string/titulo_todas" />
+
+                <CheckBox
+                    android:id="@+id/cbNoDescargados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/titulo_no_descargadas" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etCodigoOrdenTrabajo"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:hint="Número Orden"
+                android:maxLength="20"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/etCliente"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/titulo_cliente"
+                android:maxLength="30"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/etDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/titulo_direccion"
+                android:maxLength="40"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/etElemento"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:hint="Serie Elemento"
+                android:maxLength="20"
+                android:singleLine="true" />
+
+            <Spinner
+                android:id="@+id/spTrabajo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spTipoUso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spEstadoTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/etCodigo"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:hint="Llave alterna"
+                android:maxLength="20"
+                android:singleLine="true" />
+
+            <Spinner
+                android:id="@+id/spSeleccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/ContendorOpciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    style="@style/EstiloBotones"
+                    android:text="@string/titulo_cerrar_mayuscula" />
+
+                <Button
+                    android:id="@+id/btnBuscar"
+                    style="@style/EstiloBotones"
+                    android:text="@string/titulo_buscar_mayuscula" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

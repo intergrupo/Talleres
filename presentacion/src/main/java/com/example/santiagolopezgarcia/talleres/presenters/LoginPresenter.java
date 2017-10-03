@@ -1,9 +1,9 @@
 package com.example.santiagolopezgarcia.talleres.presenters;
 
-import com.example.dominio.acceso.PermisoBL;
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.administracion.UsuarioBL;
-import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.acceso.PermisoBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.UsuarioBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
 import com.example.dominio.modelonegocio.Correria;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.dominio.modelonegocio.Usuario;

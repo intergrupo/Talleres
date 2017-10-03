@@ -1,15 +1,15 @@
 package com.example.santiagolopezgarcia.talleres.presenters;
 
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.ICambioTerminal;
-import com.example.dominio.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.ICambioTerminal;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
 import com.example.dominio.modelonegocio.Talleres;
 import com.example.santiagolopezgarcia.talleres.R;
 import com.example.santiagolopezgarcia.talleres.helpers.GeneradorXmlHelper;
 import com.example.santiagolopezgarcia.talleres.integracion.carga.DependenciaCargaDiaria;
+import com.example.santiagolopezgarcia.talleres.integracion.carga.DependenciaCargaMaestros;
 import com.example.santiagolopezgarcia.talleres.services.dto.BaseListaDto;
 import com.example.santiagolopezgarcia.talleres.services.dto.Parametrizacion2D;
-import com.example.santiagolopezgarcia.talleres.services.dto.carga.DependenciaCargaMaestros;
 import com.example.santiagolopezgarcia.talleres.view.interfaces.IParametrizacion2DView;
 import com.example.utilidades.Log;
 

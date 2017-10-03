@@ -6,7 +6,7 @@ import android.database.Cursor;
 
 import com.example.dominio.modelonegocio.Trabajo;
 import com.example.dominio.modelonegocio.TrabajoXOrdenTrabajo;
-import com.example.dominio.trabajo.TrabajoXOrdenTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXOrdenTrabajoRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.santiagolopezgarcia.talleres.data.dao.ordentrabajo.OrdenTrabajoDao;
 

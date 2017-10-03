@@ -2,18 +2,18 @@ package com.example.santiagolopezgarcia.talleres.integracion.carga;
 
 import com.example.dominio.IEliminarDatosPorRecarga;
 import com.example.dominio.LogicaNegocioBase;
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.administracion.UsuarioBL;
-import com.example.dominio.correria.CorreriaBL;
-import com.example.dominio.correria.ProgramacionCorreriaBL;
-import com.example.dominio.labor.LaborXOrdenTrabajoBL;
-import com.example.dominio.notificacion.ReporteNotificacionBL;
-import com.example.dominio.ordentrabajo.NotificacionOrdenTrabajoBL;
-import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
-import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
-import com.example.dominio.trabajo.TrabajoXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.administracion.UsuarioBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.correria.ProgramacionCorreriaBL;
+import com.example.dominio.bussinesslogic.labor.LaborXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.NotificacionOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.OrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXOrdenTrabajoBL;
+import com.example.santiagolopezgarcia.talleres.services.dto.carga.ListaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.acceso.ListaUsuario;
-import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.administracion.ListaTalleres;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.correria.ListaCorrerias;
 import com.example.santiagolopezgarcia.talleres.services.dto.carga.correria.ListaProgramacionCorreria;
@@ -37,30 +37,13 @@ public class DependenciaCargaDiaria {
     public static final String SIRIUS = "SIRIUS.XML";
     public static final String CORRERIA = "SIRIUS_CORRERIA.XML";
     public static final String ORDENTRABAJO = "SIRIUS_ORDENTRABAJO.XML";
-    public static final String LECTURA_ELEMENTO = "SIRIUS_LECTURAELEMENTO.XML";
-    public static final String ELEMENTO = "SIRIUS_ELEMENTO.XML";
     public static final String TAREA_X_ORDENTRABAJO = "SIRIUS_TAREAXORDENTRABAJO.XML";//ordentrabajobl
     public static final String TRABAJO_X_ORDENTRABAJO = "SIRIUS_TRABAJOXORDENTRABAJ.XML";
-    public static final String HISTORIA_ELEMENTO = "SIRIUS_HISTORIAELEMENTO.XML";//ordentrabajobl
     public static final String LABOR_X_ORDENTRABAJO = "SIRIUS_LABORXORDENTRABAJO.XML";//ordentrabajobl
-    public static final String RELACION_ELEMENTO = "SIRIUS_RELACIONELEMENTO.XML";
     public static final String REPORTE_NOTIFICACION = "SIRIUS_REPORTENOTIFICACION.XML";
-    public static final String ELEMENTO_DISPONIBLE = "SIRIUS_ELEMENTODISPONIBLE.XML";//ElementoBL
-    public static final String NUEVA_LECTURA_ELEMENTO_DISPONIBLE = "SIRIUS_NUEVOLECTURAELEMENT.XML";//ElementoBL
-    public static final String LABOR_OBSERVACION_ELEMENTO = "SIRIUS_LABOROBSELEMENTO.XML";
     public static final String USUARIO = "SIRIUS_USUARIO.XML";
-    public static final String LABOR_ELEMENTO = "SIRIUS_LABORELEMENTO.XML";
-    public static final String LABOR_LECTURA = "SIRIUS_LABORLECTURA.XML";
-    public static final String LABOR_MATERIAL = "SIRIUS_LABORMATERIAL.XML";
-    public static final String LABOR_AFORO = "SIRIUS_LABORAFORO.XML";
-    public static final String LABOR_CIERRE = "SIRIUS_LABORCIERRE.XML";
-    public static final String LABOR_PCT = "SIRIUS_LABORPCT.XML";
     public static final String PROGRAMACIONCORRERIA = "SIRIUS_PROGRAMACIONCORRERI.XML";
     public static final String NOTIFICACION_ORDENTRABAJO = "SIRIUS_NOTIFICACIONOT.XML";
-    public static final String IMPRESION_FACTURACION = "FAC_IMPRESION.XML";
-    public static final String LABOR_CONCEPTO = "FAC_LABORCONCEPTO.XML";
-    public static final String RANGO_FACTURACION = "FAC_RANGOFACTURACION.XML";
-    public static final String LECTURAS = "SIRIUS_LECTURAS.XML";
     public static final String CARGA = "CARGA.XML";
 
     private TalleresBL talleresBL;
@@ -107,11 +90,17 @@ public class DependenciaCargaDiaria {
             case LABOR_X_ORDENTRABAJO:
                 entidad = this.laborXOrdenTrabajoBL;
                 break;
+            case TRABAJO_X_ORDENTRABAJO:
+                entidad = this.trabajoXOrdenTrabajoBL;
+                break;
             case USUARIO:
                 entidad = this.usuarioBL;
                 break;
             case SIRIUS:
                 entidad = this.talleresBL;
+                break;
+            case REPORTE_NOTIFICACION:
+                entidad = this.reporteNotificacionBL;
                 break;
             case PROGRAMACIONCORRERIA:
                 entidad = this.programacionCorreriaBL;

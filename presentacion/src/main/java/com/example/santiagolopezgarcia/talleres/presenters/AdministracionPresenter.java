@@ -1,7 +1,7 @@
 package com.example.santiagolopezgarcia.talleres.presenters;
 
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
 import com.example.dominio.modelonegocio.Opcion;
 import com.example.dominio.modelonegocio.ParametrosOpcionAdministracion;
 import com.example.dominio.modelonegocio.Talleres;

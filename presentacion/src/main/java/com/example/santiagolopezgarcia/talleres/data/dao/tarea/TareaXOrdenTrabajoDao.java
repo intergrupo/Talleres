@@ -12,7 +12,7 @@ import com.example.dominio.modelonegocio.TareaXOrdenTrabajo;
 import com.example.dominio.modelonegocio.TareaXTrabajoOrdenTrabajo;
 import com.example.dominio.modelonegocio.TotalTarea;
 import com.example.dominio.modelonegocio.TotalTareaXEstado;
-import com.example.dominio.tarea.TareaXOrdenTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.santiagolopezgarcia.talleres.data.dao.ordentrabajo.OrdenTrabajoDao;
 import com.example.santiagolopezgarcia.talleres.data.dao.trabajo.TrabajoXOrdenTrabajoDao;

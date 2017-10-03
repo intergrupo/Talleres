@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.Nullable;
 
-import com.example.dominio.labor.LaborXOrdenTrabajoRepositorio;
+import com.example.dominio.bussinesslogic.labor.LaborXOrdenTrabajoRepositorio;
 import com.example.dominio.modelonegocio.LaborXOrdenTrabajo;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.santiagolopezgarcia.talleres.data.dao.tarea.TareaXOrdenTrabajoDao;
@@ -15,8 +15,6 @@ import com.example.utilidades.helpers.DateHelper;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.santiagolopezgarcia.talleres.data.dao.DaoBase.STRING_TYPE;
 
 /**
  * Created by santiagolopezgarcia on 9/26/17.

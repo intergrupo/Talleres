@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.dominio.modelonegocio.TrabajoXContrato;
-import com.example.dominio.trabajo.TrabajoXContratoRepositorio;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXContratoRepositorio;
 import com.example.santiagolopezgarcia.talleres.data.dao.DaoBase;
 import com.example.santiagolopezgarcia.talleres.data.dao.correria.ContratoDao;
 

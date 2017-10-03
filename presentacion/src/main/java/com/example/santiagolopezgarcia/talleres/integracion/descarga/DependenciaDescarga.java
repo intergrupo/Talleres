@@ -1,15 +1,15 @@
 package com.example.santiagolopezgarcia.talleres.integracion.descarga;
 
 import com.example.dominio.IBaseDescarga;
-import com.example.dominio.administracion.TalleresBL;
-import com.example.dominio.correria.CorreriaBL;
-import com.example.dominio.correria.ProgramacionCorreriaBL;
-import com.example.dominio.labor.LaborXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.administracion.TalleresBL;
+import com.example.dominio.bussinesslogic.correria.CorreriaBL;
+import com.example.dominio.bussinesslogic.correria.ProgramacionCorreriaBL;
+import com.example.dominio.bussinesslogic.labor.LaborXOrdenTrabajoBL;
 import com.example.dominio.modelonegocio.ParametrosConfirmacion;
-import com.example.dominio.notificacion.ReporteNotificacionBL;
-import com.example.dominio.ordentrabajo.OrdenTrabajoBL;
-import com.example.dominio.tarea.TareaXOrdenTrabajoBL;
-import com.example.dominio.trabajo.TrabajoXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.notificacion.ReporteNotificacionBL;
+import com.example.dominio.bussinesslogic.ordentrabajo.OrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.tarea.TareaXOrdenTrabajoBL;
+import com.example.dominio.bussinesslogic.trabajo.TrabajoXOrdenTrabajoBL;
 import com.example.santiagolopezgarcia.talleres.services.dto.descarga.administracion.ListaCarga;
 import com.example.santiagolopezgarcia.talleres.services.dto.descarga.administracion.ListaTalleres;
 import com.example.santiagolopezgarcia.talleres.services.dto.descarga.confirmacion.ListaConfirmacionCorreria;

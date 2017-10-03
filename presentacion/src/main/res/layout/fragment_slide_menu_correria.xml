@@ -1,0 +1,74 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/grisfondo"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/left_drawer"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="178dp"
+            android:background="@color/verdeclaro">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="87dp"></LinearLayout>
+
+            <TextView
+                android:text="EPM001"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:text="000001 - Juan Felipe Gomez"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Administración"
+            android:id="@+id/button4"
+            android:background="@android:color/transparent"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesion"
+            android:id="@+id/button5"
+            android:background="@android:color/transparent"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Finalizar Jornada"
+        android:id="@+id/button2"
+        android:layout_gravity="left|bottom"
+        android:background="@android:color/transparent"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:textAllCaps="false"/>
+
+</FrameLayout>
+

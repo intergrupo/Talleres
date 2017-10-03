@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dominio.modelonegocio.NotificacionOrdenTrabajo;
-import com.example.dominio.tarea.TareaBL;
+import com.example.dominio.bussinesslogic.tarea.TareaBL;
 import com.example.santiagolopezgarcia.talleres.R;
 import com.example.santiagolopezgarcia.talleres.SiriusApp;
 import com.example.santiagolopezgarcia.talleres.util.ContenedorDependencia;
